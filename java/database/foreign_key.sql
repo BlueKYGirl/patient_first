@@ -32,19 +32,19 @@ ALTER TABLE phone_number
 
 -- ********************* Appointment Table *********************** 
 
--- ALTER TABLE appointment
---     ADD CONSTRAINT FK_appointment_doctor
---         FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id)
---     ADD CONSTRAINT FK_appointment_person
---         FOREIGN KEY (person_id) REFERENCES person (person_id)
---     ADD CONSTRAINT FK_appointment_time_block
---         FOREIGN KEY (time_block_id) REFERENCES time_block (time_block_id)
---     ADD CONSTRAINT FK_appointment_office
---         FOREIGN KEY (office_id) REFERENCES office (office_id)
---     ADD CONSTRAINT FK_appointment_appointment_reason
---         FOREIGN KEY (appointment_reason_id) REFERENCES appointment_reason (appointment_reason_id)
---     ADD CONSTRAINT FK_appointment_appointment_status
---         FOREIGN KEY (appointment_status_id) REFERENCES appointment_status (appointment_status_id);
+ALTER TABLE appointment
+    ADD CONSTRAINT FK_appointment_doctor
+        FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
+    ADD CONSTRAINT FK_appointment_person
+        FOREIGN KEY (patient_id) REFERENCES person (person_id),
+    ADD CONSTRAINT FK_appointment_time_block
+        FOREIGN KEY (time_block_id) REFERENCES time_block (time_block_id),
+    ADD CONSTRAINT FK_appointment_office
+        FOREIGN KEY (office_id) REFERENCES office (office_id),
+    ADD CONSTRAINT FK_appointment_appointment_reason
+        FOREIGN KEY (appointment_reason_id) REFERENCES appointment_reason (appointment_reason_id),
+    ADD CONSTRAINT FK_appointment_appointment_status
+        FOREIGN KEY (appointment_status_id) REFERENCES appointment_status (appointment_status_id);
 
 -- ********************* Doctor Table & Connection Tables *********************** 
 
@@ -60,11 +60,11 @@ ALTER TABLE doctor_office
 	ADD CONSTRAINT FK_doctor_office_office
         FOREIGN KEY (office_id) REFERENCES office (office_id);
 
--- ALTER TABLE doctor_review
---     ADD CONSTRAINT FK_doctor_review_doctor
---         FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
--- 	CONSTRAINT FK_doctor_review_review
---         FOREIGN KEY (review_id) REFERENCES review (review_id);
+ALTER TABLE doctor_review
+    ADD CONSTRAINT FK_doctor_review_doctor
+        FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
+	ADD CONSTRAINT FK_doctor_review_review
+        FOREIGN KEY (review_id) REFERENCES review (review_id);
 
 -- ********************* Office Table *********************** 
 
@@ -74,11 +74,11 @@ ALTER TABLE office
 
 -- ********************* Review Table *********************** 
 
--- ALTER TABLE review
---     ADD CONSTRAINT FK_review_doctor
---         FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id); 
---     ADD CONSTRAINT FK_review_person
---         FOREIGN KEY (person_id) REFERENCES person (person_id); 
+ALTER TABLE review
+    ADD CONSTRAINT FK_review_doctor
+        FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
+    ADD CONSTRAINT FK_review_person
+        FOREIGN KEY (person_id) REFERENCES person (person_id); 
 
 
-COMMIT;
+COMMIT TRANSACTION;
