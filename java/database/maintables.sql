@@ -20,7 +20,7 @@ CREATE TABLE doctor (
     doctor_id SERIAL,
     person_id int NOT NULL,
     specialty_id int NOT NULL, 
-    primary_care boolean NOT NULL,
+    is_primary_care boolean NOT NULL,
     CONSTRAINT PK_doctor PRIMARY KEY (doctor_id)
 );
 
