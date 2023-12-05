@@ -1,8 +1,9 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS person, doctor, office, address, phone_number, 
-                        specialty, doctor_office, person_address,
-                        person_phone, phone_type;
+                     specialty, doctor_office, person_address, person_phone,
+                     phone_type;
+
 
 CREATE TABLE person (
 	person_id SERIAL,
@@ -72,7 +73,7 @@ CREATE TABLE person_address (
 CREATE TABLE person_phone (
     person_id int,
     phone_id int,
-    CONSTRAINT PK_person_phone PRIMARY KEY (person_id, phone_id)
+    CONSTRAINT PK_person_address PRIMARY KEY (person_id, phone_id)
 );
 
 
