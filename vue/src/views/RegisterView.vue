@@ -26,6 +26,7 @@
 <script>
 import authService from '../services/AuthService';
 
+
 export default {
   data() {
     return {
@@ -73,6 +74,7 @@ export default {
 </script>
 
 <style scoped>
+@import '../css/styles.css';
 .form-input-group {
   margin-bottom: 1rem;
 }

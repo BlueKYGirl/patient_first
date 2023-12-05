@@ -3,6 +3,7 @@
 </template>
 
 <script>
+
 export default {
   created() {
     this.$store.commit("LOGOUT");
@@ -10,3 +11,7 @@ export default {
   }
 };
 </script>
+
+<style scoped >
+@import '../css/styles.css';
+</style>
