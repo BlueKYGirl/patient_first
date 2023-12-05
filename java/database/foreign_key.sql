@@ -70,7 +70,7 @@ ALTER TABLE doctor_office
 
 ALTER TABLE office
     ADD CONSTRAINT FK_office_address
-        FOREIGN KEY (address_id) REFERENCES address (address_id),
+        FOREIGN KEY (address_id) REFERENCES address (address_id);
 
 -- ********************* Review Table *********************** 
 

@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS person, doctor, office, address, phone_number, 
                      specialty, doctor_office, person_address, person_phone,
-                     phone_type, appointment, review, doctor_review, appointment_status, PK_appointment_reason, time_block;
+                     phone_type, appointment, review, doctor_review, appointment_status, appointment_reason, time_block;
 
 
 CREATE TABLE person (
@@ -90,7 +90,7 @@ CREATE TABLE appointment (
     time_block_id int NOT NULL, 
     office_id int NOT NULL, 
     appointment_reason_id int NOT NULL,
-    appointment_status int NOT NULL,
+    appointment_status_id int NOT NULL,
     CONSTRAINT PK_appointment PRIMARY KEY (appointment_id)
 );
 
