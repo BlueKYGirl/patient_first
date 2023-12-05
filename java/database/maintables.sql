@@ -130,4 +130,6 @@ CREATE TABLE time_block (
     CONSTRAINT PK_time_block PRIMARY KEY (time_block_id)
 );
 
+
+
 COMMIT TRANSACTION;
