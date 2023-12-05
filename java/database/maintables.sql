@@ -101,7 +101,7 @@ CREATE TABLE review (
     rating int NOT NULL, 
     review text NOT NULL, 
     review_title text NOT NULL, 
-    review_timestamp datetime NOT NULL,
+    review_timestamp timestamp NOT NULL,
     CONSTRAINT PK_review PRIMARY KEY (review_id)
 );
 
