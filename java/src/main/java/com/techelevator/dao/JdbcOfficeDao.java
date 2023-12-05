@@ -3,11 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.model.Office;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcOfficeDao implements OfficeDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -37,7 +39,7 @@ public class JdbcOfficeDao implements OfficeDao {
     @Override
     public List<Office> getOfficesByDoctorId(int doctorId) {
         List<Office> offices = new ArrayList<>();
-        String sql = "SELECT o.office_id, o.practice_name, a.street_address, a.city, a.state_abbreviation, a.zip_code " +
+        String sql = "SELECT o.office_id, o.practice_name, a.street_address, a.city, a.state_abbreviation, a.zip_code, " +
                 "o.office_phone_number, o.office_hours_start_time, o.office_hours_end_time " +
                 "FROM office o " +
                 "JOIN address a ON o.address_id = a.address_id " +
@@ -75,7 +77,8 @@ public class JdbcOfficeDao implements OfficeDao {
 
     private Office mapRowToOffice(SqlRowSet rowSet) {
         Office office = new Office();
-        office.setOfficeId(rowSet.getInt("office_id"));
+        int officeId = rowSet.getInt("office_id");
+        office.setOfficeId(officeId);
         office.setPracticeName(rowSet.getString("practice_name"));
         office.setStreetAddress(rowSet.getString("street_address"));
         office.setCity(rowSet.getString("city"));
@@ -84,7 +87,7 @@ public class JdbcOfficeDao implements OfficeDao {
         office.setPhone(rowSet.getString("office_phone_number"));
         office.setOfficeHoursStart(rowSet.getTime("office_hours_start_time").toLocalTime());
         office.setOfficeHoursEnd(rowSet.getTime("office_hours_end_time").toLocalTime());
-        office.setDoctorsInOffice(doctorDao.getDoctorsByOfficeId(rowSet.getInt("office_id")));
+        office.setDoctorsInOffice(doctorDao.getDoctorsByOfficeId(officeId));
 
         return office;
     }
