@@ -10,6 +10,8 @@ public interface OfficeDao {
 
     List<Office> getAllOffices();
 
+    List<Office> getOfficesByDoctorId(int doctorId);
+
     Office getOfficeById(int officeId);
 
     Office createOffice(Office office);
