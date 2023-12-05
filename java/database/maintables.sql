@@ -39,7 +39,7 @@ CREATE TABLE address (
     street_address varchar (50) NOT NULL, 
     city varchar (20) NOT NULL, 
     state_abbreviation varchar (20) NOT NULL, 
-    zip_code varchar (10) NOT NULL
+    zip_code varchar (10) NOT NULL,
     CONSTRAINT PK_address PRIMARY KEY (address_id)
 );
 
@@ -53,26 +53,26 @@ CREATE TABLE phone_number (
 
 CREATE TABLE specialty (
     specialty_id SERIAL,
-    specialty_name varchar (20)
+    specialty_name varchar (20),
     CONSTRAINT PK_specialty PRIMARY KEY (specialty_id)
 );
 
 CREATE TABLE doctor_office (
-    doctor_id int
-    office_id int
+    doctor_id int,
+    office_id int,
     CONSTRAINT PK_doctor_office PRIMARY KEY (doctor_id, office_id)
 );
 
 CREATE TABLE person_address (
-    person_id int
-    address_id int
+    person_id int,
+    address_id int,
     CONSTRAINT PK_person_address PRIMARY KEY (person_id, address_id)
 );
 
 CREATE TABLE person_phone (
-    person_id int
-    phone_id int
-    CONSTRAINT PK_person_address PRIMARY KEY (person_id, phone_id)
+    person_id int,
+    phone_id int,
+    CONSTRAINT PK_person_phone PRIMARY KEY (person_id, phone_id)
 );
 
 

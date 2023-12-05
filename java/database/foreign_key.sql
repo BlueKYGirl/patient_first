@@ -13,13 +13,13 @@ ALTER TABLE person
 ALTER TABLE person_address
     ADD CONSTRAINT FK_person_address_person
         FOREIGN KEY (person_id) REFERENCES person (person_id),
-	CONSTRAINT FFK_person_address_address
+	ADD CONSTRAINT FK_person_address_address
         FOREIGN KEY (address_id) REFERENCES address (address_id);
 
 ALTER TABLE person_phone
     ADD CONSTRAINT FK_person_phone_person
         FOREIGN KEY (person_id) REFERENCES person (person_id),
-	CONSTRAINT FK_person_phone_phone_number
+	ADD CONSTRAINT FK_person_phone_phone_number
         FOREIGN KEY (phone_id) REFERENCES phone_number (phone_id);
 
 
@@ -50,14 +50,14 @@ ALTER TABLE phone_number
 
 ALTER TABLE doctor
     ADD CONSTRAINT FK_doctor_person
-        FOREIGN KEY (person_id) REFERENCES person (person_id); 
+        FOREIGN KEY (person_id) REFERENCES person (person_id), 
     ADD CONSTRAINT FK_doctor_specialty
         FOREIGN KEY (specialty_id) REFERENCES specialty (specialty_id); 
 
 ALTER TABLE doctor_office
     ADD CONSTRAINT FK_doctor_office_doctor
         FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
-	CONSTRAINT FK_doctor_office_office
+	ADD CONSTRAINT FK_doctor_office_office
         FOREIGN KEY (office_id) REFERENCES office (office_id);
 
 -- ALTER TABLE doctor_review
@@ -70,7 +70,7 @@ ALTER TABLE doctor_office
 
 ALTER TABLE office
     ADD CONSTRAINT FK_office_address
-        FOREIGN KEY (address_id) REFERENCES address (address_id); 
+        FOREIGN KEY (address_id) REFERENCES address (address_id),
     ADD CONSTRAINT FK_office_phone_number
         FOREIGN KEY (phone_id) REFERENCES phone_number (phone_id); 
 
