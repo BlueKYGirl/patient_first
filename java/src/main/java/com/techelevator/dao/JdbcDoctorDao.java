@@ -15,16 +15,32 @@ public class JdbcDoctorDao implements DoctorDao{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+
+    @Override
+    public List<Doctor> getAllDoctors() {
+        List<Doctor> doctors = new ArrayList<>();
+        String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth, " +
+                "dof.office_id " +
+                "FROM doctor d " +
+                "JOIN specialty s ON d.specialty_id = s.specialty_id " +
+                "JOIN person p ON d.doctor_id = p.person_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            doctors.add(mapRowToDoctor(results));
+        }
+        return doctors;
+    }
+
     @Override
     public List<Doctor> getDoctorsByOfficeId(int officeId) {
         List<Doctor> doctorsInOffice = new ArrayList<>();
         String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth, " +
-                            "do.office_id " +
+                            "dof.office_id " +
                      "FROM doctor d " +
                      "JOIN specialty s ON d.specialty_id = s.specialty_id " +
                      "JOIN person p ON d.doctor_id = p.person_id " +
-                     "JOIN doctor_office do ON d.doctor_id = do.doctor_id " +
-                     "WHERE do.office_id = ?;";
+                     "JOIN doctor_office dof ON d.doctor_id = dof.doctor_id " +
+                     "WHERE dof.office_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
         while (results.next()) {
             doctorsInOffice.add(mapRowToDoctor(results));

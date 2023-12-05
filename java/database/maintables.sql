@@ -28,7 +28,7 @@ CREATE TABLE doctor (
 CREATE TABLE office (
     office_id SERIAL,
     address_id int NOT NULL,
-    office_phone_number varchar(12) NOT NULL, 
+    office_phone_number varchar(20) NOT NULL, 
     practice_name varchar (20) NOT NULL, 
     office_hours_start_time TIME NOT NULL, 
     office_hours_end_time TIME NOT NULL, 
@@ -47,7 +47,7 @@ CREATE TABLE address (
 CREATE TABLE phone_number (
     phone_id SERIAL, 
     phone_type_id int NOT NULL, 
-    phone_number varchar (12) NOT NULL, 
+    phone_number varchar (20) NOT NULL, 
     is_primary_phone boolean NOT NULL,
     CONSTRAINT PK_phone_number PRIMARY KEY (phone_id)
 );
