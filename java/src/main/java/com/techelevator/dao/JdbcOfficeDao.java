@@ -24,10 +24,10 @@ public class JdbcOfficeDao implements OfficeDao {
     public List<Office> getAllOffices() {
         List<Office> allOffices = new ArrayList<>();
         String sql = "SELECT o.office_id, o.practice_name, a.street_address, a.city, a.state_abbreviation, a.zip_code " +
-                            "o.phone_number, o.office_hours_start, o.office_hours_end" +
+                            "o.office_phone_number, o.office_hours_start, o.office_hours_end" +
                      "FROM office o " +
                      "JOIN address a ON o.address_id = a.address_id;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, true);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             allOffices.add(mapRowToOffice(results));
         }
