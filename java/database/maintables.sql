@@ -90,7 +90,7 @@ CREATE TABLE appointment (
     time_block_id int NOT NULL, 
     office_id int NOT NULL, 
     appointment_reason_id int NOT NULL,
-    appointment_status int NOT NULL,
+    appointment_status_id int NOT NULL,
     CONSTRAINT PK_appointment PRIMARY KEY (appointment_id)
 );
 
