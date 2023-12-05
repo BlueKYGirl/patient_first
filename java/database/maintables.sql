@@ -1,8 +1,9 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS person, doctor, office, address, phone_number, 
-                        specialty, doctor_office, person_address,
-                        person_phone, phone_type;
+                     specialty, doctor_office, person_address, person_phone,
+                     phone_type;
+
 
 CREATE TABLE person (
 	person_id SERIAL,
