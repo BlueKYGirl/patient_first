@@ -24,7 +24,7 @@ public class JdbcOfficeDao implements OfficeDao {
     public List<Office> getAllOffices() {
         List<Office> allOffices = new ArrayList<>();
         String sql = "SELECT o.office_id, o.practice_name, a.street_address, a.city, a.state_abbreviation, a.zip_code " +
-                            "o.office_phone_number, o.office_hours_start, o.office_hours_end" +
+                            "o.office_phone_number, o.office_hours_start_time, o.office_hours_end_time" +
                      "FROM office o " +
                      "JOIN address a ON o.address_id = a.address_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -64,10 +64,10 @@ public class JdbcOfficeDao implements OfficeDao {
         office.setStreetAddress(rowSet.getString("street_address"));
         office.setCity(rowSet.getString("city"));
         office.setStateAbbreviation(rowSet.getString("state_abbreviation"));
-        office.setZipcode(rowSet.getString("zipcode"));
-        office.setPhone(rowSet.getString("phone_number"));
-        office.setOfficeHoursStart(rowSet.getTime("office_hours_start").toLocalTime());
-        office.setOfficeHoursEnd(rowSet.getTime("office_hours_end").toLocalTime());
+        office.setZipcode(rowSet.getString("zip_code"));
+        office.setPhone(rowSet.getString("office_phone_number"));
+        office.setOfficeHoursStart(rowSet.getTime("office_hours_start_time").toLocalTime());
+        office.setOfficeHoursEnd(rowSet.getTime("office_hours_end_time").toLocalTime());
         office.setDoctorsInOffice(doctorDao.getDoctorsByOfficeId(rowSet.getInt("office_id")));
 
         return office;

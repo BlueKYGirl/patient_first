@@ -18,9 +18,10 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public List<Doctor> getDoctorsByOfficeId(int officeId) {
         List<Doctor> doctorsInOffice = new ArrayList<>();
-        String sql = "SELECT d.doctor_id, d.specialty, d.primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth, " +
+        String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth, " +
                             "do.office_id " +
                      "FROM doctor d " +
+                     "JOIN specialty s ON d.specialty_id = s.specialty_id " +
                      "JOIN person p ON d.doctor_id = p.person_id " +
                      "JOIN doctor_office do ON d.doctor_id = do.doctor_id " +
                      "WHERE do.office_id = ?;";
@@ -39,8 +40,8 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setEmailAddress(rowSet.getString("email"));
         doctor.setDateOfBirth(rowSet.getDate("date_of_birth").toLocalDate());
         doctor.setDoctorId(rowSet.getInt("doctor_id"));
-        doctor.setSpecialty(rowSet.getString("specialty"));
-        doctor.setIsPrimaryCare(rowSet.getBoolean("primary_care"));
+        doctor.setSpecialty(rowSet.getString("specialty_name"));
+        doctor.setIsPrimaryCare(rowSet.getBoolean("is_primary_care"));
 
         return doctor;
     }
