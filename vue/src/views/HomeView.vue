@@ -13,9 +13,8 @@ import ImageViewer from '../components/ImageViewer.vue';
 
 export default {
   components: {
-    GlobalHeader,
-    FileUpload,
-    ImageViewer
+    GlobalHeader
+    
   }
 };
 </script>
