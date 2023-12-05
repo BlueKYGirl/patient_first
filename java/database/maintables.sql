@@ -48,7 +48,7 @@ CREATE TABLE phone_number (
     phone_id SERIAL, 
     phone_type_id int NOT NULL, 
     phone_number varchar (12) NOT NULL, 
-    is_primary boolean NOT NULL,
+    is_primary_phone boolean NOT NULL,
     CONSTRAINT PK_phone_number PRIMARY KEY (phone_id)
 );
 
