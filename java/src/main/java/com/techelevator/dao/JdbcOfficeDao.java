@@ -16,7 +16,7 @@ public class JdbcOfficeDao implements OfficeDao {
 
     private DoctorDao doctorDao;
 
-    public JdbcOfficeDao(DataSource dataSource) {
+    public JdbcOfficeDao(DataSource dataSource, DoctorDao doctorDao) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.doctorDao = doctorDao;
     }
