@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS person, doctor, office, address, phone_number, 
                      specialty, doctor_office, person_address, person_phone,
-                     phone_type, appointment, review, doctor_review, appointment_status, PK_appointment_reason, time_block;
+                     phone_type, appointment, review, doctor_review, appointment_status, appointment_reason, time_block;
 
 
 CREATE TABLE person (
