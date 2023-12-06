@@ -44,7 +44,7 @@ public class JdbcOfficeDao implements OfficeDao {
                 "FROM office o " +
                 "JOIN address a ON o.address_id = a.address_id " +
                 "JOIN doctor_office dof ON o.office_id = dof.office_id " +
-                "WHERE doctor_id = ?;";
+                "WHERE dof.doctor_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
         while (results.next()) {
             offices.add(mapRowToOffice(results));
