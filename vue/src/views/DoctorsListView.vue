@@ -16,7 +16,7 @@ export default {
     data() {
         return {
             doctors: [],
-            isLoading: true
+
 
         };
     },
@@ -26,15 +26,14 @@ export default {
       doctorsService.list()
         .then(response => {
           this.doctors = response.data;
-          this.isLoading = false;
+
         })
         .catch(error => {
           this.handleErrorResponse();
         })
     },
     handleErrorResponse() {
-      this.isLoading = false;
-      this.$store.commit('SET_NOTIFICATION', `Could not get doctor data from server.`);
+
     }
   },
   created() {
