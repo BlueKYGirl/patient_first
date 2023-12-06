@@ -10,15 +10,13 @@ import com.techelevator.model.Office;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/doctors")
 @PreAuthorize("isAuthenticated()")
 public class DoctorController {
@@ -57,6 +55,7 @@ public class DoctorController {
     }
 
     // Get Office(s) by Doctor *************************************
+    @CrossOrigin
     @RequestMapping(path = "/{doctorId}/offices", method = RequestMethod.GET)
     public List<Office> getOfficesByDoctorId(@PathVariable("doctorId") int doctorId){
         try {
