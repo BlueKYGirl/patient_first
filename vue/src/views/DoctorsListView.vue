@@ -1,17 +1,31 @@
 <template>
-    <div>
+    <div class="header">
+        <global-header />
+        <h1>Welcome to Patient First</h1>
+    <p>We're glad you're here.</p>
+    <p class="subheader" >
+      Your Physicians:
+    </p>
+    
+  </div>
+  <div class="doctor-list">
+    
         <doctors-list v-bind:doctors="doctors" />
+</div>
         
-    </div>
+    
 </template>
 
 <script>
 import DoctorsList from '../components/DoctorsList.vue';
 import doctorsService from '../services/DoctorsService.js';
+import GlobalHeader from '../components/GlobalHeader.vue';
+
 
 export default {
     components: {
         DoctorsList,
+        GlobalHeader
     },
     data() {
         return {
@@ -47,6 +61,17 @@ export default {
 </script>
 
 <style scoped>
-/*@import '../css/styles.css'; */
+@import '../css/styles.css';
+.header {
+  text-align: center;
+}
+.subheader {
+  text-align: left;
+  padding-left: 6px;
+  font-weight: bold;
+}
+
+
+
 
 </style>

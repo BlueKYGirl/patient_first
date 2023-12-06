@@ -2,7 +2,7 @@
   <div class="home">
     <global-header />
     <h1>Welcome to Patient First</h1>
-    <p>You must be authenticated to see this</p>
+    <p>We're glad you're here.</p>
   </div>
 </template>
 
