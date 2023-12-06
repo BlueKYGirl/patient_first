@@ -3,10 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.model.Doctor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
+
+@Component
 public class JdbcDoctorDao implements DoctorDao{
 
     private final JdbcTemplate jdbcTemplate;
@@ -19,8 +22,7 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public List<Doctor> getAllDoctors() {
         List<Doctor> doctors = new ArrayList<>();
-        String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth, " +
-                "dof.office_id " +
+        String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth " +
                 "FROM doctor d " +
                 "JOIN specialty s ON d.specialty_id = s.specialty_id " +
                 "JOIN person p ON d.doctor_id = p.person_id;";
@@ -34,8 +36,7 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public List<Doctor> getDoctorsByOfficeId(int officeId) {
         List<Doctor> doctorsInOffice = new ArrayList<>();
-        String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth, " +
-                            "dof.office_id " +
+        String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth " +
                      "FROM doctor d " +
                      "JOIN specialty s ON d.specialty_id = s.specialty_id " +
                      "JOIN person p ON d.doctor_id = p.person_id " +
