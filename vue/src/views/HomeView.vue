@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <global-header />
-    <h1>Welcome to Patient First</h1>
+    <img class="printLogo" src="../assets/justText.png" />
+    
     <p>We're glad you're here.</p>
   </div>
 </template>
@@ -22,4 +23,13 @@ export default {
 
 <style scoped>
 @import '../css/styles.css';
+.printLogo {
+  margin: 0;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    
+}
+
 </style>
