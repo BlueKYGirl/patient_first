@@ -15,8 +15,13 @@ export default {
     },
     data() {
         return {
+<<<<<<< HEAD
             doctors: {},
             isLoading: true
+=======
+            doctors: [],
+
+>>>>>>> 1abe896bb5ff4ede16e0cb789dc996f500641159
 
         };
     },
@@ -26,15 +31,14 @@ export default {
       doctorsService.list()
         .then(response => {
           this.doctors = response.data;
-          this.isLoading = false;
+
         })
         .catch(error => {
           this.handleErrorResponse();
         })
     },
     handleErrorResponse() {
-      this.isLoading = false;
-      this.$store.commit('SET_NOTIFICATION', `Could not get doctor data from server.`);
+
     }
   },
   created() {
