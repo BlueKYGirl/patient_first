@@ -46,8 +46,8 @@ public class DoctorController {
     }
 
     // Get Doctors by Office ID *************************************
-    @RequestMapping(path = "/offices/{id)", method = RequestMethod.GET)
-    public List<Doctor> getDoctorsByOfficeId(@PathVariable("id") int officeId){
+    @RequestMapping(path = "/offices/{officeId)", method = RequestMethod.GET)
+    public List<Doctor> getDoctorsByOfficeId(@PathVariable("officeId") int officeId){
         try {
             List<Doctor> doctors = doctorDao.getDoctorsByOfficeId(officeId);
             return doctors;
