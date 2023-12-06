@@ -15,11 +15,7 @@ export default {
     },
     data() {
         return {
-            doctors: {},
-            isLoading: true
-          
-
-
+            doctors: [],
         };
     },
     methods: {
