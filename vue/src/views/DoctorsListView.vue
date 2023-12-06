@@ -15,13 +15,10 @@ export default {
     },
     data() {
         return {
-<<<<<<< HEAD
             doctors: {},
             isLoading: true
-=======
-            doctors: [],
+          
 
->>>>>>> 1abe896bb5ff4ede16e0cb789dc996f500641159
 
         };
     },
