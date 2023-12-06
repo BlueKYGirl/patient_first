@@ -54,7 +54,7 @@ const routes = [
     name: "doctors",
     component: DoctorsListView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   }
 ];
