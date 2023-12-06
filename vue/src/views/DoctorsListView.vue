@@ -15,7 +15,9 @@ export default {
     },
     data() {
         return {
-            doctors: [],
+            doctors: {},
+            isLoading: true
+          
 
 
         };
@@ -40,8 +42,7 @@ export default {
     this.getDoctors();
   }
   
-    
-    }
+  }
 
 
 </script>
