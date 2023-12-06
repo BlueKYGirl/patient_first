@@ -4,27 +4,67 @@
 
 BEGIN TRANSACTION;
 
-INSERT INTO users(username, password_hash, role)
-VALUES ('CHAAAACHIIIII', 'er34289yh2uhg', 'ROLE_DOCTOR'),
-       ('Joni', 'joniiiiiii', 'ROLE_USER'),
-       ('PickleRick', 'solenya', 'ROLE_DOCTOR'),
-       ('BethSanchez', 'horsies4lyfe', 'ROLE_DOCTOR');
-
 INSERT INTO specialty(specialty_name)
-VALUES ('Endocrinologist'),
-       ('Equine Surgeon');
+VALUES ('Internal Medicine'),
+       ('Surgery'),
+       ('General Surgery'),
+       ('Pediatrics'),
+       ('Family Medicine'),
+       ('Dermatology'),
+       ('Anesthesiology'),
+       ('Emergency Medicine'),
+       ('Obsterics & Gynaecology'),
+       ('Neurology'),
+       ('Psychiatry'),
+       ('Pathology'),
+       ('Physical Therapy'),
+       ('Urology'),
+       ('Immunology'),
+       ('Oncology'),
+       ('Radiology'),
+       ('Opthalmology'),
+       ('Preventive Healthcare'),
+       ('Nuclear Medicine'),
+       ('Medical Genetics'),
+       ('Orthopeics'),
+       ('Otorhinolaryngology'),
+       ('Cardiology'),
+       ('Plastic Surgery'),
+       ('Diagnostic Radiology'),
+       ('Pain Management'),
+       ('Gastroenterology'),
+       ('Cardiothoracic Surgery'),
+       ('Endocrinology'),
+       ('Nephrology'),
+       ('Geriatrics'),
+       ('Rheumatology'),
+       ('Neurosurgery'),
+       ('Pulmonology'),
+       ('Intensive Care Medicine'),
+       ('Hospital Medicine'),
+       ('Hematology'),
+       ('Forensic Pathology'),
+       ('Occupational Medicine'),
+       ('Biochemistry'),
+       ('Spinal Cord Injury Medicine'),
+       ('Brain Injury Medicine'),
+       ('Pediatric Anesthesiology'),
+       ('Clinical Pathology'),
+       ('Medical Microbiology'),
+       ('Allergy & Immunology'),
+       ('Anatomical Pathology'),
+       ('Colorectal Surgery'),
+       ('Vascular Surgery'),
+       ('Pediatric Hematology'),
+       ('Pediatric Hematology Oncology');
 
 INSERT INTO person(user_id, first_name, last_name, email, date_of_birth)
 VALUES (1, 'Chachi', 'TheCat', 'chachicat@meowmeow.com', '2003-01-03'),
        (2, 'Joni', 'LovesChachi', 'joni@chachicat.net', '2005-01-23'),
-       (3, 'Rick', 'Sanchez', 'picklerick@interdimentionalmail.universe', '1968-12-23'),
-       (4, 'Beth', 'Sanchez', 'beth@interdimentionalmail.universe', '1989-12-01');
 
 INSERT INTO doctor(person_id, specialty_id, is_primary_care)
 VALUES (1, 1, True),
        (2, 2, True),
-       (3, 1, True),
-       (4, 2, True);
 
 INSERT INTO address(street_address, city, state_abbreviation, zip_code)
 VALUES (420, 'CatTown', 'CT', 12345);
