@@ -1,4 +1,8 @@
 <template>
+  <div class="home">
+    <global-header />
+    <img class="printLogo" src="../assets/justText.png" />
+  </div>  
   <div id="login">
     
     <form v-on:submit.prevent="login">
@@ -10,11 +14,11 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Username:</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
@@ -26,10 +30,13 @@
 
 <script>
 import authService from "../services/AuthService";
+import GlobalHeader from "../components/GlobalHeader.vue";
 
 
 export default {
-  components: {},
+  components: {
+    GlobalHeader
+  },
   data() {
     return {
       user: {
@@ -67,8 +74,19 @@ export default {
 @import '../css/styles.css';
 .form-input-group {
   margin-bottom: 1rem;
+  background-color: white;
 }
 label {
   margin-right: 0.5rem;
+}
+
+#login{
+background-color: white;
+}
+
+.printLogo{
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
 }
 </style>

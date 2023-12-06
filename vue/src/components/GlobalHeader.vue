@@ -9,10 +9,12 @@
 
 <style>
 .logo {
+  display: block;
   width: 10%;
   text-align: left;
   padding-bottom: 5px;
   margin-bottom: 5px;
+  position: fixed;
 
 }
 #nav {

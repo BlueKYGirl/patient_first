@@ -24,12 +24,14 @@ export default {
 <style scoped>
 @import '../css/styles.css';
 .printLogo {
-  margin: 0;
   position: absolute;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-    
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 50px;
 }
 
 </style>
