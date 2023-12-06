@@ -6,7 +6,7 @@ const http = axios.create({
   });
 
 export default {
-    list() {
-        return http.get('/doctors');
+    listOfficesByDoctorId(doctorId) {
+        return http.get(`/doctors/${doctorId}/offices`);
     }
 }

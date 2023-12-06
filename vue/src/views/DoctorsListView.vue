@@ -30,8 +30,6 @@ export default {
     data() {
         return {
             doctors: [],
-
-
         };
     },
     methods: {
@@ -54,8 +52,7 @@ export default {
     this.getDoctors();
   }
   
-    
-    }
+  }
 
 
 </script>
