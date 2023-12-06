@@ -5,6 +5,7 @@
             {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }} 
         </div>
       
+
     </div>
   </template>
 
@@ -27,13 +28,9 @@ export default {
     border-style: solid;
     font-weight: bold;
     line-height: 300%;
-  
   padding: 2%;
-  
   border-radius: 6px;
   margin: 10px;
   vertical-align: middle;
 }
-
-
 </style>
