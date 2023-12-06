@@ -1,15 +1,16 @@
 <template>
-    <div>
-
+    <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
+      <router-link v-bind:to="{ name: 'DoctorsListView', params: { doctorId: doctor.doctorId } }">
+        {{ doctor.firstName }} {{ doctor.lastName }}
+      </router-link>
     </div>
-
-</template>
+  </template>
 
 <script>
 export default {
     props: {
         doctors: {
-            type: Object,
+            type: Array,
             required: true
         }
     },
