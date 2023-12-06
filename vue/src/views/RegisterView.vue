@@ -6,16 +6,32 @@
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Username: </label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password: </label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">Confirm Password: </label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+      </div>
+      <div class="form-input-group">
+        <label for="firstName">First Name: </label>
+        <input type="text" id="firstName" v-model="user.firstName" required />
+      </div>
+      <div class="form-input-group">
+        <label for="lastName">Last Name: </label>
+        <input type="text" id="lastName" v-model="user.lastName" required />
+      </div>
+      <div class="form-input-group">
+        <label for="email">Email Address: </label>
+        <input type="email" id="email" v-model="user.email" required />
+      </div>
+      <div class="form-input-group">
+        <label for="dateOfBirth">Date of Birth: </label>
+        <input type="date" id="dateOfBirth" v-model="user.dateOfBirth" required />
       </div>
       <button type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
@@ -35,6 +51,10 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        firstName: '',
+        lastName: '',
+        email: '',
+        dateOfBirth: ''
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',

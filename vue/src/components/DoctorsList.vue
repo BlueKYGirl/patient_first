@@ -2,7 +2,8 @@
     <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
       
         <div class="doctorList"> 
-            {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }} </div>
+            {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }} 
+        </div>
       
     </div>
   </template>
