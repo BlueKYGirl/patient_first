@@ -1,11 +1,16 @@
 <template>
     <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
-      <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }" >
+        <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }" >
         <div class="doctorList">
             {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }}
         </div>
       </router-link>
-    </div>
+       <!-- <div class="doctorList"> 
+            {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }} -->
+        </div>
+      
+
+    
   </template>
 
 <script>
