@@ -45,6 +45,17 @@ public class DoctorController {
         }
     }
 
+    // Get Doctors by Office ID *************************************
+    @RequestMapping(path = "/offices/{id)", method = RequestMethod.GET)
+    public List<Doctor> getDoctorsByOfficeId(@PathVariable("id") int officeId){
+        try {
+            List<Doctor> doctors = doctorDao.getDoctorsByOfficeId(officeId);
+            return doctors;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no doctors here...Bummer..." + e);
+        }
+    }
+
     // Get Office(s) by Doctor *************************************
     @RequestMapping(path = "/{doctorId}/offices", method = RequestMethod.GET)
     public List<Office> getOfficesByDoctorId(@PathVariable("doctorId") int doctorId){
