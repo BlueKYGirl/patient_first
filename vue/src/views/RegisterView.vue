@@ -38,7 +38,7 @@
         <input type="date" id="dateOfBirth" v-model="user.dateOfBirth" required />
       </div>
       <button type="submit" style="margin-left: 30%;">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p style="text-align: center;"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
   <div>
@@ -109,6 +109,8 @@ export default {
 <style scoped>
 @import '../css/styles.css';
 .form-input-group {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1rem;
   font-size: small;
 }
@@ -131,6 +133,7 @@ form{
   display: inline-block;
   padding: 2%;
   padding-top: 1%;
+  border-width: .5px;
   border-radius: 2%;
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
   background-color: white;
