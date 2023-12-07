@@ -32,19 +32,21 @@ ALTER TABLE phone_number
 
 -- ********************* Appointment Table *********************** 
 
-ALTER TABLE appointment
-    ADD CONSTRAINT FK_appointment_doctor
+ALTER TABLE appointment_schedule
+    ADD CONSTRAINT FK_appointment_schedule_doctor
         FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
-    ADD CONSTRAINT FK_appointment_person
+    ADD CONSTRAINT FK_appointment_schedule_person
         FOREIGN KEY (patient_id) REFERENCES person (person_id),
-    ADD CONSTRAINT FK_appointment_time_block
+    ADD CONSTRAINT FK_appointment_schedule_time_block
         FOREIGN KEY (time_block_id) REFERENCES time_block (time_block_id),
-    ADD CONSTRAINT FK_appointment_office
+    ADD CONSTRAINT FK_appointment_schedule_office
         FOREIGN KEY (office_id) REFERENCES office (office_id),
-    ADD CONSTRAINT FK_appointment_appointment_reason
+    ADD CONSTRAINT FK_appointment_schedule_appointment_reason
         FOREIGN KEY (appointment_reason_id) REFERENCES appointment_reason (appointment_reason_id),
-    ADD CONSTRAINT FK_appointment_appointment_status
-        FOREIGN KEY (appointment_status_id) REFERENCES appointment_status (appointment_status_id);
+    ADD CONSTRAINT FK_appointment_schedule_appointment_status
+        FOREIGN KEY (appointment_status_id) REFERENCES appointment_status (appointment_status_id),
+    ADD CONSTRAINT FK_appointment_schedule_schedule_status
+        FOREIGN KEY (schedule_status_id) REFERENCES schedule_status (schedule_status_id);
 
 -- ********************* Doctor Table & Connection Tables *********************** 
 

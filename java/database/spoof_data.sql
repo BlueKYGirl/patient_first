@@ -23,7 +23,6 @@ VALUES (1, '(123)456-7890', True);
 
 INSERT INTO office(address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time)
 VALUES (1, '(234)456-7890', 'Chachi & Associates', '8:00', '16:00');
--- VALUES (1, '(555)432-1170', 'Goomba Family Physicians', '8:00', '16:00');
 
 INSERT INTO doctor_office(doctor_id, office_id)
 VALUES (1, 1);
