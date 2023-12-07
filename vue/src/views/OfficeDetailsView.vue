@@ -1,7 +1,9 @@
 <template>
+    <body>
     <div class = "offices">
         <office-details v-bind:offices="offices" />
     </div>
+</body>
 
 </template>
 

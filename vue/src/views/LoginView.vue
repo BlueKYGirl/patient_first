@@ -1,8 +1,14 @@
 <template>
+  <body>
   <div class="home">
     <global-header />
-    <img class="printLogo" src="../assets/justText.png" />
-  </div>  
+  </div> 
+    
+    <div class="graphic">
+    <img src="../assets/justText.png">
+</div>
+    
+   
   <div id="login">
     
     <form v-on:submit.prevent="login">
@@ -26,6 +32,7 @@
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
+</body>
 </template>
 
 <script>
@@ -81,12 +88,30 @@ label {
 }
 
 #login{
+position: fixed;
+padding: 2%;
+border-radius: 2%;
+box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
 background-color: white;
+margin-top: 2%;
+text-align: center;
+margin-left: 40%;
+margin-right: 40%;
 }
 
-.printLogo{
- display: block;
- margin-left: auto;
- margin-right: auto;
+h2 {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  
 }
+.home {
+  margin-bottom: 5px;
+}
+.graphic {
+  margin-top: 7%;
+  margin-left: 43%;
+  margin-right: 40%;
+}
+
 </style>
