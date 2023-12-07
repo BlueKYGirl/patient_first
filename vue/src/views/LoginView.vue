@@ -1,18 +1,18 @@
 <template>
   <body>
-  <div class="home">
-    <global-header />
+  <div class="header">
+    <global-header/>
   </div> 
     
-    <div class="graphic">
-    <img src="../assets/justText.png">
+  <div class="graphic">
+    <img src="../assets/transparentText.png">
 </div>
     
    
   <div id="login">
     
     <form v-on:submit.prevent="login">
-      <h1 style="font-size:large; font-weight: 150;">Please Log In</h1>
+      <h1 style="font-size:large; font-weight: 150;">Please Log In:</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -37,7 +37,7 @@
 
 <script>
 import authService from "../services/AuthService";
-import GlobalHeader from "../components/GlobalHeader.vue";
+import GlobalHeader from "../components/GlobalHeader.vue"
 
 
 export default {
@@ -80,6 +80,8 @@ export default {
 /* <rel="stylesheet" href="../css/styles.css" /> */
 @import '../css/styles.css';
 .form-input-group {
+  display: flex;
+  justify-content: space-between;
   text-align: left;
   font-size: small;
   margin-bottom: 1rem;
@@ -102,10 +104,13 @@ button{
   position: fixed;
   padding: 2%;
   padding-top: 1%;
+  border: gray;
+  border-style: solid;
+  border-width: .5px;
   border-radius: 2%;
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
   background-color: white;
-  margin-top: 5%;
+  margin-top: 2%;
   text-align: center;
   margin-left: 40%;
   margin-right: 40%;
@@ -117,13 +122,15 @@ h2 {
   margin-top: 20px;
   
 }
-.home {
-  margin-bottom: 5px;
+.header{
+  margin-bottom: 58px;
 }
 .graphic {
-  margin-top: 7%;
-  margin-left: 43%;
-  margin-right: 40%;
+  align-items: center;
+  margin-top: 10%;
+  margin-right: 42%;
+  margin-left: 42%;
 }
+
 
 </style>

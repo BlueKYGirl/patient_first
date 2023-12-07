@@ -1,4 +1,8 @@
 <template>
+  <div class="logo-register-page">
+    <global-header />
+  </div> 
+
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
@@ -33,17 +37,26 @@
         <label for="dateOfBirth">Date of Birth: </label>
         <input type="date" id="dateOfBirth" v-model="user.dateOfBirth" required />
       </div>
-      <button type="submit">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <button type="submit" style="margin-left: 30%;">Create Account</button>
+      <p style="text-align: center;"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
+  </div>
+  <div>
+    <f1 class="footer-text">Having trouble? Please contact us at:</f1>
+    <f2 class="footer-text">1-888-8888</f2>
   </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
+import GlobalHeader from '../components/GlobalHeader.vue';
 
 
 export default {
+  components:{
+    GlobalHeader
+  },
+
   data() {
     return {
       user: {
@@ -96,9 +109,54 @@ export default {
 <style scoped>
 @import '../css/styles.css';
 .form-input-group {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1rem;
+  font-size: small;
+}
+
+h1{
+  text-align: center;
+  font-weight: 100;
+}
+
+button{
+  background-color: #614BC3;
+  color: white;
+  padding: 3px;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+}
+
+form{
+  display: inline-block;
+  padding: 2%;
+  padding-top: 1%;
+  border-width: .5px;
+  border-radius: 2%;
+  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+  background-color: white;
+  margin-top: 2%;
+  text-align: left;
+  margin-left: 40%;
+  margin-right: 40%;
 }
 label {
   margin-right: 0.5rem;
+}
+
+.logo-register-view{
+  margin-bottom: 10%;
+}
+
+.text-center{
+  margin-top: 10%;
+}
+
+.footer-text{
+  display: block;
+  margin-top: 15px;
+  text-align: center;
 }
 </style>
