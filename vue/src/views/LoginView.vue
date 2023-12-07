@@ -12,7 +12,7 @@
   <div id="login">
     
     <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <h1>Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -27,7 +27,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button type="submit" class="button">Sign in</button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
@@ -80,11 +80,21 @@ export default {
 /* <rel="stylesheet" href="../css/styles.css" /> */
 @import '../css/styles.css';
 .form-input-group {
+  text-align: left;
+  font-size: small;
   margin-bottom: 1rem;
   background-color: white;
 }
 label {
   margin-right: 0.5rem;
+}
+
+.button{
+  background-color: #614BC3;
+  color: white;
+  padding: 3px;
+  border-style: none;
+  
 }
 
 #login{
