@@ -1,7 +1,7 @@
 <template>
   <body>
   <div class="header">
-    <global-header />
+    <global-header/>
   </div> 
     
   <div class="graphic">
@@ -37,7 +37,7 @@
 
 <script>
 import authService from "../services/AuthService";
-import GlobalHeader from "../components/GlobalHeader.vue";
+import GlobalHeader from "../components/GlobalHeader.vue"
 
 
 export default {
@@ -80,6 +80,8 @@ export default {
 /* <rel="stylesheet" href="../css/styles.css" /> */
 @import '../css/styles.css';
 .form-input-group {
+  display: flex;
+  justify-content: space-between;
   text-align: left;
   font-size: small;
   margin-bottom: 1rem;
@@ -102,6 +104,9 @@ button{
   position: fixed;
   padding: 2%;
   padding-top: 1%;
+  border: gray;
+  border-style: solid;
+  border-width: .5px;
   border-radius: 2%;
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
   background-color: white;
@@ -126,5 +131,6 @@ h2 {
   margin-right: 42%;
   margin-left: 42%;
 }
+
 
 </style>
