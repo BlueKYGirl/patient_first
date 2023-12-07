@@ -33,5 +33,5 @@ export default {
 
 <style>
 
-
+@import '../css/styles.css';
 </style>
