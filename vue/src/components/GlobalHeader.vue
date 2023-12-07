@@ -15,7 +15,7 @@
   text-align: left;
   padding-bottom: 5px;
   margin-bottom: 5px;
-  position: fixed;
+  position: absolute;
 
 }
 #nav {
