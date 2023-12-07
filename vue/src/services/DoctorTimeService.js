@@ -4,5 +4,10 @@ const http = axios.create({
     headers: {'Authorization' : 'Bearer ' + localStorage.getItem('token')}
 });
 export default {
-    
+    listAllTimeBlocks() {
+        return http.get('/appointments/alltimes');
+    },
+    listTimeBlocksByOfficeHours(startTimeId, endTimeId) {
+        return http.get(`/appointments/${startTimeId}/${endTimeId}`);
+    }
 }

@@ -68,8 +68,8 @@ const routes = [
     }
   },
   {
-    path: "/timeBlocks",
-    name: "time-blocks",
+    path: "/schedule",
+    name: "schedule",
     component: DocTimeBlocksView,
     meta: {
       requiresAuth: false
