@@ -88,6 +88,10 @@ label {
 }
 
 #login{
+position: fixed;
+padding: 2%;
+border-radius: 2%;
+box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
 background-color: white;
 margin-top: 2%;
 text-align: center;
