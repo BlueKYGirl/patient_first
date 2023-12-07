@@ -12,7 +12,7 @@
   <div id="login">
     
     <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <h1 style="font-size:large; font-weight: 150;">Please Log In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -80,6 +80,8 @@ export default {
 /* <rel="stylesheet" href="../css/styles.css" /> */
 @import '../css/styles.css';
 .form-input-group {
+  text-align: left;
+  font-size: small;
   margin-bottom: 1rem;
   background-color: white;
 }
@@ -87,16 +89,26 @@ label {
   margin-right: 0.5rem;
 }
 
+button{
+  background-color: #614BC3;
+  color: white;
+  padding: 3px;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+}
+
 #login{
-position: fixed;
-padding: 2%;
-border-radius: 2%;
-box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
-background-color: white;
-margin-top: 2%;
-text-align: center;
-margin-left: 40%;
-margin-right: 40%;
+  position: fixed;
+  padding: 2%;
+  padding-top: 1%;
+  border-radius: 2%;
+  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+  background-color: white;
+  margin-top: 5%;
+  text-align: center;
+  margin-left: 40%;
+  margin-right: 40%;
 }
 
 h2 {

@@ -8,6 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
+import DocTimeBlocksView from '../views/DocTimeBlocksView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -62,6 +63,14 @@ const routes = [
     path: "/doctors/:doctorId/offices",
     name: "offices",
     component: OfficeDetailsView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/timeBlocks",
+    name: "time-blocks",
+    component: DocTimeBlocksView,
     meta: {
       requiresAuth: false
     }
