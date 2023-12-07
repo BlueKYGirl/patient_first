@@ -2,11 +2,17 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS person, doctor, office, address, phone_number, 
                      specialty, doctor_office, person_address, person_phone,
-                     phone_type, appointment, review, doctor_review, appointment_status, appointment_reason, time_block;
+                     phone_type, appointment, appointment_schedule, review, doctor_review, appointment_status, appointment_reason, time_block;
 
+
+CREATE SEQUENCE seq_person_id
+  INCREMENT BY 1
+  START WITH 0
+  NO MAXVALUE
+  MINVALUE 0;
 
 CREATE TABLE person (
-	person_id SERIAL,
+	person_id int NOT NULL DEFAULT nextval('seq_person_id'),
     user_id int NOT NULL,
 	first_name varchar (50) NOT NULL,
 	last_name varchar (50) NOT NULL,
@@ -83,14 +89,15 @@ CREATE TABLE phone_type (
     CONSTRAINT PK_phone_type PRIMARY KEY (phone_type_id)
 );
 
-CREATE TABLE appointment (
+CREATE TABLE appointment_schedule (
     appointment_id SERIAL, 
     doctor_id int NOT NULL,
-    patient_id int NOT NULL,
+    patient_id int NOT NULL DEFAULT 0,
     time_block_id int NOT NULL, 
     office_id int NOT NULL, 
     appointment_reason_id int NOT NULL,
     appointment_status_id int NOT NULL,
+    schedule_status_id int NOT NULL,
     CONSTRAINT PK_appointment PRIMARY KEY (appointment_id)
 );
 
@@ -113,14 +120,20 @@ CREATE TABLE doctor_review (
 
 CREATE TABLE appointment_status (
     appointment_status_id SERIAL,
-    status varchar (50) NOT NULL,
+    appointment_status varchar (50) NOT NULL,
     CONSTRAINT PK_appointment_status PRIMARY KEY (appointment_status_id)
+);
+
+CREATE TABLE schedule_status (
+    schedule_status_id SERIAL,
+    schedule_status varchar (50) NOT NULL,
+    CONSTRAINT PK_schedule_status PRIMARY KEY (schedule_status_id)
 );
 
 
 CREATE TABLE appointment_reason (
     appointment_reason_id SERIAL,
-    reason varchar (50) NOT NULL,
+    appointment_reason varchar (50) NOT NULL,
     CONSTRAINT PK_appointment_reason PRIMARY KEY (appointment_reason_id)
 );
 

@@ -118,21 +118,29 @@ INSERT INTO time_block (start_time) VALUES ('23:45');
 
 -- Appointment Reason Metadata Insert Statements --
 
-INSERT INTO appointment_reason (reason) VALUES ('New Problem');
-INSERT INTO appointment_reason (reason) VALUES ('Follow-Up');
-INSERT INTO appointment_reason (reason) VALUES ('Annual Wellness (Adult)');
-INSERT INTO appointment_reason (reason) VALUES ('Women''s Annual Wellness');
-INSERT INTO appointment_reason (reason) VALUES ('Well Child Visit');
-INSERT INTO appointment_reason (reason) VALUES ('Ill Child Visit');
-INSERT INTO appointment_reason (reason) VALUES ('Annual Medicare Wellness');
-INSERT INTO appointment_reason (reason) VALUES ('Annual Mammogram');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('New Problem');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Follow-Up');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Wellness (Adult)');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Women''s Annual Wellness');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Well Child Visit');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Ill Child Visit');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Medicare Wellness');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Mammogram');
+
 
 -- Appointment Status Metadata Insert Statements --
 
-INSERT INTO appointment_status (status) VALUES ('Scheduled');
-INSERT INTO appointment_status (status) VALUES ('Rescheduled');
-INSERT INTO appointment_status (status) VALUES ('Canceled');
-INSERT INTO appointment_status (status) VALUES ('Completed');
+INSERT INTO appointment_status (appointment_status) VALUES ('Scheduled');
+INSERT INTO appointment_status (appointment_status) VALUES ('Rescheduled');
+INSERT INTO appointment_status (appointment_status) VALUES ('Canceled');
+INSERT INTO appointment_status (appointment_status) VALUES ('Completed');
+
+
+-- Schedule Status Metadata Insert Statements -- 
+
+INSERT INTO schedule_status (schedule_status) VALUES ('Patient Appointment');
+INSERT INTO schedule_status (schedule_status) VALUES ('Lunch');
+INSERT INTO schedule_status (schedule_status) VALUES ('Other');
 
 -- Phone Type Metadata Insert Statements --
 
@@ -141,6 +149,10 @@ INSERT INTO phone_type (phone_type) VALUES ('Mobile');
 INSERT INTO phone_type (phone_type) VALUES ('Secondary');
 INSERT INTO phone_type (phone_type) VALUES ('Land-Line');
 
+-- Patient 0 Metadata Insert Statement --
+
+INSERT INTO person (user_id, first_name, last_name, email, date_of_birth) 
+VALUES (1, 'Appointment', 'Not Booked', 'appointment@notbooked.net', '1111-11-11');
 
 
 COMMIT TRANSACTION;
