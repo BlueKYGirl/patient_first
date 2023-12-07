@@ -8,8 +8,8 @@ DROP TABLE IF EXISTS person, doctor, office, address, phone_number,
 CREATE TABLE person (
 	person_id SERIAL,
     user_id int NOT NULL,
-	first_name varchar (20) NOT NULL,
-	last_name varchar (20) NOT NULL,
+	first_name varchar (50) NOT NULL,
+	last_name varchar (50) NOT NULL,
 	email varchar(50) NOT NULL,
     date_of_birth DATE NOT NULL,
 	CONSTRAINT PK_person PRIMARY KEY (person_id)
@@ -28,8 +28,8 @@ CREATE TABLE doctor (
 CREATE TABLE office (
     office_id SERIAL,
     address_id int NOT NULL,
-    office_phone_number varchar(20) NOT NULL, 
-    practice_name varchar (20) NOT NULL, 
+    office_phone_number varchar(50) NOT NULL, 
+    practice_name varchar (100) NOT NULL, 
     office_hours_start_time TIME NOT NULL, 
     office_hours_end_time TIME NOT NULL, 
     CONSTRAINT PK_office PRIMARY KEY (office_id)
@@ -37,8 +37,8 @@ CREATE TABLE office (
 
 CREATE TABLE address (
     address_id SERIAL,
-    street_address varchar (50) NOT NULL, 
-    city varchar (20) NOT NULL, 
+    street_address varchar (100) NOT NULL, 
+    city varchar (50) NOT NULL, 
     state_abbreviation varchar (20) NOT NULL, 
     zip_code varchar (10) NOT NULL,
     CONSTRAINT PK_address PRIMARY KEY (address_id)
@@ -54,7 +54,7 @@ CREATE TABLE phone_number (
 
 CREATE TABLE specialty (
     specialty_id SERIAL,
-    specialty_name varchar (20) NOT NULL,
+    specialty_name varchar (100) NOT NULL,
     CONSTRAINT PK_specialty PRIMARY KEY (specialty_id)
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE person_phone (
 
 CREATE TABLE phone_type (
     phone_type_id SERIAL,
-    phone_type varchar (10) NOT NULL,
+    phone_type varchar (50) NOT NULL,
     CONSTRAINT PK_phone_type PRIMARY KEY (phone_type_id)
 );
 
