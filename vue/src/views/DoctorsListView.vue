@@ -1,4 +1,5 @@
 <template>
+  <body>
     <div class="header">
         <global-header />
         <h1>Welcome to Patient First</h1>
@@ -12,7 +13,7 @@
     
         <doctors-list v-bind:doctors="doctors" />
 </div>
-        
+</body> 
     
 </template>
 
@@ -64,7 +65,8 @@ export default {
 }
 .subheader {
   text-align: left;
-  padding-left: 6px;
+  margin-top: 50px;
+  padding-left: 20px;
   font-weight: bold;
 }
 

@@ -1,10 +1,10 @@
 <template>
+  <body>
   <div class="home">
     <global-header />
-    <img class="printLogo" src="../assets/justText.png" />
     
-    <p>We're glad you're here.</p>
   </div>
+</body>
 </template>
 
 <script>
@@ -23,15 +23,5 @@ export default {
 
 <style scoped>
 @import '../css/styles.css';
-.printLogo {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 50px;
-}
 
 </style>
