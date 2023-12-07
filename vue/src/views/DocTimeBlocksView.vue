@@ -34,6 +34,7 @@ export default {
                 officeHoursStartTime: '',
                 officeHoursEndTime: ''
             },
+            scheduleStatuses: [],
         };
     },
     methods: {
@@ -66,10 +67,22 @@ export default {
                 this.handleErrorResponse();
                 })
         },
-        // getOfficeHours(doctorId)
-    },
+        getScheduleStatuses() {
+            doctorTimeService.listScheduleStatuses()
+                .then(response => {
+                    this.scheduleStatuses = response.data;
+                    // This is returning the object array, but is not displaying in the vue/view/whatever
+                    alert("ARE YOU FIRING?" + this.scheduleStatuses)
+                    })
+                .catch(error => {
+                this.handleErrorResponse();
+                })
+            // getOfficeHours(doctorId)
+            }
+        },
     created() {
         this.getAllTimeBlocks();
+        this.getScheduleStatuses();
         this.getOffices(1);
         // TODO: Figure out how to map in doctorId FROM userId (logged in user) IF the user is a Doctor
     }
