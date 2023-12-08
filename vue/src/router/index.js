@@ -8,7 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
-import DocTimeBlocksView from '../views/DocTimeBlocksView.vue';
+import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -70,7 +70,7 @@ const routes = [
   {
     path: "/schedule",
     name: "schedule",
-    component: DocTimeBlocksView,
+    component: UpdateAvailabilityView,
     meta: {
       requiresAuth: false
     }

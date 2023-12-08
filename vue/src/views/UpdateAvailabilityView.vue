@@ -14,7 +14,7 @@
 
 <script>
 import GlobalHeader from '../components/GlobalHeader.vue';
-import doctorTimeService from '../services/DoctorTimeService';
+import doctorAvailabilityService from '../services/DoctorAvailabilityService';
 import DocTimeBlocks from '../components/DocTimeBlocks.vue';
 import officesService from '../services/OfficesService';
 import OfficeDetails from '../components/OfficeDetails.vue';
@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         getAllTimeBlocks() {
-            doctorTimeService.listAllTimeBlocks()
+            doctorAvailabilityService.listAllTimeBlocks()
                 .then(response => {
                     this.timeBlocks = response.data;
                     })
@@ -48,7 +48,7 @@ export default {
                 })
         },
         getTimeBlocksByOfficeHours(startTimeId, endTimeId) {
-            doctorTimeService.listTimeBlocksByOfficeHours(startTimeId, endTimeId)
+            doctorAvailabilityService.listTimeBlocksByOfficeHours(startTimeId, endTimeId)
                 .then(response => {
                     this.officeTimeBlocks = response.data;
                     })
@@ -68,11 +68,9 @@ export default {
                 })
         },
         getScheduleStatuses() {
-            doctorTimeService.listScheduleStatuses()
+            doctorAvailabilityService.listScheduleStatuses()
                 .then(response => {
                     this.scheduleStatuses = response.data;
-                    // This is returning the object array, but is not displaying in the vue/view/whatever
-                    alert("ARE YOU FIRING?" + this.scheduleStatuses)
                     })
                 .catch(error => {
                 this.handleErrorResponse();
@@ -91,4 +89,4 @@ export default {
 
 <style scoped>
 @import '../css/styles.css';
-</style>
+</style>../services/DoctorAvailabilityService
