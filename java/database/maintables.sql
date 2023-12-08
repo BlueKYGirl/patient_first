@@ -9,7 +9,7 @@ CREATE SEQUENCE seq_person_id
   INCREMENT BY 1
   START WITH 0
   NO MAXVALUE
-  MINVALUE 0;
+  MINVALUE 0;x
 
 CREATE TABLE person (
 	person_id int NOT NULL DEFAULT nextval('seq_person_id'),
