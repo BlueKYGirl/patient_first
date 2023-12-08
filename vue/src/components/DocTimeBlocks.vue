@@ -3,12 +3,12 @@
     <h2> Set Your Availability </h2>
     <div class="time-block" v-for="timeBlock in timeBlocks" v-bind:key="timeBlock.timeBlockId">
        
-       
+        {{ timeBlock.timeBlockId }} : {{ timeBlock.startTime }} &nbsp;
         <select class="status-list">
             <option v-for="status in scheduleStatuses" v-bind:value="status.scheduleStatus" v-bind:key="status.scheduleStatusId" >{{ status.scheduleStatus }}</option>
         </select>
 
-        {{ timeBlock.timeBlockId }} : {{ timeBlock.startTime }}
+        
     </div>
     
     
