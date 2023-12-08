@@ -16,14 +16,20 @@ public class User {
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
 
+   private int personId;
+
+   private int doctorId;
+
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String authorities, int personId, int doctorId) {
       this.id = id;
       this.username = username;
       this.password = password;
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+      this.personId = personId;
+      this.doctorId = doctorId;
    }
 
    public int getId() {
@@ -74,6 +80,22 @@ public class User {
       }
    }
 
+   public int getPersonId() {
+      return personId;
+   }
+
+   public void setPersonId(int personId) {
+      this.personId = personId;
+   }
+
+   public int getDoctorId() {
+      return doctorId;
+   }
+
+   public void setDoctorId(int doctorId) {
+      this.doctorId = doctorId;
+   }
+
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -98,6 +120,8 @@ public class User {
               ", username='" + username + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
+              ", personId=" + personId +
+              ", doctorId=" + doctorId +
               '}';
    }
 }

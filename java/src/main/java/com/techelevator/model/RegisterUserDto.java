@@ -25,7 +25,6 @@ public class RegisterUserDto {
     private String lastName;
     @NotEmpty
     private String email;
-    @NotEmpty
     private LocalDate dateOfBirth;
 
     public String getUsername() {
