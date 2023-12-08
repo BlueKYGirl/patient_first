@@ -15,6 +15,9 @@
     import officesService from '../services/OfficesService';
 
     export default {
+    props: {
+
+    },
     data() {
         return {
             timeBlocks: [],
@@ -41,7 +44,7 @@
         },
     },
     created() {
-        this.getOffices(1);
+        this.getOffices(this.$store.state.user.doctorId);
         // TODO: Figure out how to map in doctorId FROM userId (logged in user) IF the user is a Doctor
     }
 };
