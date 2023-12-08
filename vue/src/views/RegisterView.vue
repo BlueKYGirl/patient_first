@@ -4,7 +4,7 @@
   </div> 
 
   <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
+    <form v-on:submit.prevent="register" >
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -135,7 +135,7 @@ form{
   padding-top: 1%;
   border-width: .5px;
   border-radius: 2%;
-  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+  box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
   background-color: white;
   margin-top: 2%;
   text-align: left;
@@ -151,7 +151,9 @@ label {
 }
 
 .text-center{
-  margin-top: 10%;
+  border-color: gray;
+  border-width: .5px;
+  margin-top: 5%;
 }
 
 .footer-text{
