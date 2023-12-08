@@ -4,7 +4,7 @@
             <label for="dayOfAvailability"> Select the day to schedule: </label> <br>
             <input type="date" >
         </div>
-        <div class="all-offices" >
+        <div class="all-offices" > Select for which office you are scheduling:
             <div class = "offices" v-for="office in offices" v-bind:key="office.officeId" v-on:click="clickBox()">
                 <div>
                     {{ office.practiceName }}, {{ office.streetAddress }}, {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
