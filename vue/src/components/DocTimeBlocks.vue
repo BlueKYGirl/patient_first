@@ -5,9 +5,8 @@
        
        
         <select class="status-list">
-            <option v-for="status in statuses" v-bind:value="scheduleStatus" v-bind:key="status.scheduleStatus" >{{ scheduleStatus }}</option>
+            <option v-for="status in scheduleStatuses" v-bind:value="status.scheduleStatus" v-bind:key="status.scheduleStatusId" >{{ status.scheduleStatus }}</option>
         </select>
-// Line 8 is not working yet. Need to understand what needs to go into the v-bind:value and v-bind:key to properly display options.
 
         {{ timeBlock.timeBlockId }} : {{ timeBlock.startTime }}
     </div>
@@ -43,8 +42,8 @@ export default{
             type: Array,
             required: true
         },
-        schedule: {
-            type: String,
+        scheduleStatuses: {
+            type: Array,
             required: true
         }
     },

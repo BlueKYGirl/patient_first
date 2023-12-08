@@ -10,7 +10,7 @@ export default {
     listTimeBlocksByOfficeHours(startTimeId, endTimeId) {
         return http.get(`/appointments/${startTimeId}/${endTimeId}`);
     },
-    getScheduleStatuses () {
+    listScheduleStatuses () {
         return http.get('/appointments/schedulestatus');
     }
 }
