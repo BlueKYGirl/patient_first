@@ -21,6 +21,7 @@
   justify-content: space-between;
   margin-bottom: 2%;
 }
+
 .nav {
   display: flex;
   flex-direction: row;
