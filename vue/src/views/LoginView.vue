@@ -24,7 +24,7 @@
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password:</label>
+        <label for="password">Password: &nbsp;</label> 
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
@@ -33,16 +33,25 @@
     </form>
   </div>
 </body>
+<div>
+    <f1 class="footer-text" style="margin-top: 2%;">Having trouble? Please contact us at:</f1>
+    <f2 class="footer-text">1-888-8888</f2>
+  </div>
+  <div class="footer"> 
+      <global-footer/>
+  </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
-import GlobalHeader from "../components/GlobalHeader.vue"
+import GlobalHeader from "../components/GlobalHeader.vue";
+import GlobalFooter from "../components/GlobalFooter.vue";
 
 
 export default {
   components: {
-    GlobalHeader
+    GlobalHeader,
+    GlobalFooter
   },
   data() {
     return {
@@ -79,14 +88,7 @@ export default {
 <style scoped >
 /* <rel="stylesheet" href="../css/styles.css" /> */
 @import '../css/styles.css';
-.form-input-group {
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
-  font-size: small;
-  margin-bottom: 1rem;
-  background-color: white;
-}
+
 label {
   margin-right: 0.5rem;
 }
@@ -100,8 +102,11 @@ button{
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
 }
 
+
 #login{
-  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   padding: 2%;
   padding-top: 1%;
   border-width: .5px;
@@ -110,8 +115,7 @@ button{
   background-color: white;
   margin-top: 2%;
   text-align: center;
-  margin-left: 40%;
-  margin-right: 40%;
+
 }
 
 h2 {
@@ -125,10 +129,14 @@ h2 {
 }
 .graphic {
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-right: 42%;
   margin-left: 42%;
 }
 
+.footer-text{
+  display: block;
+  text-align: center;
+}
 
 </style>

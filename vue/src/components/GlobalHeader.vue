@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
 .logo {
@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 1%;
-  font-size: xx-large;
+  font-size: large;
   
 }
 a {
