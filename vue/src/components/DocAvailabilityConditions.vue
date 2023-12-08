@@ -1,14 +1,18 @@
 <template>
-    
-    <div class="day-input">
-        <label for="dayOfAvailability"> Select your day of availability: </label>
-        <input type="date" >
+    <div class="conditions">
+        <div class="day-input">
+            <label for="dayOfAvailability"> Select the day to schedule: </label> <br>
+            <input type="date" >
+        </div>
+        <div class="all-offices" >
+            <div class = "offices" v-for="office in offices" v-bind:key="office.officeId" v-on:click="clickBox()">
+                <div>
+                    {{ office.practiceName }}, {{ office.streetAddress }}, {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
+                    Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }},
+                </div>
+            </div>
+        </div>
     </div>
-    <div class = "offices" v-for="office in offices" v-bind:key="office.officeId">
-        {{ office.practiceName }}, {{ office.streetAddress }}, {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-        Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }},
-    </div>
-
 </template>
 
 <script>
@@ -42,6 +46,9 @@
                 this.handleErrorResponse();
                 })
         },
+        clickBox() {
+            alert("Hello!!!  " );
+        }
     },
     created() {
         this.getOffices(this.$store.state.user.doctorId);
@@ -52,5 +59,25 @@
 </script>
 
 <style>
+
+.conditions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2px;
+    
+}
+
+.all-offices {
+    display: flex;
+    flex-direction: column;
+}
+
+.offices {
+    border: 2px solid #614BC3;
+    padding: 2px;
+    margin: 2px;
+
+}
 
 </style>
