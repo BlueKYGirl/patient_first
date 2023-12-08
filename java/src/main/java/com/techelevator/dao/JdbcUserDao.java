@@ -27,7 +27,11 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE user_id = ?";
+        String sql = "SELECT u.user_id, u.username, u.password_hash, u.role, p.person_id, COALESCE(d.doctor_id, -1) AS doctor_id " +
+                     "FROM users u " +
+                     "JOIN person p ON u.user_id = p.user_id " +
+                     "LEFT JOIN doctor d ON p.person_id = d.person_id " +
+                     "WHERE u.user_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -40,14 +44,38 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public User getNewUserById(int userId) {
+        User newUser = null;
+        String sql = "SELECT user_id, username, password_hash, role " +
+                "FROM users " +
+                "WHERE user_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            if (results.next()) {
+                newUser = mapRowToNewUser(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return newUser;
+    }
+
+
+
+
+
+    @Override
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT user_id, username, password_hash, role FROM users";
+        String sql = "SELECT u.user_id, u.username, u.password_hash, u.role, p.person_id, COALESCE(d.doctor_id, -1) AS doctor_id " +
+                     "FROM users u " +
+                     "JOIN person p ON u.user_id = p.user_id " +
+                     "LEFT JOIN doctor d ON p.person_id = d.person_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
-                User user = mapRowToUser(results);
-                users.add(user);
+                    User user = mapRowToUser(results);
+                    users.add(user);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -59,7 +87,11 @@ public class JdbcUserDao implements UserDao {
     public User getUserByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE username = ?;";
+        String sql = "SELECT u.user_id, u.username, u.password_hash, u.role, p.person_id, COALESCE(d.doctor_id, -1) AS doctor_id " +
+                     "FROM users u " +
+                     "JOIN person p ON u.user_id = p.user_id " +
+                     "LEFT JOIN doctor d ON p.person_id = d.person_id " +
+                     "WHERE u.username = ?;";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
             if (rowSet.next()) {
@@ -69,6 +101,7 @@ public class JdbcUserDao implements UserDao {
             throw new DaoException("Unable to connect to server or database", e);
         }
         return user;
+
     }
 
     @Override
@@ -81,9 +114,11 @@ public class JdbcUserDao implements UserDao {
         String insertPersonSql = "INSERT INTO person (user_id, first_name, last_name, email, date_of_birth) VALUES (?, ?, ?, ?, ?) RETURNING person_id;";
         try {
             int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole);
-            newUser = getUserById(newUserId);
+            newUser = getNewUserById(newUserId);
 
             int newPersonId = jdbcTemplate.queryForObject(insertPersonSql, int.class, newUserId, user.getFirstName(), user.getLastName(), user.getEmail(), user.getDateOfBirth());
+            newUser.setPersonId(newPersonId);
+            newUser.setDoctorId(-1);   // A newly created user can't be designated as a doctor yet.
 
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -93,8 +128,24 @@ public class JdbcUserDao implements UserDao {
         return newUser;
     }
 
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
+
+        user.setId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password_hash"));
+        user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setActivated(true);
+        user.setPersonId(rs.getInt("person_id"));
+        user.setDoctorId(rs.getInt("doctor_id"));
+        return user;
+    }
+
+
+    private User mapRowToNewUser(SqlRowSet rs) {
+        User user = new User();
+
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
@@ -102,4 +153,6 @@ public class JdbcUserDao implements UserDao {
         user.setActivated(true);
         return user;
     }
+
+
 }
