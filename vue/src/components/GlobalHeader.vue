@@ -21,6 +21,9 @@
   justify-content: space-between;
   margin-bottom: 2%;
 }
+.logo {
+  size: 15%;
+}
 .nav {
   display: flex;
   flex-direction: row;
