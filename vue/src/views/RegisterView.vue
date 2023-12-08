@@ -137,7 +137,6 @@ form{
   border-radius: 2%;
   box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
   background-color: white;
-  margin-top: 2%;
   text-align: left;
   margin-left: 40%;
   margin-right: 40%;
@@ -147,7 +146,7 @@ label {
 }
 
 .logo-register-view{
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 
 .text-center{

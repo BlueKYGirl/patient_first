@@ -33,6 +33,10 @@
     </form>
   </div>
 </body>
+<div>
+    <f1 class="footer-text" style="margin-top: 2%;">Having trouble? Please contact us at:</f1>
+    <f2 class="footer-text">1-888-8888</f2>
+  </div>
 </template>
 
 <script>
@@ -81,6 +85,7 @@ export default {
 @import '../css/styles.css';
 .form-input-group {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   text-align: left;
   font-size: small;
@@ -101,7 +106,8 @@ button{
 }
 
 #login{
-  position: fixed;
+  display: flex;
+  flex-direction: column;
   padding: 2%;
   padding-top: 1%;
   border-width: .5px;
@@ -125,10 +131,14 @@ h2 {
 }
 .graphic {
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-right: 42%;
   margin-left: 42%;
 }
 
+.footer-text{
+  display: block;
+  text-align: center;
+}
 
 </style>
