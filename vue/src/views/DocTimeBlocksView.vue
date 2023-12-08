@@ -4,7 +4,7 @@
             <global-header />
         </div>
         <div class="doc-time-blocks">
-            <doc-time-blocks v-bind:timeBlocks="timeBlocks" />
+            <doc-time-blocks v-bind:timeBlocks="timeBlocks" v-bind:scheduleStatuses="scheduleStatuses" />
         </div>
         <div class="offices">
             <office-details v-bind:offices="offices" />

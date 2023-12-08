@@ -28,7 +28,7 @@ export default {
 <style>
 @import '../css/styles.css';
 .doctorList {
-    border: 3px;
+    border: 1px;
     border-style: solid;
     font-weight: bold;
     line-height: 300%;
