@@ -1,20 +1,21 @@
 <template>
     <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
         <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }" >
-        <div class="doctorList">
-            {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }}
+        <div class="doctor-list">
+            {{ doctor.firstName }} {{ doctor.lastName }}
         </div>
+        <div class="specialty">{{ doctor.specialty }}</div>
       </router-link>
        <!-- <div class="doctorList"> 
             {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }} -->
         </div>
-      
 
     
   </template>
 
 <script>
 export default {
+
     props: {
         doctors: {
             type: Array,
@@ -27,14 +28,28 @@ export default {
 
 <style>
 @import '../css/styles.css';
-.doctorList {
-    border: 1px;
-    border-style: solid;
+.doctor-list {
     font-weight: bold;
-    line-height: 300%;
-  padding: 2%;
-  border-radius: 6px;
-  margin: 10px;
-  vertical-align: middle;
+    padding-top: 2%;
+    padding-left: 2%;
+    vertical-align: middle;
+}
+
+.specialty{
+    font-weight: 100;
+    font-size: medium;
+    padding-left: 4%;
+    line-height: 2;
+    padding-bottom: 1%;
+}
+
+.doctors{
+    border-style: solid;
+    border-color: #614BC3;
+    border-width: 2px;
+    border-radius: 15px;
+    box-shadow: 0 0px 1px #33BBC5, inset 0 0 2px #33BBC5;
+    margin-left: 30%;
+    margin: 2%;
 }
 </style>

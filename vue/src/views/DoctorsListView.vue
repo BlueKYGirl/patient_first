@@ -13,20 +13,25 @@
     
         <doctors-list v-bind:doctors="doctors" />
 </div>
+<div class="footer">
+
+</div>
 </body> 
-    
+    <global-footer/>
 </template>
 
 <script>
 import DoctorsList from '../components/DoctorsList.vue';
 import doctorsService from '../services/DoctorsService.js';
 import GlobalHeader from '../components/GlobalHeader.vue';
+import GlobalFooter from '../components/GlobalFooter.vue';
 
 
 export default {
     components: {
         DoctorsList,
-        GlobalHeader
+        GlobalHeader,
+        GlobalFooter
     },
     data() {
         return {

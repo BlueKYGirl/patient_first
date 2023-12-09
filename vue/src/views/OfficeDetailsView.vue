@@ -4,11 +4,13 @@
     <global-header />
     
   </div>
-    <div class = "offices">
+    <div class = "office">
         <office-details v-bind:offices="offices" />
     </div>
 </body>
-
+<div class="footer">
+    <global-footer />
+</div>
 </template>
 
 
@@ -18,11 +20,13 @@ import officesService from '../services/OfficesService'
 import DoctorsList from '../components/DoctorsList.vue';
 import doctorsService from '../services/DoctorsService';
 import GlobalHeader from '../components/GlobalHeader.vue';
+import GlobalFooter from '../components/GlobalFooter.vue';
 
 export default {
     components: {
         GlobalHeader,
-        OfficeDetails
+        OfficeDetails,
+        GlobalFooter
     },
     data() {
         return {
@@ -58,5 +62,4 @@ export default {
 
 <style>
 @import '../css/styles.css';
-
 </style>
