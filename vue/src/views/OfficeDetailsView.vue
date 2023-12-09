@@ -4,7 +4,7 @@
     <global-header />
     
   </div>
-    <div class = "office">
+    <div class = "office-details">
         <office-details v-bind:offices="offices" />
     </div>
 </body>
@@ -62,4 +62,7 @@ export default {
 
 <style>
 @import '../css/styles.css';
+
+
+
 </style>

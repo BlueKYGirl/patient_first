@@ -2,6 +2,7 @@
     <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
         <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }" >
         <div class="doctor-list">
+            <img class="doctor-headshot" src="../assets/PF-doctor-headshot-MG.jpg" />
             {{ doctor.firstName }} {{ doctor.lastName }}
         </div>
         <div class="specialty">{{ doctor.specialty }}</div>
@@ -33,6 +34,16 @@ export default {
     padding-top: 2%;
     padding-left: 2%;
     vertical-align: middle;
+}
+
+.doctor-headshot{
+    display: block;
+   height: 200px;
+   margin-bottom: 10px;
+   border-style: solid;
+   border-radius: 10px;
+   border-color: black;
+   border-width: 2px;
 }
 
 .specialty{
