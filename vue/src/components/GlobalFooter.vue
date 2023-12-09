@@ -2,8 +2,12 @@
     <body>
       <div id="footer">
         <img class="footer-logo" src="../assets/crossLogo.png" />
-        <img class="social-media" style="width: 28px height: auto;" src="../assets/instagram.png" />
-        <img class="social-media"  src="../assets/facebook.png" />
+      </div>
+      <div class="follow-pf">Follow Patient First</div>
+      <div>  
+        <img class="social-media" src="../assets/PF-facebook.png"/>
+        <img class="social-media"  src="../assets/PF-instagram.png" />
+        <img class="social-media" src="../assets/PF-linkedin.png" />
     </div>
     
   </body>
@@ -14,17 +18,23 @@
   
   #footer {
     display: flex;
-    align-items: baseline;
     flex-direction: row-reverse;
+    margin-top: 10%;
+  }
+
+  .follow-pf{
+    font-size: small;
   }
   
   .footer-logo {
-    width: 10%;
+    position: absolute;
+    width: 60px;
     opacity: 0.2;
   }
 
   .social-media {
-    width: 34px;
+    margin-bottom: 10px;
+    width: 55px;
     height: auto;
 
   }
