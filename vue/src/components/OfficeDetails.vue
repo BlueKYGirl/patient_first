@@ -41,11 +41,10 @@ export default {
 
 h3{
     margin-top: 5%;
-    margin-bottom: 2%;
+    margin-bottom: 3px;
 }
 
 .doctorsInOffice{
-    margin-top: 5%;
     border-radius: 10px;
     box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
     }
