@@ -2,13 +2,13 @@
     <div class="conditions">
         <div class="day-input">
             <label for="dayOfAvailability"> Select the day to schedule: </label> <br>
-            <input type="date" >
+            <input type="date" class="calendar">
         </div>
-        <div class="all-offices" > Select for which office you are scheduling:
+        <div class="all-offices" > Select office:
             <div class = "offices" v-for="office in offices" v-bind:key="office.officeId" v-on:click="clickBox()">
                 <div>
-                    {{ office.practiceName }}, {{ office.streetAddress }}, {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-                    Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }},
+                    <p>{{ office.practiceName }}</p> {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
+                    Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }}
                 </div>
             </div>
         </div>
@@ -59,6 +59,7 @@
 </script>
 
 <style>
+@import '../css/styles.css';
 
 .conditions {
     display: flex;
@@ -71,13 +72,37 @@
 .all-offices {
     display: flex;
     flex-direction: column;
+    font-size: x-large;
+    font-weight: bold;
+    padding-top: 4%;
 }
 
 .offices {
-    border: 2px solid #614BC3;
-    padding: 2px;
-    margin: 2px;
+    border: 2px solid black;
+    width: 120%;
+    padding: 5px;
+    padding-top: 1%;
+    margin-top: 3px;
+    background-color: #C8FFE0;
+    font-weight:normal;
+    font-size: normal;
+    color: black;
+    border-radius: 7px;
+    box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
 
+}
+.day-input {
+    font-size: x-large;
+    font-weight: bold;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    margin-left: -8%;
+    gap: 10%
+   
+}
+.calendar {
+    font-weight: bold;
+    
 }
 
 </style>

@@ -88,6 +88,8 @@ export default{
 @import '../css/styles.css';
 
 .time-block {
+    
+    flex-wrap: wrap;   
     background-color: #85E6C5;
     border: black;
     border-style: groove;
@@ -100,6 +102,12 @@ export default{
     color: black;
     text-align: center;
     width: 40%;
+    box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+    font-weight: bold;
+}
+.status-list {
+    font-weight: bold;
+    background-color: #C8FFE0;
 }
 
 </style>
