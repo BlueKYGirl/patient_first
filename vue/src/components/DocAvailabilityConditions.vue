@@ -8,7 +8,7 @@
             <div class="office" v-for="office in offices" v-bind:key="office.officeId"  v-bind:class="{selected: this.selectedOfficeId===office.officeId }">
                 <div class="office2" v-on:click="clickOffice(office.officeId, office.officeHoursStart, office.officeHoursEnd)">
                     <p>{{ office.practiceName }}</p> {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-                    Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }}
+                    Hours: {{ office.officeHoursStart.substr(1,4) }}AM - {{ office.officeHoursEnd.substr(1,4) }}PM
                 </div>
             </div>
         </div>
@@ -71,15 +71,15 @@
     flex-direction: row;
     justify-content: space-around;
     padding: 2px;
-    
 }
 
 .all-offices {
     display: flex;
     flex-direction: column;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
-    padding-top: 4%;
+    margin-top: 5%;
+  
 }
 
 .office {
@@ -87,7 +87,7 @@
     width: 120%;
     padding: 5px;
     padding-top: 1%;
-    margin-top: 3px;
+    margin-top: 2px;
     background-color: #C8FFE0;
     font-weight:normal;
     font-size: normal;
@@ -97,8 +97,14 @@
 
 }
 
+p{
+    font-weight: bold;
+    margin-top: 4%;
+    margin-bottom: 1%;
+}
+
 .selected {
-    background-color: pink;
+    background-color: rgb(212, 190, 212);
 }
 
 .day-input {
@@ -107,13 +113,12 @@
     padding-top: 5%;
     padding-bottom: 2%;
     margin-left: -8%;
-    gap: 10%
+    gap: 5%;
    
 }
 .calendar {
     font-weight: bold;
-    font-size: x-large;
-    
+    font-size: large;
 }
 
 </style>

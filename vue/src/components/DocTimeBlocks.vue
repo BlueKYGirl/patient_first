@@ -23,8 +23,8 @@
                 {{ formattedTime(timeBlock.startTime) }} &nbsp;
             </div>
             <div class="duration" >
-                <label>Duration (min): </label>
-                <select v-model="timeBlock.duration">
+                <label>Duration: </label>
+                <select v-model="timeBlock.duration" style="background-color: #C8FFE0;">
                     <option>15</option>
                     <option>30</option>
                     <option>45</option>
@@ -130,6 +130,20 @@ export default{
 <style>
 @import '../css/styles.css';
 
+h2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2px;
+    font-size: x-large;
+    font-weight: bold;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    margin-left: 20%;
+    gap: 5%;
+}
+
 .time-block-header {
     display: flex;
     flex-direction: row;
@@ -153,10 +167,11 @@ export default{
     border-style: groove;
     border-radius: 6px;
     padding-left: 1%;
-    padding-top: .5%;
-    padding-bottom: .5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     padding-right: 1%;
     margin: 1%;
+    margin-left: 5%;
     color: black;
     text-align: center;
     width: 80%;
@@ -167,5 +182,12 @@ export default{
     font-weight: bold;
     background-color: #C8FFE0;
 }
+
+.default-duration{
+    margin-top: 10%;
+    align-items: end;
+    font-size: small;
+}
+
 
 </style>
