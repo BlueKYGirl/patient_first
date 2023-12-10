@@ -1,5 +1,9 @@
 <template>
-    <h2> Office Details </h2>
+    <div class="office-details-header">
+        <h2> Office Details </h2>
+        
+    </div>
+
     <div class = "office-details" v-for="office in offices" v-bind:key="office.officeId">
         <div class="office-name">{{ office.practiceName }} <br></div>
         {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>   
@@ -33,6 +37,7 @@ export default {
     font-size: large;
     font-weight: bold;
 }
+
 
 .office-details{
     margin-left: 5%;

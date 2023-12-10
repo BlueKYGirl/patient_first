@@ -38,8 +38,7 @@
                 <select class="status-list" name="status-list" id="status-list" v-model="timeBlock.scheduleStatusId">
                     <option v-for="status in scheduleStatuses" v-bind:value="status.scheduleStatusId" v-bind:key="status.scheduleStatusId" >{{ status.scheduleStatus }}</option>
                 </select>
-            </div>
-
+            </div>                
         </div>
     </div>
     
@@ -58,11 +57,28 @@
             </div>
         </div>
     </div> -->
+    <div class="button">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>    
 </body>
+
+<div class="footer">
+    <global-footer />
+</div>
 </template>
 
+
+
 <script>
+import GlobalFooter from '../components/GlobalFooter.vue';
+
+
 export default{
+    components:{
+        GlobalFooter
+    },
+
     data() {
         return {
             defaultDuration: 0,
@@ -131,23 +147,20 @@ export default{
 @import '../css/styles.css';
 
 h2{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 2px;
+    position: relative;
     font-size: x-large;
     font-weight: bold;
-    padding-top: 5%;
-    padding-bottom: 2%;
+    padding-top: 8%;
     margin-left: 20%;
-    gap: 5%;
+
 }
 
 .time-block-header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
+
 }
 .time {
     font-size: large;
@@ -160,7 +173,6 @@ h2{
 }
 
 .time-block {
-    
     flex-wrap: wrap;   
     background-color: #85E6C5;
     border: black;
@@ -171,7 +183,8 @@ h2{
     padding-bottom: 1%;
     padding-right: 1%;
     margin: 1%;
-    margin-left: 5%;
+    margin-left: 10%;
+    margin-right: auto;
     color: black;
     text-align: center;
     width: 80%;
@@ -184,9 +197,25 @@ h2{
 }
 
 .default-duration{
-    margin-top: 10%;
+    margin-top: 11%;
     align-items: end;
     font-size: small;
+}
+
+.button{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10%;
+}
+
+button{
+  background-color: #614BC3;
+  color: white;
+  width: 100px;
+  padding: 3px;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
 }
 
 

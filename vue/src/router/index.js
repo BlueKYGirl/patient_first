@@ -9,6 +9,8 @@ import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
 import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
+import DocAgendaView from '../views/DocAgendaView.vue';
+
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -74,7 +76,17 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+      /*for now, just so I can see it on the localhost*/
+  {
+    path: "/agenda",
+    name: "agenda",
+    component: DocAgendaView,
+    meta: {
+      requiresAuth: false
+    }
   }
+ 
 ];
 
 // Create the router
