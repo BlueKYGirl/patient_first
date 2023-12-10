@@ -71,15 +71,15 @@
     flex-direction: row;
     justify-content: space-around;
     padding: 2px;
-    
 }
 
 .all-offices {
     display: flex;
     flex-direction: column;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
-    padding-top: 4%;
+    margin-top: 5%;
+  
 }
 
 .office {
@@ -87,7 +87,7 @@
     width: 120%;
     padding: 5px;
     padding-top: 1%;
-    margin-top: 3px;
+    margin-top: 2px;
     background-color: #C8FFE0;
     font-weight:normal;
     font-size: normal;
@@ -97,8 +97,14 @@
 
 }
 
+p{
+    font-weight: bold;
+    margin-top: 4%;
+    margin-bottom: 1%;
+}
+
 .selected {
-    background-color: #33BBC5;
+    background-color: rgb(212, 190, 212);
 }
 
 .day-input {
@@ -107,13 +113,12 @@
     padding-top: 5%;
     padding-bottom: 2%;
     margin-left: -8%;
-    gap: 10%
+    gap: 5%;
    
 }
 .calendar {
     font-weight: bold;
-    font-size: x-large;
-    
+    font-size: large;
 }
 
 </style>

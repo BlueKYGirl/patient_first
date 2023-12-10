@@ -23,7 +23,7 @@
 }
 
 .logo {
-  width: 12%;
+  width: 15%;
   height: auto;
 }
 
