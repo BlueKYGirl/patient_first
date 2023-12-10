@@ -47,8 +47,12 @@
 <footer>
   <div id="footer">
         <img class="footer-logo" src="../assets/crossLogo.png" />
-        <img class="social-media" style="width: 28px height: auto;" src="../assets/instagram.png" />
-        <img class="social-media"  src="../assets/facebook.png" />
+      </div>
+      <div class="follow-pf">Follow Patient First</div>
+      <div>  
+        <img class="social-media" src="../assets/PF-facebook.png"/>
+        <img class="social-media"  src="../assets/PF-instagram.png" />
+        <img class="social-media" src="../assets/PF-linkedin.png" />
     </div>
 
 </footer>
@@ -120,7 +124,7 @@ main {
   display: flex;
   justify-content: space-around;
   padding-top: 5%;
-  padding-bottom: 3%;
+  padding-bottom: 1%;
   
 }
 footer {
@@ -153,12 +157,29 @@ footer {
   margin-right: auto;
 }
 .icons {
-  width: 30%;
+  width: 25%;
 }
 figcaption {
   font-weight: bold;
   
 }
-
-
+#footer {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 2%;
+    
+  }
+  .follow-pf{
+    font-size: medium;
+  }
+  .footer-logo {
+    position: absolute;
+    width: 60px;
+    opacity: 0.2;
+  }
+  .social-media {
+    margin-bottom: 10px;
+    width: 75px;
+    height: auto;
+  }
 </style>
