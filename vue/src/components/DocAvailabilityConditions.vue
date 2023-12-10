@@ -8,7 +8,7 @@
             <div class="office" v-for="office in offices" v-bind:key="office.officeId"  v-bind:class="{selected: this.selectedOfficeId===office.officeId }">
                 <div class="office2" v-on:click="clickOffice(office.officeId, office.officeHoursStart, office.officeHoursEnd)">
                     <p>{{ office.practiceName }}</p> {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-                    Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }}
+                    Hours: {{ office.officeHoursStart.substr(1,4) }}AM - {{ office.officeHoursEnd.substr(1,4) }}PM
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
 }
 
 .selected {
-    background-color: pink;
+    background-color: #33BBC5;
 }
 
 .day-input {
