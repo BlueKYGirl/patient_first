@@ -1,20 +1,50 @@
 <template>
 <body>
-    <h2> Set Your Availability </h2>
-    <div class="time-block" v-for="timeBlock in timeBlocks" v-bind:key="timeBlock.timeBlockId">
-       
-        {{ formattedTime(timeBlock.startTime) }} &nbsp;
-               
-        
-        <select class="status-list">
-            <option v-for="status in scheduleStatuses" v-bind:value="status.scheduleStatus" v-bind:key="status.scheduleStatusId" >{{ status.scheduleStatus }}</option>
-        </select>
+    <div class="time-block-header">
+        <h2> Set Your Availability </h2>
+        <div class="default-duration">
+            <label>Default Duration (mins): </label>
+            <select v-model=this.defaultDuration v-on:change="updateDurations(this.defaultDuration)">
+                <option>15</option>
+                <option>30</option>
+                <option>45</option>
+                <option>60</option>
+                <option>75</option>
+                <option>90</option>
+            </select>
+        </div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+    </div>
 
-        
+    <div class="time-block" v-for="timeBlock in timeBlocks" v-bind:key="timeBlock.timeBlockId">
+        <div class="each-time-block">
+            <div class="time">
+                {{ formattedTime(timeBlock.startTime) }} &nbsp;
+            </div>
+            <div class="duration" >
+                <label>Duration (min): </label>
+                <select v-model="timeBlock.duration">
+                    <option>15</option>
+                    <option>30</option>
+                    <option>45</option>
+                    <option>60</option>
+                    <option>75</option>
+                    <option>90</option>
+                </select>
+            </div>
+            <div class="status-list-container">
+                <label for="status-list">Purpose: </label>
+                <select class="status-list" name="status-list" id="status-list" v-model="timeBlock.scheduleStatusId">
+                    <option v-for="status in scheduleStatuses" v-bind:value="status.scheduleStatusId" v-bind:key="status.scheduleStatusId" >{{ status.scheduleStatus }}</option>
+                </select>
+            </div>
+
+        </div>
     </div>
     
     
-    <div class = "offices" v-for="office in offices" v-bind:key="office.officeId">
+    <!-- <div class = "offices" v-for="office in offices" v-bind:key="office.officeId">
         {{ office.practiceName }} <br>
         {{ office.streetAddress }}, {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
         Office Phone: {{ office.phone }} <br>
@@ -27,14 +57,17 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ doctor.firstName }} {{ doctor.lastName }} :  {{ doctor.specialty }}
             </div>
         </div>
-
-
-    </div>
+    </div> -->
 </body>
 </template>
 
 <script>
 export default{
+    data() {
+        return {
+            defaultDuration: 0,
+        }
+    },
     props: {
         timeBlocks: {
             type: Array,
@@ -78,7 +111,17 @@ export default{
             
                         
             return hours + ":" + minutes + amHours;
+        },
+        updateDurations(newDurationValue) {
+            this.timeBlocks.forEach( (timeBlock) => {
+                timeBlock.duration = newDurationValue;
+            });
+        },
+        alert(value) {
+            alert(value);
         }
+
+        
     
     }
 };
@@ -86,6 +129,21 @@ export default{
 
 <style>
 @import '../css/styles.css';
+
+.time-block-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.time {
+    font-size: large;
+}
+.each-time-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
 
 .time-block {
     
@@ -101,7 +159,7 @@ export default{
     margin: 1%;
     color: black;
     text-align: center;
-    width: 40%;
+    width: 80%;
     box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
     font-weight: bold;
 }

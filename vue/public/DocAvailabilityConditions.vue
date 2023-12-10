@@ -2,11 +2,11 @@
     <div class="conditions">
         <div class="day-input">
             <label for="dayOfAvailability"> Select the day to schedule: </label> <br>
-            <input type="date" name="dayOfAvailability" class="calendar" v-model=this.dayToBeScheduled  />
+            <input type="date" class="calendar">
         </div>
         <div class="all-offices" > Select office:
-            <div class="office" v-for="office in offices" v-bind:key="office.officeId"  v-bind:class="{selected: this.selectedOfficeId===office.officeId }">
-                <div class="office2" v-on:click="clickOffice(office.officeId, office.officeHoursStart, office.officeHoursEnd)">
+            <div class = "offices" v-for="office in offices" v-bind:key="office.officeId" v-on:click="clickBox()">
+                <div>
                     <p>{{ office.practiceName }}</p> {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
                     Hours: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }}
                 </div>
@@ -32,8 +32,6 @@
                 officeHoursEndTime: ''
             },
             scheduleStatuses: [],
-            selectedOfficeId: 0,
-            dayToBeScheduled: '',
         };
     },
     methods: {
@@ -48,12 +46,9 @@
                 this.handleErrorResponse();
                 })
         },
-        clickOffice(officeId, officeStart, officeEnd) {
-            this.selectedOfficeId = officeId;
-            this.officeHours.officeHoursStartTime = officeStart;
-            this.officeHours.officeHoursEndTime = officeEnd;
-        },
-
+        clickBox() {
+            alert("Hello!!!  " );
+        }
     },
     created() {
         this.getOffices(this.$store.state.user.doctorId);
@@ -82,7 +77,7 @@
     padding-top: 4%;
 }
 
-.office {
+.offices {
     border: 2px solid black;
     width: 120%;
     padding: 5px;
@@ -96,11 +91,6 @@
     box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
 
 }
-
-.selected {
-    background-color: pink;
-}
-
 .day-input {
     font-size: x-large;
     font-weight: bold;
@@ -112,7 +102,6 @@
 }
 .calendar {
     font-weight: bold;
-    font-size: x-large;
     
 }
 
