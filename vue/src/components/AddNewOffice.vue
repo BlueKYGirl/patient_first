@@ -109,6 +109,12 @@
             <div class="input-box">
                 <input type="text" id="office-hours-end" v-model="office.officeHoursEnd" required />
             </div>
+        <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
+            <div class="doctor-list">
+                <img class="doctor-headshot" src="../assets/PF-doctor-headshot-MG.jpg" />
+                {{ doctor.firstName }} {{ doctor.lastName }}
+            </div>
+        </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
         <button type="create-office" v-on:click="createOffice()">Create Office</button>
       </form>

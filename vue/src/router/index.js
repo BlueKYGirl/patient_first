@@ -99,6 +99,14 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: "/docportal/addoffice",
+    name: "add-office",
+    component: AddOfficeView,
+    meta: {
+      requiresAuth: false
+    }
   }
  
 ];
