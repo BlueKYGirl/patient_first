@@ -6,5 +6,8 @@ const http = axios.create({
 export default {
     listOfficesByDoctorId(doctorId) {
         return http.get(`/doctors/${doctorId}/offices`);
+    },
+    createNewOffice() {
+        return http.post('/offices');
     }
 }

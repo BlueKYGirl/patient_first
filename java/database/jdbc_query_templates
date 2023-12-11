@@ -1,0 +1,32 @@
+
+-- Create New Address --
+INSERT INTO address (street_address, city, state_abbreviation, zip_code)
+VALUES ('123 Blink St.', 'Nowhereville', 'OH', 44353);
+
+
+-- Create New Office --
+INSERT INTO office (address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time)
+VALUES (1, '(677)543-0994', 'Patient First Family Practice', '8:00', '16:00');
+
+-- Add New Doctors To Office --
+INSERT INTO doctor_office (doctor_id, office_id)
+VALUES (2, 2);
+
+-- Update Address --
+UPDATE address
+SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ?
+WHERE address_id = ? ;
+
+-- Update Office Info --
+UPDATE office
+SET address_id = ?, office_phone_number = ?, practice_name = ?, office_hours_start_time = ?, office_hours_end_time = ?
+WHERE office_id = ? ;
+
+-- Update Doctors in Office Info --
+UPDATE doctor_office
+SET doctor_id = ?, office_id = ?
+WHERE office_id = ? ;
+
+SELECT * FROM address;
+SELECT * FROM office;
+SELECT * FROM doctor_office;
