@@ -7,10 +7,11 @@
     <div class = "office-details">
         <office-details v-bind:offices="offices" />
     </div>
-</body>
-<div class="footer">
+    <div class="footer">
     <global-footer />
 </div>
+</body>
+
 </template>
 
 

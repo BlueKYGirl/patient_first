@@ -130,6 +130,7 @@ INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Mammogram');
 
 -- Appointment Status Metadata Insert Statements --
 
+INSERT INTO appointment_status (appointment_status) VALUES ('Available');
 INSERT INTO appointment_status (appointment_status) VALUES ('Scheduled');
 INSERT INTO appointment_status (appointment_status) VALUES ('Rescheduled');
 INSERT INTO appointment_status (appointment_status) VALUES ('Canceled');

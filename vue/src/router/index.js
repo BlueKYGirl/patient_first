@@ -10,6 +10,7 @@ import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
 import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
 import DocAgendaView from '../views/DocAgendaView.vue';
+import AddOfficeView from '../views/AddOfficeView.vue';
 
 import DocPortalView from '../views/DocPortalView.vue';
 import AdminPortalView from '../views/AdminPortalView.vue';
@@ -79,7 +80,6 @@ const routes = [
       requiresAuth: false
     }
   },
-      /*for now, just so I can see it on the localhost*/
   {
     path: "/agenda",
     name: "agenda",
@@ -100,7 +100,16 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: "/docportal/addoffices",
+    name: "add-offices",
+    component: AddOfficeView,
+    meta: {
+      requiresAuth: false
+    }
   }
+  
  
 ];
 

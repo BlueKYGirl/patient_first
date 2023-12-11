@@ -4,7 +4,7 @@
         <div class="doctor-list">
             <img class="doctor-headshot" src="../assets/PF-doctor-headshot-MG.jpg" />
             {{ doctor.firstName }} {{ doctor.lastName }}
-        </div>
+    </div>
         <div class="specialty">{{ doctor.specialty }}</div>
       </router-link>
        <!-- <div class="doctorList"> 

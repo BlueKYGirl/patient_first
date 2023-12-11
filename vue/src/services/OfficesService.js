@@ -6,5 +6,12 @@ const http = axios.create({
 export default {
     listOfficesByDoctorId(doctorId) {
         return http.get(`/doctors/${doctorId}/offices`);
+    },
+    createNewOffice() {
+        return http.post('/offices');
+    },
+    updateOffice(officeId) {
+        return http.put(`/office/${officeId}`);
     }
+    // ...This needs to pass an office object...How do that..? -Tyler-
 }
