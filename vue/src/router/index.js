@@ -9,6 +9,8 @@ import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
 import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
+import DocPortalView from '../views/DocPortalView.vue';
+import AdminPortalView from '../views/AdminPortalView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -71,6 +73,22 @@ const routes = [
     path: "/schedule",
     name: "schedule",
     component: UpdateAvailabilityView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/docportal",
+    name: "doc-portal",
+    component: DocPortalView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: AdminPortalView,
     meta: {
       requiresAuth: false
     }
