@@ -7,8 +7,8 @@
         <section class="welcome">
             <img class = "main-image" src="../assets/doctorAndMale.jpg"/>
             <div class="message">
-            <h1>Welcome!</h1> 
-            <h3>We're glad you're here.</h3>
+            <h1>Welcome! We're glad you're here.</h1> 
+            
             <img class="text-logo" src="../assets/transparentText.png"/>
             <!--<a href="#" class="button">Get Started</a>-->
         </div>
@@ -26,6 +26,9 @@
 <figure>
   <img class="icons" src="../assets/stethoscope.png"/><figcaption>See Appointments</figcaption>
 </figure>
+<figure>
+  <img class="icons" src="../assets/medicalStaff.png"/><figcaption>Set Office Information</figcaption>
+</figure>
 </div>
         </section>
 
@@ -33,6 +36,11 @@
         <div class="footer">
             <global-footer/>
         </div>
+        <div class="portals">
+      <router-link class="test" to="/">Patient Portal | </router-link>
+      <router-link class="test" to="/admin">Admin Portal</router-link>
+
+    </div>
         
     </body>
 </template>
@@ -61,29 +69,44 @@ export default {
     
 }
 .main-image {
-   height: 100%;
-   width: auto;
+  display: flex;
+  
+   height: auto;
+   width: 100vh;
+   max-width: 50%;
     border-radius: 5%;
   
 }
 .message {
+  
     text-align: center;
     font-weight: bold;
-    font-size: large;
-    margin-right: 30%;
-    padding-left: 3%;
+    font-size: x-large;
+    margin-right: 10%;
+    padding-left: 0%;
+    margin-top: 10%;
 }
 h1 {
+  
     text-align: center;
     padding-bottom: 0%;
+    font-weight: bold;
 }
 h3 {
     text-align: center;
-    padding-bottom: 20%;
+    padding-bottom: 0%;
     padding-top: 0%;
 }
 
 .text-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  margin-left: 25%;
+  padding-bottom: 2%;
+  
+  width:25vh;
+  height: auto;
     
     padding-bottom: 3%;
 }
@@ -116,6 +139,13 @@ figcaption {
   margin-right: auto;
   width: 25%;
 }
+.portals {
+    color: black;
+    margin-left: 85%;
+  }
+  .test {
+    color: #33BBC5;
+  }
 
 
 </style>
