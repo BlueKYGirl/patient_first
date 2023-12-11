@@ -6,11 +6,13 @@ BEGIN TRANSACTION;
 
 INSERT INTO person(user_id, first_name, last_name, email, date_of_birth)
 VALUES (1, 'Chachi', 'TheCat', 'chachicat@meowmeow.com', '2003-01-03'),
-       (2, 'Joni', 'LovesChachi', 'joni@chachicat.net', '2005-01-23');
+       (2, 'Joni', 'LovesChachi', 'joni@chachicat.net', '2005-01-23'),
+       (3, 'Fonz', 'Ie', 'thefonz@fonzifonzi.net', '2009-01-23');
 
 INSERT INTO doctor(person_id, specialty_id, is_primary_care)
 VALUES (1, 1, true),
-       (2, 2, true);
+       (2, 2, true),
+       (3, 2, true);
 
 INSERT INTO address(street_address, city, state_abbreviation, zip_code)
 VALUES (420, 'CatTown', 'CT', 12345);
@@ -30,10 +32,9 @@ VALUES (1, '(234)456-7890', 'Chachi & Associates', '8:00', '16:00'),
 
 
 INSERT INTO doctor_office(doctor_id, office_id)
-VALUES (1, 1);
-
-
-
+VALUES (1, 1),
+       (3, 1),
+       (3, 3);
 
 -- INSERT INTO table_name(column1, 2, 3, etc.)
 -- VALUES (a, b, c, d)
