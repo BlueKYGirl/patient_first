@@ -3,14 +3,14 @@
         <div class="home">
     <global-header />
     
-  </div>
-  <div class="add-new-office">
+        </div>
+    <div class="add-new-office">
     <add-new-office/>
-  </div>
-  <div class="footer">
-    <global-footer />
-</div>
-</body>
+        </div>
+            <div class="footer">
+                <global-footer />
+        </div>
+    </body>
 </template>
 
 <script>

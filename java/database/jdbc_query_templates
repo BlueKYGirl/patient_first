@@ -46,6 +46,7 @@ WHERE office_id = ?;
 SELECT * FROM address;
 SELECT * FROM office;
 SELECT * FROM doctor_office;
+SELECT * FROM users;
 
 
 
