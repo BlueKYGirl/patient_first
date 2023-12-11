@@ -6,7 +6,7 @@
   <!-- TODO: Reform the register method into a "schedule" method -->
     <div id="register" class="text-center">
       <form v-on:submit.prevent="register" >
-        <h1>Create Account</h1>
+        <h1>Add New Office:</h1>
         <div role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
         </div>
@@ -117,11 +117,8 @@
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
         <button type="create-office" v-on:click="createOffice()">Create Office</button>
-      </form>
-        <p style="text-align: center;"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-  
-      <f1 class="footer-text">Having trouble? Please contact us at:</f1>
-      <f2 class="footer-text">1-888-8888</f2>
+      </form>  
+
     </div>
     <div class="footer">
       <global-footer/>
