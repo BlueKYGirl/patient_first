@@ -9,13 +9,10 @@ import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
 import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
-<<<<<<< HEAD
 import DocAgendaView from '../views/DocAgendaView.vue';
 
-=======
 import DocPortalView from '../views/DocPortalView.vue';
 import AdminPortalView from '../views/AdminPortalView.vue';
->>>>>>> 38a03a30c729225f77b4254d530e71bc67a01436
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -82,13 +79,12 @@ const routes = [
       requiresAuth: false
     }
   },
-<<<<<<< HEAD
       /*for now, just so I can see it on the localhost*/
   {
     path: "/agenda",
     name: "agenda",
     component: DocAgendaView,
-=======
+  },  
   {
     path: "/docportal",
     name: "doc-portal",
@@ -101,7 +97,6 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: AdminPortalView,
->>>>>>> 38a03a30c729225f77b4254d530e71bc67a01436
     meta: {
       requiresAuth: false
     }
