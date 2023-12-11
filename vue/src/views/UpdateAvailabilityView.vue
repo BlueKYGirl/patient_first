@@ -47,24 +47,24 @@ export default {
         };
     },
     methods: {
-        getAllTimeBlocks() {
-            doctorAvailabilityService.listAllTimeBlocks()
-                .then(response => {
-                    this.timeBlocks = response.data;
-                    })
-                .catch(error => {
-                this.handleErrorResponse();
-                })
-        },
-        getTimeBlocksByOfficeHours(startTimeId, endTimeId) {
-            doctorAvailabilityService.listTimeBlocksByOfficeHours(startTimeId, endTimeId)
-                .then(response => {
-                    this.officeTimeBlocks = response.data;
-                    })
-                .catch(error => {
-                    this.handleErrorResponse();
-                    })
-        },
+        // getAllTimeBlocks() {
+        //     doctorAvailabilityService.listAllTimeBlocks()
+        //         .then(response => {
+        //             this.timeBlocks = response.data;
+        //             })
+        //         .catch(error => {
+                
+        //         })
+        // },
+        // getTimeBlocksByOfficeHours(startTimeId, endTimeId) {
+        //     doctorAvailabilityService.listTimeBlocksByOfficeHours(startTimeId, endTimeId)
+        //         .then(response => {
+        //             this.officeTimeBlocks = response.data;
+        //             })
+        //         .catch(error => {
+                    
+        //             })
+        // },
         // getOffices(doctorId) {
         //     officesService.listOfficesByDoctorId(doctorId)
         //         .then(response => {
@@ -88,7 +88,7 @@ export default {
             }
         },
     created() {
-        this.getAllTimeBlocks();
+        //this.getAllTimeBlocks();
         this.getScheduleStatuses();
         // this.getOffices(1);
         // TODO: Figure out how to map in doctorId FROM userId (logged in user) IF the user is a Doctor

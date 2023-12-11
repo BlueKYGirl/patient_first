@@ -33,6 +33,7 @@ public class DoctorController {
 
 
      // Get All Doctors *************************************
+    @CrossOrigin
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Doctor> getAllDoctors(){
         try {
@@ -44,6 +45,7 @@ public class DoctorController {
     }
 
     // Get Doctors by Office ID *************************************
+    @CrossOrigin
     @RequestMapping(path = "/offices/{officeId)", method = RequestMethod.GET)
     public List<Doctor> getDoctorsByOfficeId(@PathVariable("officeId") int officeId){
         try {
@@ -55,6 +57,7 @@ public class DoctorController {
     }
 
     // Get Office(s) by Doctor *************************************
+
     @CrossOrigin
     @RequestMapping(path = "/{doctorId}/offices", method = RequestMethod.GET)
     public List<Office> getOfficesByDoctorId(@PathVariable("doctorId") int doctorId){

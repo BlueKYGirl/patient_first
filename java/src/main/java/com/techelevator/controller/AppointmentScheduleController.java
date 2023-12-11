@@ -30,6 +30,7 @@ public class AppointmentScheduleController {
     }
 
     // *** Get a list of timeBlocks by office hours start and end ****
+    @CrossOrigin
     @RequestMapping(path = "/times/{startTime}/{endTime}", method = RequestMethod.GET)
     public List<TimeBlockDto> getTimeBlocksByOfficeHours(@PathVariable int startTime, @PathVariable int endTime){
         try {
@@ -39,7 +40,7 @@ public class AppointmentScheduleController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no doctors here...Bummer..." + e);
         }
     }
-
+    @CrossOrigin
     @RequestMapping(path = "/alltimes", method = RequestMethod.GET)
     public List<TimeBlockDto> getAllTimeBlocks(){
         try {
@@ -50,6 +51,7 @@ public class AppointmentScheduleController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/schedulestatus", method = RequestMethod.GET)
     public List<ScheduleStatusDto> getScheduleStatuses(){
         try {

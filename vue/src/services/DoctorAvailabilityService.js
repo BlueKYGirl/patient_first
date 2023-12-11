@@ -4,11 +4,11 @@ const http = axios.create({
     headers: {'Authorization' : 'Bearer ' + localStorage.getItem('token')}
 });
 export default {
-    listAllAvailableTimeBlocks() {
-        return http.get('');
+    listAllTimeBlocks() {
+        return http.get('/appointments/alltimes');
     },
     listTimeBlocksByOfficeHours(startTimeId, endTimeId) {
-        return http.get(`/appointments/${startTimeId}/${endTimeId}`);
+        return http.get(`/appointments/times/${startTimeId}/${endTimeId}`);
     },
     listScheduleStatuses () {
         return http.get('/appointments/schedulestatus');

@@ -2,13 +2,15 @@
     <div class="conditions">
         <div class="day-input">
             <label for="dayOfAvailability"> Select the day to schedule: </label> <br>
-            <input type="date" name="dayOfAvailability" class="calendar" v-model=this.dayToBeScheduled  />
+            <input type="date" name="dayOfAvailability" class="calendar" 
+                   v-model=this.dayToBeScheduled 
+                   v-on:change="this.$store.commit('SET_DAY_TO_BE_SCHEDULED', this.dayToBeScheduled)"  />
         </div>
         <div class="all-offices" > Select office:
             <div class="office" v-for="office in offices" v-bind:key="office.officeId"  v-bind:class="{selected: this.selectedOfficeId===office.officeId }">
                 <div class="office2" v-on:click="clickOffice(office.officeId, office.officeHoursStart, office.officeHoursEnd)">
                     <p>{{ office.practiceName }}</p> {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-                    Hours: {{ office.officeHoursStart.substr(1,4) }}AM - {{ office.officeHoursEnd.substr(1,4) }}PM
+                    Hours: {{ formattedTime(office.officeHoursStart) }} - {{ formattedTime(office.officeHoursEnd) }}
                 </div>
             </div>
         </div>
@@ -17,6 +19,7 @@
 
 <script>
     import officesService from '../services/OfficesService';
+    import doctorAvailabilityService from '../services/DoctorAvailabilityService';
 
     export default {
     props: {
@@ -37,6 +40,32 @@
         };
     },
     methods: {
+        formattedTime(time) {
+            let hours = time.substr(0, 2);
+            let amHours = 'PM';
+            let minutes = time.substr(3, 2)
+                       
+                if (hours < 10 && hours > 0) {
+                    hours = time.substr(1, 1);
+                    amHours = 'AM';
+                }
+                    
+                    
+                if (hours >= 10 && hours < 12) {
+                    amHours = 'AM';
+                }
+                   
+                    
+                if (hours > 12) {
+                    hours -= 12;
+                }
+                if (hours == 0) {
+                    hours = '12';
+                    amHours = 'AM';
+                }
+
+            return hours + ":" + minutes + amHours;
+        },
         getOffices(doctorId) {
             officesService.listOfficesByDoctorId(doctorId)
                 .then(response => {
@@ -45,18 +74,57 @@
                     // TODO: Determine how to get this working properly
                 })
                 .catch(error => {
-                this.handleErrorResponse();
+                
                 })
+        },
+   
+        translateStartTimeToTimeBlockID(time) {
+            this.timeBlocks.forEach( (timeBlock) => {
+                if (timeBlock.startTime === time){
+                    this.officeHours.officeHoursStartTime = timeBlock.timeBlockId;
+                }
+            });
+        },
+        translateEndTimeToTimeBlockID(time) {
+            this.timeBlocks.forEach( (timeBlock) => {
+                if (timeBlock.startTime === time){   // note:  "startTime" is the only parameter in the timeBlock JSON
+                    this.officeHours.officeHoursEndTime = timeBlock.timeBlockId;
+                }
+            });
+        },
+        getAllTimeBlocks() {
+            doctorAvailabilityService.listAllTimeBlocks()
+                .then(response => {
+                    this.timeBlocks = response.data;
+                    })
+                .catch(error => {
+                
+                })
+        },
+        getTimeBlocksByOfficeHours(startTimeId, endTimeId) {
+            doctorAvailabilityService.listTimeBlocksByOfficeHours(startTimeId, endTimeId)
+                .then(response => {
+                    this.officeTimeBlocks = response.data;
+                    this.$store.commit("SET_OFFICE_TIMEBLOCKS", this.officeTimeBlocks);
+                    })
+                .catch(error => {
+                    
+                    })
         },
         clickOffice(officeId, officeStart, officeEnd) {
             this.selectedOfficeId = officeId;
-            this.officeHours.officeHoursStartTime = officeStart;
-            this.officeHours.officeHoursEndTime = officeEnd;
+            this.translateStartTimeToTimeBlockID(officeStart);
+            this.translateEndTimeToTimeBlockID(officeEnd);
+            this.getTimeBlocksByOfficeHours(this.officeHours.officeHoursStartTime, this.officeHours.officeHoursEndTime-1)
+            this.$store.commit("SET_SELECTED_OFFICE_ID", this.selectedOfficeId);
+
         },
+
 
     },
     created() {
         this.getOffices(this.$store.state.user.doctorId);
+        this.getAllTimeBlocks();
         // TODO: Figure out how to map in doctorId FROM userId (logged in user) IF the user is a Doctor
     }
 };

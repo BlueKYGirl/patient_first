@@ -17,14 +17,16 @@
         <div>&nbsp;</div>
     </div>
 
-    <div class="time-block" v-for="timeBlock in timeBlocks" v-bind:key="timeBlock.timeBlockId">
+    <div class="time-block" v-for="timeBlock in officeTimeBlocks" v-bind:key="timeBlock.timeBlockId" >
         <div class="each-time-block">
             <div class="time">
                 {{ formattedTime(timeBlock.startTime) }} &nbsp;
             </div>
             <div class="duration" >
                 <label>Duration: </label>
-                <select v-model="timeBlock.duration" style="background-color: #C8FFE0;">
+                <select v-model="timeBlock.duration" style="background-color: #C8FFE0;" 
+                        v-bind:disabled="!timeBlock.enabled"
+                        v-on:change="timeBlock.scheduleStatusId=0; enableTimeBlocks(timeBlock.startTime)">
                     <option>15</option>
                     <option>30</option>
                     <option>45</option>
@@ -35,7 +37,10 @@
             </div>
             <div class="status-list-container">
                 <label for="status-list">Purpose: </label>
-                <select class="status-list" name="status-list" id="status-list" v-model="timeBlock.scheduleStatusId">
+                <select class="status-list" name="status-list" id="status-list" 
+                        v-model="timeBlock.scheduleStatusId" 
+                        v-bind:disabled="!timeBlock.enabled" 
+                        v-on:change="disableTimeBlocks(timeBlock.startTime, timeBlock.duration)">
                     <option v-for="status in scheduleStatuses" v-bind:value="status.scheduleStatusId" v-bind:key="status.scheduleStatusId" >{{ status.scheduleStatus }}</option>
                 </select>
             </div>                
@@ -43,23 +48,9 @@
     </div>
     
     
-    <!-- <div class = "offices" v-for="office in offices" v-bind:key="office.officeId">
-        {{ office.practiceName }} <br>
-        {{ office.streetAddress }}, {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-        Office Phone: {{ office.phone }} <br>
-        Hours of Operation: {{ office.officeHoursStart }} - {{ office.officeHoursEnd }} <br><br>
-
-        Doctors in this office: {{ office.doctorsInOffice.length }}
-        <div class="doctorsInOffice" v-for="doctor in office.doctorsInOffice" v-bind:key="doctor.doctorId">
-            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Doctors in this office: </h3>
-            <div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ doctor.firstName }} {{ doctor.lastName }} :  {{ doctor.specialty }}
-            </div>
-        </div>
-    </div> -->
     <div class="button">
         <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <button type="reset" v-on:click="resetOfficeTimeBlocks">Reset</button>
     </div>    
 </body>
 
@@ -82,17 +73,19 @@ export default{
     data() {
         return {
             defaultDuration: 0,
+            officeTimeBlocks: [],
+            timeBlocks: [],
         }
     },
     props: {
-        timeBlocks: {
-            type: Array,
-            required: true
-        },
-        offices: {
-            type: Array,
-            required: true
-        },
+        // officeTimeBlocks: {
+        //     type: Array,
+        //     required: true
+        // },
+        // offices: {
+        //     type: Array,
+        //     required: true
+        // },
         scheduleStatuses: {
             type: Array,
             required: true
@@ -122,24 +115,73 @@ export default{
                     hours = '12';
                     amHours = 'AM';
                 }
-                    
-                          
-            
-                        
+
             return hours + ":" + minutes + amHours;
         },
         updateDurations(newDurationValue) {
-            this.timeBlocks.forEach( (timeBlock) => {
+            this.officeTimeBlocks.forEach( (timeBlock) => {
                 timeBlock.duration = newDurationValue;
             });
         },
+        disableTimeBlocks(currentTime, duration) {
+            // function to add minutes to time -- got this from http://www.java2s.com/example/javascript/date-operation/add-30-minutes-to-time-as-hours-and-minutes.html
+                function z(n){ return (n<10? '0':'') + n;}
+                var bits = currentTime.split(':');
+                var mins = bits[0]*60 + +bits[1] + +duration;
+                //alert(z(mins%(24*60)/60 | 0) + ':' + z(mins%60));
+            const endTime = z(mins%(24*60)/60 | 0) + ':' + z(mins%60);
+        
+            // actually update the "enabled" property
+            this.officeTimeBlocks.forEach( (timeBlock) => {
+                if (timeBlock.startTime > currentTime && timeBlock.startTime < endTime){
+                        timeBlock.enabled = false;
+                        timeBlock.duration = 0;
+                        timeBlock.scheduleStatusId = 0;
+                }
+            });
+        },
+
+        enableTimeBlocks(currentTime) {
+        
+            // change 'enabled' properties from 'false' to 'true' starting at current startTime, break when next 'true' occurs.
+            for (let i=0; i<this.officeTimeBlocks.length; i++) {
+                if (this.officeTimeBlocks[i].startTime > currentTime){
+                    if (this.officeTimeBlocks[i].enabled === false) {
+                        this.officeTimeBlocks[i].enabled = true;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        },
+        resetOfficeTimeBlocks() {
+             this.officeTimeBlocks.forEach( (timeBlock) => {
+                timeBlock.duration = 0;
+                timeBlock.scheduleStatusId = 0;
+                timeBlock.enabled = true;
+            });
+        },
+
+
         alert(value) {
             alert(value);
+        },
+    },
+    watch: {
+        '$store.state.officeTimeBlocks' (newVal, oldVal) {
+            this.officeTimeBlocks = [];
+            newVal.forEach( (timeBlock) => {
+                timeBlock.enabled = true;
+                this.officeTimeBlocks.push(timeBlock);
+            });
         }
-
-        
-    
     }
+    // computed: {
+    //      getOfficeTimeBlocksFromState() {
+    //         return this.$store.state.officeTimeBlocks;
+    //     }
+    // }
+    
 };
 </script>
 

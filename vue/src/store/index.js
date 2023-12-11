@@ -5,7 +5,10 @@ export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      user: currentUser || {}
+      user: currentUser || {},
+      officeTimeBlocks: [],
+      selectedOfficeId: '',
+      dayToBeScheduled: '',
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -23,7 +26,16 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
-      }
+      },
+      SET_OFFICE_TIMEBLOCKS(state, newOfficeTimeBlocks) {
+        state.officeTimeBlocks = newOfficeTimeBlocks;
+      },
+      SET_DAY_TO_BE_SCHEDULED(state, newDayToBeScheduled) {
+        state.dayToBeScheduled = newDayToBeScheduled;
+      },
+      SET_SELECTED_OFFICE_ID(state, newSelectedOfficeId) {
+        state.selectedOfficeId = newSelectedOfficeId;
+      },
     },
   });
   return store;
