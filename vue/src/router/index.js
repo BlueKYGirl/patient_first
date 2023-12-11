@@ -9,6 +9,10 @@ import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
 import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
+import DocAgendaView from '../views/DocAgendaView.vue';
+
+import DocPortalView from '../views/DocPortalView.vue';
+import AdminPortalView from '../views/AdminPortalView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -74,7 +78,29 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: "/agenda",
+    name: "agenda",
+    component: DocAgendaView,
+  },  
+  {
+    path: "/docportal",
+    name: "doc-portal",
+    component: DocPortalView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: AdminPortalView,
+    meta: {
+      requiresAuth: false
+    }
   }
+ 
 ];
 
 // Create the router

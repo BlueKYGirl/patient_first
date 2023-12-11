@@ -19,12 +19,12 @@
     
   </div>
     <p><img src="../assets/transparentText.png" class="text-logo"/></p>
-    <a href="#" class="button">Get Started</a>
+    <router-link to="/register"><a href="#" class="button">Get Started</a></router-link>
     
 </main>
 <div class="subfooter">
   <figure>
-  <img class="icons" src="../assets/medicalStaff.png" alt="Find a doctor"/>
+  <router-link to="/doctors"><img class="icons" src="../assets/medicalStaff.png" alt="Find a doctor"/></router-link>
   <figcaption>Find a Doctor</figcaption>
 </figure>
 <figure>
@@ -53,6 +53,11 @@
         <img class="social-media" src="../assets/PF-facebook.png"/>
         <img class="social-media"  src="../assets/PF-instagram.png" />
         <img class="social-media" src="../assets/PF-linkedin.png" />
+    </div>
+    <div class="portals">
+      <router-link class="test" to="/docportal">Doctor Portal | </router-link>
+      <router-link class="test" to="/admin">Admin Portal</router-link>
+
     </div>
 
 </footer>
@@ -181,5 +186,12 @@ figcaption {
     margin-bottom: 10px;
     width: 75px;
     height: auto;
+  }
+  .portals {
+    color: black;
+    margin-left: 85%;
+  }
+  .test {
+    color: #33BBC5;
   }
 </style>
