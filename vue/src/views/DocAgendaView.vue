@@ -3,7 +3,7 @@
         <div class="header">
             <global-header />
         </div>
-       
+       <div></div>
     </body>
     <div class="footer">
         <global-footer />
@@ -21,6 +21,19 @@ export default{
         GlobalHeader,
         GlobalFooter
     },
+
+    data(){
+
+    },
+
+    props: {
+
+    },
+
+    methods: {
+
+    }
+
 }
 </script>
 
