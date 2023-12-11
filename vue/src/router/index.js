@@ -13,6 +13,7 @@ import DocAgendaView from '../views/DocAgendaView.vue';
 
 import DocPortalView from '../views/DocPortalView.vue';
 import AdminPortalView from '../views/AdminPortalView.vue';
+import AddOfficeView from '../views/AddOfficeView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -101,13 +102,14 @@ const routes = [
     }
   },
   {
-    path: "/docportal/addoffice",
-    name: "add-office",
+    path: "/docportal/addoffices",
+    name: "add-offices",
     component: AddOfficeView,
     meta: {
       requiresAuth: false
     }
   }
+  
  
 ];
 
