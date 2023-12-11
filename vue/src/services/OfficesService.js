@@ -9,5 +9,9 @@ export default {
     },
     createNewOffice() {
         return http.post('/offices');
+    },
+    updateOffice(officeId) {
+        return http.put(`/office/${officeId}`);
     }
+    // ...This needs to pass an office object...How do that..? -Tyler-
 }

@@ -112,12 +112,16 @@ public class JdbcOfficeDao implements OfficeDao {
    // TODO: Fix this method.
     @Override
     public Office updateOffice(Office office){
-//        String sqlAddress = "UPDATE address " +
-//                            "SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ? " +
-//                            "WHERE address_id = ?;";
-//        jdbcTemplate.update(sqlAddress, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode(), /* Need to figure out what to do for this...Don't have an address_id in our objects */);
-//        // Will need to flesh out the update Office part of this, not just the address...Will do that ASAP
-//
+        String sqlAddress = "UPDATE address a " +
+                            "SET a.street_address = ?, a.city = ?, a.state_abbreviation = ?, a.zip_code = ?, " +
+                            "o.office_phone_number = ?, o.practice_name = ?, o.office_hours_start_time = ?, o.office_hours_end_time = ? " +
+                            "JOIN office o ON a.address_id = o.address_id " +
+                            "WHERE office_id = ?;";
+        jdbcTemplate.update(sqlAddress, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode(), /* Need to figure out what to do for this...Don't have an address_id in our objects */);
+        // Will need to flesh out the update Office part of this, not just the address...Will do that ASAP
+
+
+
         return null;
     }
 

@@ -93,9 +93,10 @@ CREATE TABLE appointment_schedule (
     appointment_id SERIAL, 
     doctor_id int NOT NULL,
     patient_id int NOT NULL DEFAULT 0,
+    appointment_date date NOT NULL,
     time_block_id int NOT NULL, 
     office_id int NOT NULL, 
-    appointment_reason_id int NOT NULL,
+    appointment_reason_id int NOT NULL DEFAULT 0,
     appointment_status_id int NOT NULL,
     schedule_status_id int NOT NULL,
     CONSTRAINT PK_appointment PRIMARY KEY (appointment_id)

@@ -14,8 +14,8 @@ VALUES (2, 2);
 
 -- Update Address --
 UPDATE address
-SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ?
-WHERE address_id = ? ;
+SET street_address = '123 TESTING St.', city = 'Nowhereville', state_abbreviation = 'OH', zip_code = 44353
+WHERE address_id = 2 ;
 
 -- Update Office Info --
 UPDATE office
@@ -27,6 +27,30 @@ UPDATE doctor_office
 SET doctor_id = ?, office_id = ?
 WHERE office_id = ? ;
 
+-- Figuring out proper way to join tables to get to address_id
+SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth
+FROM office o
+JOIN specialty s ON d.specialty_id = s.specialty_id
+JOIN person p ON d.doctor_id = p.person_id
+JOIN doctor_office dof ON d.doctor_id = dof.doctor_id
+WHERE dof.office_id = ?
+
+-- This returns all the proper fields. Joined on address_id --
+UPDATE address a
+SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ?
+JOIN office o ON a.address_id = o.address_id
+WHERE office_id = ?;
+
+
+-- SELECT Statements --
 SELECT * FROM address;
 SELECT * FROM office;
 SELECT * FROM doctor_office;
+
+
+
+UPDATE address a
+SET a.street_address = '2222 Testaroo', a.city = 'McTesterville', a.state_abbreviation = 'TEST', a.zip_code = '22222',
+o.office_phone_number = '(222)222-2222', o.practice_name = 'OMEGATEST', o.office_hours_start_time = ?, o.office_hours_end_time = ?
+JOIN office o ON a.address_id = o.address_id
+WHERE office_id = ?;
