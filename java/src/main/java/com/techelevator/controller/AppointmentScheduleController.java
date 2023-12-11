@@ -1,17 +1,21 @@
 package com.techelevator.controller;
 
 
+import com.techelevator.dao.AppointmentDao;
 import com.techelevator.dao.ScheduleStatusDao;
 import com.techelevator.dao.TimeBlockDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Appointment;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.ScheduleStatusDto;
 import com.techelevator.model.TimeBlockDto;
+import org.apache.tomcat.jni.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -24,9 +28,25 @@ public class AppointmentScheduleController {
     private TimeBlockDao timeBlockDao;
     private ScheduleStatusDao scheduleStatusDao;
 
-    public AppointmentScheduleController(TimeBlockDao timeBlockDao, ScheduleStatusDao scheduleStatusDao) {
+    private AppointmentDao appointmentDao;
+
+    public AppointmentScheduleController(TimeBlockDao timeBlockDao, ScheduleStatusDao scheduleStatusDao, AppointmentDao appointmentDao) {
         this.timeBlockDao = timeBlockDao;
         this.scheduleStatusDao = scheduleStatusDao;
+        this.appointmentDao = appointmentDao;
+    }
+
+    // *** Get AGENDA: a list of appointments by Doctor ID and date  ****
+    @CrossOrigin
+    @RequestMapping(path = "/agenda/{doctorId}/{date}", method = RequestMethod.GET)
+    public List<Appointment> getDoctorAgenda(@PathVariable int doctorId, @PathVariable String date){
+        LocalDate appt_date = LocalDate.parse(date);
+        try {
+            List<Appointment> agenda = appointmentDao.getDoctorAgendaByDate(doctorId, appt_date);
+            return agenda;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
+        }
     }
 
     // *** Get a list of timeBlocks by office hours start and end ****
