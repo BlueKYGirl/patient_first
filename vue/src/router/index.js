@@ -9,6 +9,8 @@ import RegisterView from '../views/RegisterView.vue';
 import DoctorsListView from '../views/DoctorsListView.vue';
 import OfficeDetailsView from '../views/OfficeDetailsView.vue';
 import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
+import DocAgendaView from '../views/DocAgendaView.vue';
+
 import DocPortalView from '../views/DocPortalView.vue';
 import AdminPortalView from '../views/AdminPortalView.vue';
 
@@ -78,6 +80,11 @@ const routes = [
     }
   },
   {
+    path: "/agenda",
+    name: "agenda",
+    component: DocAgendaView,
+  },  
+  {
     path: "/docportal",
     name: "doc-portal",
     component: DocPortalView,
@@ -93,6 +100,7 @@ const routes = [
       requiresAuth: false
     }
   }
+ 
 ];
 
 // Create the router

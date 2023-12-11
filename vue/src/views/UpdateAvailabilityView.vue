@@ -25,12 +25,14 @@ import officesService from '../services/OfficesService';
 import OfficeDetails from '../components/OfficeDetails.vue';
 import DocAvailabilityConditions from '../components/DocAvailabilityConditions.vue';
 
+
 export default {
     components: {
         GlobalHeader,
         DocTimeBlocks,
         // OfficeDetails,
-        DocAvailabilityConditions
+        DocAvailabilityConditions,
+
     },
     data() {
         return {
