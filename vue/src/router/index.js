@@ -79,7 +79,6 @@ const routes = [
       requiresAuth: false
     }
   },
-      /*for now, just so I can see it on the localhost*/
   {
     path: "/agenda",
     name: "agenda",
