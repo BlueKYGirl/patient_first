@@ -288,8 +288,8 @@ h2{
     display: flex;
     justify-content: space-around;
     margin-bottom: 10%;
-   margin-left: 30%;
-   margin-right: 30%;
+   margin-left: 20%;
+   margin-right: 20%;
     
 }
 

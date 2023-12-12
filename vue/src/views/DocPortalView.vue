@@ -119,6 +119,7 @@ h3 {
   padding-bottom: 1%;
   a {
       text-decoration: none;
+      color:#614BC3;
       &:hover {
         color: #33BBC5;
       }
@@ -163,6 +164,7 @@ figcaption {
     color: black;
     margin-left: 85%;
       a {
+        color: #614BC3;
         text-decoration: none;
         &:hover {
           color: #614BC3;
