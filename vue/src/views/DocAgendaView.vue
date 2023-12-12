@@ -16,15 +16,15 @@
 </template>
 
 <script>
-// import DocAgenda from '../components/DocAgenda.vue';
+import DocAgenda from '../components/DocAgenda.vue';
 import GlobalHeader from '../components/GlobalHeader.vue';
 import GlobalFooter from '../components/GlobalFooter.vue';  
 
 export default{
     components: {
         GlobalHeader,
-        GlobalFooter
-        // DocAgenda
+        GlobalFooter,
+        DocAgenda
     },
 
     data(){
