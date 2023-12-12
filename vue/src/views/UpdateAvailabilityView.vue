@@ -6,11 +6,8 @@
         <div class="doc-availability-conditions">
             <doc-availability-conditions v-bind:offices="offices" />
         </div>
-        <!-- <div class="offices">
-            <office-details v-bind:offices="offices" />
-        </div> -->
         <div class="doc-time-blocks">
-            <doc-time-blocks v-bind:timeBlocks="timeBlocks" v-bind:scheduleStatuses="scheduleStatuses" />
+            <doc-time-blocks  v-bind:scheduleStatuses="scheduleStatuses" />
         </div>
         
         
@@ -36,7 +33,7 @@ export default {
     },
     data() {
         return {
-            timeBlocks: [],
+            //timeBlocks: [],
             officeTimeBlocks: [],
             offices: [],
             officeHours: {
@@ -82,7 +79,7 @@ export default {
                     this.scheduleStatuses = response.data;
                     })
                 .catch(error => {
-                this.handleErrorResponse();
+                
                 })
             // getOfficeHours(doctorId)
             }
