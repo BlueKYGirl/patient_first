@@ -69,6 +69,31 @@ public class JdbcAppointmentDao implements AppointmentDao{
         return agenda;
     }
 
+    @Override
+    public List<AgendaDto> getDoctorAgenda(int doctorId){
+        List<AgendaDto> agenda = new ArrayList<>();
+        String sql = "SELECT a.appointment_id, a.doctor_id, a.patient_id, (p.first_name || ' ' || p.last_name) AS patient_name, a.appointment_date, a.time_block_id, " +
+                "tb.start_time, a.office_id, apr.appointment_reason, aps.appointment_status, ss.schedule_status " +
+                "FROM appointment_schedule a " +
+                "JOIN person p ON a.patient_id = p.person_id " +
+                "JOIN time_block tb ON a.time_block_id = tb.time_block_id " +
+                "JOIN schedule_status ss ON a.schedule_status_id = ss.schedule_status_id " +
+                "JOIN appointment_status aps ON a.appointment_status_id = aps.appointment_status_id " +
+                "JOIN appointment_reason apr ON a.appointment_reason_id = apr.appointment_reason_id " +
+                "WHERE a.doctor_id = ? ORDER BY a.appointment_id;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            while (results.next()) {
+                agenda.add(mapRowToAgendaDto(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return agenda;
+    }
+
 
     //  ***** SAVING ORIGINAL GET PLAIN APPOINTMENT OBJECT IN CASE WE NEED IT LATER *****
 //    @Override

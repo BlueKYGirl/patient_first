@@ -25,10 +25,10 @@ VALUES (1, '(123)456-7890', True);
 
 INSERT INTO office(address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time)
 VALUES (1, '(234)456-7890', 'Chachi & Associates', '8:00', '16:00'),
-       (1, '(555)765-1670', 'Goomba Family Medicine', '8:00', '16:00'),
-       (1, '(999)567-2006', 'Larryville Physicians Network', '8:00', '16:00'),
-       (1, '(888)510-5504', 'DevMed Health Office', '8:00', '16:00'),
-       (1, '(677)543-0994', 'Patient First Family Practice', '8:00', '16:00');
+       (1, '(555)765-1670', 'Goomba Family Medicine', '9:30', '17:00'),
+       (1, '(999)567-2006', 'Larryville Physicians Network', '9:00', '16:30'),
+       (1, '(888)510-5504', 'DevMed Health Office', '8:00', '16:30'),
+       (1, '(677)543-0994', 'Patient First Family Practice', '8:00', '17:00');
 
 INSERT INTO appointment_schedule(
 	doctor_id, patient_id, appointment_date, time_block_id, office_id, appointment_reason_id, appointment_status_id, schedule_status_id)

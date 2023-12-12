@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/appointments")
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 public class AppointmentScheduleController {
 
     private TimeBlockDao timeBlockDao;
@@ -36,10 +36,22 @@ public class AppointmentScheduleController {
     // *** Get AGENDA: a list of appointments by Doctor ID and date  ****
     @CrossOrigin
     @RequestMapping(path = "/agenda/{doctorId}/{date}", method = RequestMethod.GET)
-    public List<AgendaDto> getDoctorAgenda(@PathVariable int doctorId, @PathVariable String date){
+    public List<AgendaDto> getDoctorAgendaByDate(@PathVariable int doctorId, @PathVariable String date){
         LocalDate appt_date = LocalDate.parse(date);
         try {
             List<AgendaDto> agenda = appointmentDao.getDoctorAgendaByDate(doctorId, appt_date);
+            return agenda;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
+        }
+    }
+
+    // *** Get AGENDA: a list of appointments ONLY BY DOCTOR ID (so,all dates)  ****
+    @CrossOrigin
+    @RequestMapping(path = "/agenda/{doctorId}", method = RequestMethod.GET)
+    public List<AgendaDto> getDoctorAgenda(@PathVariable int doctorId){
+        try {
+            List<AgendaDto> agenda = appointmentDao.getDoctorAgenda(doctorId);
             return agenda;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
