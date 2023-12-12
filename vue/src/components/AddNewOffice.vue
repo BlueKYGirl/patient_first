@@ -5,7 +5,7 @@
     </div> 
   <!-- TODO: Reform the register method into a "schedule" method -->
     <div id="schedule" class="text-center">
-      <form v-on:submit.prevent="register" >
+      <form class="form-template" v-on:submit.prevent="register" >
         <h1>Office Details:</h1>
         <div role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
@@ -156,32 +156,37 @@ h1{
 
 .form-input{
   display: flex;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0fr 0fr 0fr 0fr;
-  margin-left: 40%;
-  margin-right: auto;
-  text-align: left;
+  flex-direction: column;
+  align-content:center;
 }
 
 .input-box{
   margin-bottom: 1%;
-  display: flex;
- justify-content: space-around;
+ display: flex;
+ flex-direction: column;
  position: relative;
 }
 
 .create-office-button{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  margin-left: 43%;
+  margin-right: auto;
   background-color: #614BC3;
   color: white;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  margin-left: 30%;
-  margin-right: 45%;
+  margin-top: 4%;
+  margin-bottom: 4%;
   padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-style: none;
   border-radius: 3px;
-  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+  box-shadow: 0 1px 2px #0000001f, inset 0 0 1px #00000052;
+}
+
+button:hover {
+    background-color: #85E6C5;
 }
 
 form{
@@ -191,6 +196,11 @@ form{
   border-radius: 2%;
   box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
   background-color: white;
+}
+
+.form-template{
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .text-center{

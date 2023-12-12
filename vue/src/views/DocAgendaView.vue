@@ -3,6 +3,9 @@
         <div class="header">
             <global-header />
         </div>
+        <div class="doc-agenda">
+            <doc-agenda />
+        </div>
         
 
 

@@ -9,4 +9,9 @@ export default {
     listAllAppointments(doctorId) {
         return http.get('');
     },
+
+
+    listDoctorAgenda(doctorId) {
+        return http.get(`/appointments/agenda/${doctorId}`);
+    },
 }

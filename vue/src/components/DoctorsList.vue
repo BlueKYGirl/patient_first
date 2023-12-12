@@ -62,5 +62,11 @@ export default {
     box-shadow: 0 0px 1px #33BBC5, inset 0 0 2px #33BBC5;
     margin-left: 30%;
     margin: 2%;
+        a {
+            text-decoration: none;
+            &:hover {
+                color: #33BBC5;
+            }
+        }
 }
 </style>

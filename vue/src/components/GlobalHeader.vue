@@ -4,8 +4,8 @@
       <img class="logo" src="../assets/smallTransparent.png" />
       <div class="nav">
 
-    <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp; |&nbsp;&nbsp;
-    <router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token != ''"> Logout</router-link></div>
+    <router-link class="nav-link" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp; |&nbsp;&nbsp;
+    <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token != ''"> Logout</router-link></div>
    
   </div>
   
@@ -33,16 +33,18 @@
   display: flex;
   flex-direction: row;
   margin-top: 1%;
-  font-size: large;
+  font-size: large; 
   
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+      }
+    } 
 }
-a {
-  text-decoration: none;
-  color: #614BC3;
-}
-a.active {
-  color: #33BBC5;
-}
+
+
 
 /*.logo {
   display: block;

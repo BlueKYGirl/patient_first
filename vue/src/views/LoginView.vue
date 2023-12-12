@@ -6,12 +6,12 @@
     
   <div class="graphic">
     <img src="../assets/transparentText.png">
-</div>
+  </div>
     
    
   <div id="login">
     
-    <form v-on:submit.prevent="login">
+    <form class="form-template" v-on:submit.prevent="login">
       <h1 style="font-size:large; font-weight: 150;">Please Log In:</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -21,17 +21,20 @@
       </div>
       <div class="form-input-group">
         <label for="username">Username:</label>
+      </div>
+      <div class="input-box">  
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
         <label for="password">Password: &nbsp;</label> 
+      </div>
+      <div class="input-box">
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button class="sign-in-button" type="submit" style="margin-top: 2%;">Sign in</button>
-      <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <p><router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p> 
     </form>
-  </div>
+  </div> 
 </body>
 <div>
     <f1 class="footer-text" style="margin-top: 2%;">Having trouble? Please contact us at:</f1>
@@ -94,15 +97,30 @@ label {
 }
 
 .sign-in-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 43%;
+  margin-right: auto;
   background-color: #614BC3;
   color: white;
+  margin-top: 4%;
+  margin-bottom: 4%;
   padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-style: none;
   border-radius: 3px;
-  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+  box-shadow: 0 1px 2px #0000001f, inset 0 0 1px #00000052;
 }
 
-
+button:hover {
+    background-color: #85E6C5;
+}
+.form-template{
+  margin-left: 20%;
+  margin-right: 20%;
+}
 #login{
   display: flex;
   flex-direction: column;
@@ -116,6 +134,18 @@ label {
   margin-right: 25%;
   text-align: center;
 
+}
+
+.form-input-group{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.input-box{
+  margin-bottom: 1%;
+ display: flex;
+ flex-direction: column;
+ position: relative;
 }
 
 h2 {
@@ -136,6 +166,7 @@ h2 {
 
 .footer-text{
   display: block;
+  font-size: small;
   text-align: center;
 }
 

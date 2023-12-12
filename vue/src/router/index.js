@@ -12,7 +12,7 @@ import UpdateAvailabilityView from '../views/UpdateAvailabilityView.vue';
 import DocAgendaView from '../views/DocAgendaView.vue';
 import AddOfficeView from '../views/AddOfficeView.vue';
 import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
-
+import ReviewsView from '../views/ReviewsView.vue';
 import DocPortalView from '../views/DocPortalView.vue';
 import AdminPortalView from '../views/AdminPortalView.vue';
 
@@ -106,6 +106,14 @@ const routes = [
     path: "/docportal/addoffices",
     name: "add-offices",
     component: AddOfficeView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/docportal/reviews",
+    name: "reviews",
+    component: ReviewsView,
     meta: {
       requiresAuth: false
     }

@@ -120,6 +120,12 @@ figcaption {
 .portals {
     color: black;
     margin-left: 85%;
+      a {
+        text-decoration: none;
+        &:hover {
+          color: #614BC3;
+        }
+      }
   }
   .test {
     color: #33BBC5;

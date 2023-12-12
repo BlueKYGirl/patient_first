@@ -1,10 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Appointment;
-import com.techelevator.model.Doctor;
-import com.techelevator.model.RegisterUserDto;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -48,17 +45,69 @@ public class JdbcAppointmentDao implements AppointmentDao{
 
 
     @Override
-    public List<Appointment> getDoctorAgendaByDate(int doctorId, LocalDate date){
-        List<Appointment> agenda = new ArrayList<>();
-        String sql = "SELECT appointment_id, doctor_id, patient_id, appointment_date, time_block_id, office_id, appointment_reason_id, appointment_status_id, schedule_status_id " +
-                     "FROM appointment_schedule " +
-                     "WHERE doctor_id = ? AND appointment_date = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId, date);
-        while (results.next()) {
-            agenda.add(mapRowToAppointment(results));
+    public List<AgendaDto> getDoctorAgendaByDate(int doctorId, LocalDate date){
+        List<AgendaDto> agenda = new ArrayList<>();
+        String sql = "SELECT a.appointment_id, a.doctor_id, a.patient_id, (p.first_name || ' ' || p.last_name) AS patient_name, a.appointment_date, a.time_block_id, " +
+                            "tb.start_time, a.office_id, apr.appointment_reason, aps.appointment_status, ss.schedule_status " +
+                     "FROM appointment_schedule a " +
+                     "JOIN person p ON a.patient_id = p.person_id " +
+                     "JOIN time_block tb ON a.time_block_id = tb.time_block_id " +
+                     "JOIN schedule_status ss ON a.schedule_status_id = ss.schedule_status_id " +
+                     "JOIN appointment_status aps ON a.appointment_status_id = aps.appointment_status_id " +
+                     "JOIN appointment_reason apr ON a.appointment_reason_id = apr.appointment_reason_id " +
+                     "WHERE a.doctor_id = ? AND a.appointment_date = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId, date);
+            while (results.next()) {
+                agenda.add(mapRowToAgendaDto(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
         }
         return agenda;
     }
+
+    @Override
+    public List<AgendaDto> getDoctorAgenda(int doctorId){
+        List<AgendaDto> agenda = new ArrayList<>();
+        String sql = "SELECT a.appointment_id, a.doctor_id, a.patient_id, (p.first_name || ' ' || p.last_name) AS patient_name, a.appointment_date, a.time_block_id, " +
+                "tb.start_time, a.office_id, apr.appointment_reason, aps.appointment_status, ss.schedule_status " +
+                "FROM appointment_schedule a " +
+                "JOIN person p ON a.patient_id = p.person_id " +
+                "JOIN time_block tb ON a.time_block_id = tb.time_block_id " +
+                "JOIN schedule_status ss ON a.schedule_status_id = ss.schedule_status_id " +
+                "JOIN appointment_status aps ON a.appointment_status_id = aps.appointment_status_id " +
+                "JOIN appointment_reason apr ON a.appointment_reason_id = apr.appointment_reason_id " +
+                "WHERE a.doctor_id = ? ORDER BY a.appointment_id;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            while (results.next()) {
+                agenda.add(mapRowToAgendaDto(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return agenda;
+    }
+
+
+    //  ***** SAVING ORIGINAL GET PLAIN APPOINTMENT OBJECT IN CASE WE NEED IT LATER *****
+//    @Override
+//    public List<Appointment> getDoctorAgendaByDate(int doctorId, LocalDate date){
+//        List<Appointment> agenda = new ArrayList<>();
+//        String sql = "SELECT appointment_id, doctor_id, patient_id, appointment_date, time_block_id, office_id, appointment_reason_id, appointment_status_id, schedule_status_id " +
+//                "FROM appointment_schedule " +
+//                "WHERE doctor_id = ? AND appointment_date = ?;";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId, date);
+//        while (results.next()) {
+//            agenda.add(mapRowToAppointment(results));
+//        }
+//        return agenda;
+//    }
 
 
     @Override
@@ -104,4 +153,22 @@ public class JdbcAppointmentDao implements AppointmentDao{
 
         return appt;
     }
+
+    private AgendaDto mapRowToAgendaDto(SqlRowSet rowSet) {
+        AgendaDto agendaDto = new AgendaDto();
+        agendaDto.setAppointmentId(rowSet.getInt("appointment_id"));
+        agendaDto.setDoctorId(rowSet.getInt("doctor_id"));
+        agendaDto.setPatientId(rowSet.getInt("patient_id"));
+        agendaDto.setPatientName(rowSet.getString("patient_name"));
+        agendaDto.setDate(rowSet.getDate("appointment_date").toLocalDate());
+        agendaDto.setTimeBlockId(rowSet.getInt("time_block_id"));
+        agendaDto.setStartTime(rowSet.getTime("start_time").toLocalTime());
+        agendaDto.setOfficeId(rowSet.getInt("office_id"));
+        agendaDto.setAppointmentReason(rowSet.getString("appointment_reason"));
+        agendaDto.setAppointmentStatus(rowSet.getString("appointment_status"));
+        agendaDto.setScheduleStatus(rowSet.getString("schedule_status"));
+
+        return agendaDto;
+    }
 }
+
