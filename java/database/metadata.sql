@@ -118,6 +118,7 @@ INSERT INTO time_block (start_time) VALUES ('23:45');
 
 -- Appointment Reason Metadata Insert Statements --
 
+INSERT INTO appointment_reason (appointment_reason) VALUES (' ');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('New Problem');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Follow-Up');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Wellness (Adult)');
@@ -153,7 +154,7 @@ INSERT INTO phone_type (phone_type) VALUES ('Land-Line');
 -- Patient 0 Metadata Insert Statement --
 
 INSERT INTO person (user_id, first_name, last_name, email, date_of_birth) 
-VALUES (1, 'Appointment', 'Not Booked', 'appointment@notbooked.net', '1111-11-11');
+VALUES (2, 'available', 'appointment', 'appointment@notbooked.net', '1111-11-11');
 
 
 COMMIT TRANSACTION;

@@ -29,8 +29,8 @@ public class JdbcOfficeDao implements OfficeDao {
     @Override
     public List<Office> getAllOffices() {
         List<Office> allOffices = new ArrayList<>();
-        String sql = "SELECT o.office_id, o.practice_name, a.street_address, a.city, a.state_abbreviation, a.zip_code " +
-                "o.office_phone_number, o.office_hours_start_time, o.office_hours_end_time" +
+        String sql = "SELECT o.office_id, o.practice_name, a.street_address, a.city, a.state_abbreviation, a.zip_code, " +
+                "o.office_phone_number, o.office_hours_start_time, o.office_hours_end_time " +
                 "FROM office o " +
                 "JOIN address a ON o.address_id = a.address_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -72,13 +72,13 @@ public class JdbcOfficeDao implements OfficeDao {
                 "RETURNING address_id;";
         int newAddressId;
         try {
-            newAddressId = jdbcTemplate.update(sqlAddress, int.class, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode());
+            newAddressId = jdbcTemplate.queryForObject(sqlAddress, int.class, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("A Data Integrity Violation has occurred. ", e);
         } catch (Exception e) {
-            throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
+            throw new DaoException("An unknown error occurred. BANANA SPLIT@@@@ Contact your system administrator. ", e);
         }
         // Creates Office
         String sqlOffice = "INSERT INTO office (address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time) " +
@@ -86,7 +86,8 @@ public class JdbcOfficeDao implements OfficeDao {
                 "RETURNING office_id;";
         int newOfficeId;
         try {
-            newOfficeId = jdbcTemplate.update(sqlOffice, newAddressId, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd());
+            newOfficeId = jdbcTemplate.queryForObject(sqlOffice, int.class, newAddressId, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd());
+//            Office newOffice = office.getOfficeById
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -95,6 +96,7 @@ public class JdbcOfficeDao implements OfficeDao {
             throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
         }
         // Return the fully populated office object
+
         return office;
     }
 

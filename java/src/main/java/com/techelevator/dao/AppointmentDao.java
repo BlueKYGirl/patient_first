@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.AgendaDto;
 import com.techelevator.model.Appointment;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ public interface AppointmentDao {
 
     Appointment getAppointmentById(int appointmentId);
 
-    List<Appointment> getDoctorAgendaByDate(int doctorId, LocalDate date);
+    List<AgendaDto> getDoctorAgendaByDate(int doctorId, LocalDate date);
 
     void createAppointments(List<Appointment> appointments);
 
