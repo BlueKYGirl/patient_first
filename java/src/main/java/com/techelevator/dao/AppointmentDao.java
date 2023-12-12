@@ -11,7 +11,7 @@ public interface AppointmentDao {
 
     List<Appointment> getDoctorAgendaByDate(int doctorId, LocalDate date);
 
-    List<Appointment> createAppointments(List<Appointment> appointments);
+    void createAppointments(List<Appointment> appointments);
 
     Appointment createAppointment(Appointment appointment);
 }
