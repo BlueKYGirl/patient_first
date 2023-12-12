@@ -222,7 +222,7 @@ export default{
 };
 </script>
 
-<style>
+<style scoped>
 @import '../css/styles.css';
 
 h2{
@@ -288,19 +288,23 @@ h2{
     display: flex;
     justify-content: space-around;
     margin-bottom: 10%;
+   margin-left: 30%;
+   margin-right: 30%;
+    
 }
 
 button{
   background-color: #614BC3;
   color: white;
   font-size: large;
-  width: 100px;
+  width: 200px; 
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
   border-style: none;
   border-radius: 3px;
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+  
 }
 button:hover {
     background-color: #85E6C5;

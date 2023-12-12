@@ -13,19 +13,11 @@
 
 <script>
 import GlobalHeader from '../components/GlobalHeader.vue';
-import doctorAvailabilityService from '../services/DoctorAvailabilityService';
-import DocTimeBlocks from '../components/DocTimeBlocks.vue';
-import officesService from '../services/OfficesService';
-import OfficeDetails from '../components/OfficeDetails.vue';
-import DocAvailabilityConditions from '../components/DocAvailabilityConditions.vue';
 import ScheduleAppointment from '../components/ScheduleAppointment.vue';
 
 export default {
     components: {
         GlobalHeader,
-        // DocTimeBlocks,
-        // OfficeDetails,
-        // DocAvailabilityConditions,
         ScheduleAppointment
     },
     data() {

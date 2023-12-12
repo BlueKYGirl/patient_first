@@ -51,7 +51,7 @@
         <div class="input-box">
         <input type="date" id="dateOfBirth" v-model="user.dateOfBirth" required />
       </div>
-      <button type="submit">Create Account</button>
+      <button class="create-account-button" type="submit">Create Account</button>
     </form>
       <p style="text-align: center;"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
 
@@ -133,7 +133,7 @@ h1{
   font-weight: 100;
 }
 
-button{
+.create-account-button{
   background-color: #614BC3;
   color: white;
   margin-top: 2%;

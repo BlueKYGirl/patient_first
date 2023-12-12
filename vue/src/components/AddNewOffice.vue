@@ -10,25 +10,25 @@
         <div role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
         </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="practice-name">Practice Name: </label>
         </div>
             <div class="input-box">
                 <input type="text" id="practice-name" v-model="office.practiceName" required autofocus />
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="street-address">Street Address: </label>
         </div>
             <div class="input-box">
                 <input type="text" id="street-address" v-model="office.streetAddress" required />
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="city">City: </label>
         </div>
             <div class="input-box"> 
                 <input type="text" id="city" v-model="office.city" required />
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="state-abbreviation">State: </label>
         </div>
             <div class="input-box">
@@ -85,25 +85,25 @@
                     <option>WY</option>
                 </select>
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="zipcode">Zip Code (5 digit): </label>
         </div>
             <div class="input-box">
                 <input type="number" id="zipcode" v-model="office.zipcode" required />
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="phone">Phone Number: </label>
         </div>
             <div class="input-box">
                 <input type="text" id="phone" v-model="office.phone" required />
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="office-hours-start">Office Hours Start Time: </label>
         </div>
             <div class="input-box">
                 <input type="text" id="office-hours-start" v-model="office.officeHoursStart" required />
             </div>
-        <div class="form-input-group">
+        <div class="form-input">
           <label for="office-hours-end">Office Hours End Time: </label>
         </div>
             <div class="input-box">
@@ -116,7 +116,7 @@
             </div>
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
-        <button type="create-office" v-on:click="createOffice()">Create Office</button>
+        <button class="create-office-button" type="create-office" v-on:click="createOffice()">Create Office</button>
       </form>  
 
     </div>
@@ -148,14 +148,14 @@
 }   
 </script>
 
-<style>
+<style scoped>
 h1{
   text-align: center;
   font-weight: 100;
 }
 
-.form-input-group{
-  display: grid;
+.form-input{
+  display: flex;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 0fr 0fr 0fr 0fr;
   margin-left: 40%;
@@ -164,20 +164,22 @@ h1{
 }
 
 .input-box{
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   display: flex;
  justify-content: space-around;
+ position: relative;
 }
 
-button{
+.create-office-button{
+  display: flex;
+  justify-content: center;
   background-color: #614BC3;
   color: white;
   margin-top: 2%;
-  margin-bottom: 5%;
-  margin-left: 45%;
+  margin-bottom: 2%;
+  margin-left: 30%;
   margin-right: 45%;
-  padding: 5px;
-  border-style: none;
+  padding: 3px;
   border-radius: 3px;
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
 }

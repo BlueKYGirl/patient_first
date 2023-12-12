@@ -118,6 +118,7 @@ INSERT INTO time_block (start_time) VALUES ('23:45');
 
 -- Appointment Reason Metadata Insert Statements --
 
+INSERT INTO appointment_reason (appointment_reason) VALUES (' ');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('New Problem');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Follow-Up');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Wellness (Adult)');
