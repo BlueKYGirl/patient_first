@@ -34,7 +34,7 @@ public class OfficeController {
 
     // Get All Offices *************************************
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Office> getAllOffices(){
+    public List<Office> getAllOffices() {
         try {
             List<Office> offices = officeDao.getAllOffices();
             return offices;
@@ -47,7 +47,7 @@ public class OfficeController {
     @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "", method = RequestMethod.POST)
-    public Office createOffice(@Valid @RequestBody Office newOffice){
+    public Office createOffice(@Valid @RequestBody Office newOffice) {
         Office office;
         try {
             office = officeDao.createOffice(newOffice);
@@ -62,7 +62,7 @@ public class OfficeController {
     // PUT Update Office Information *************************************
     @CrossOrigin
     @RequestMapping(path = "/{officeId}", method = RequestMethod.PUT)
-    public Office updateOfficeInfo(@Valid @RequestBody Office office, @PathVariable int officeId){
+    public Office updateOfficeInfo(@Valid @RequestBody Office office, @PathVariable int officeId) {
         office.setOfficeId(officeId);
         try {
             Office updatedOfficeInfo = officeDao.updateOfficeById(office, officeId);
@@ -73,8 +73,4 @@ public class OfficeController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Scientfic Postgres  " + e);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 31a5ef0c3e03a58a94d526b77e09871c1069934a
