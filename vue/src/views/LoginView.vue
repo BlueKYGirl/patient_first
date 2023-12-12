@@ -106,7 +106,6 @@ button{
 #login{
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   padding: 2%;
   padding-top: 1%;
   border-width: .5px;
