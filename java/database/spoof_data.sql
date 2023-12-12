@@ -30,6 +30,20 @@ VALUES (1, '(234)456-7890', 'Chachi & Associates', '8:00', '16:00'),
        (1, '(888)510-5504', 'DevMed Health Office', '8:00', '16:00'),
        (1, '(677)543-0994', 'Patient First Family Practice', '8:00', '16:00');
 
+INSERT INTO appointment_schedule(
+	doctor_id, patient_id, appointment_date, time_block_id, office_id, appointment_reason_id, appointment_status_id, schedule_status_id)
+	VALUES (3, 0, '2024-01-15', 33, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 36, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 39, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 42, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 45, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 48, 1, 1, 1, 3),
+		   (3, 0, '2024-01-15', 49, 1, 1, 1, 2),
+		   (3, 0, '2024-01-15', 53, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 56, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 59, 1, 1, 1, 1),
+		   (3, 0, '2024-01-15', 62, 1, 1, 1, 1);
+
 
 INSERT INTO doctor_office(doctor_id, office_id)
 VALUES (1, 1),
