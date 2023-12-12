@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 abstract class Person {
 
+    private int personId;
     private int userId;
     private String firstName;
     private String lastName;
@@ -14,7 +15,8 @@ abstract class Person {
 
     // *** Constructors ****
 
-    public Person(int userId, String firstName, String lastName, String emailAddress, LocalDate dateOfBirth) {
+    public Person(int personId, int userId, String firstName, String lastName, String emailAddress, LocalDate dateOfBirth) {
+        this.personId = personId;
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +29,13 @@ abstract class Person {
 
     // **** Getters and Setters ****
 
+    public int getPersonId() {
+        return personId;
+    }
 
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
     public int getUserId() {
         return userId;
     }

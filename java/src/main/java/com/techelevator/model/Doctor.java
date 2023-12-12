@@ -10,8 +10,8 @@ public class Doctor extends Person {
 
     // **** Constructors ****
 
-    public Doctor(int userId, String firstName, String lastName, String emailAddress, LocalDate dateOfBirth, int doctorId, String specialty, boolean primaryCare) {
-        super(userId, firstName, lastName, emailAddress, dateOfBirth);
+    public Doctor(int personId, int userId, String firstName, String lastName, String emailAddress, LocalDate dateOfBirth, int doctorId, String specialty, boolean isPrimaryCare) {
+        super(personId, userId, firstName, lastName, emailAddress, dateOfBirth);
         this.doctorId = doctorId;
         this.specialty = specialty;
         this.isPrimaryCare = isPrimaryCare;
@@ -38,11 +38,11 @@ public class Doctor extends Person {
         this.specialty = specialty;
     }
 
-    public boolean isPrimaryCare() {
+    public boolean getIsPrimaryCare() {
         return isPrimaryCare;
     }
 
-    public void setIsPrimaryCare(boolean primaryCare) {
+    public void setIsPrimaryCare(boolean isPrimaryCare) {
         this.isPrimaryCare = isPrimaryCare;
     }
 }
