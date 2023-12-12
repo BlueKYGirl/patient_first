@@ -41,13 +41,6 @@ SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ?
 JOIN office o ON a.address_id = o.address_id
 WHERE office_id = ?;
 
-
--- SELECT Statements --
-SELECT * FROM address;
-SELECT * FROM office;
-SELECT * FROM doctor_office;
-SELECT * FROM users;
-
 -- Testing Update Address --
 UPDATE address a
 SET 
@@ -69,5 +62,14 @@ SET
 FROM address a
 WHERE o.address_id = a.address_id
   AND o.office_id = 2;
+  
+ 
+-- SELECT Statements --
+SELECT * FROM address;
+SELECT * FROM office;
+SELECT * FROM doctor_office;
+SELECT * FROM users;
+
+
 
 

@@ -1,4 +1,10 @@
-
+<template>
+  <div>
+    <button @click="sendPatientMail">Send Patient Mail</button>
+    <button @click="sendDocMail">Send Doctor Mail</button>
+  </div>
+</template>
+  
   <script>
     import nodemailer from 'nodemailer';
     import { google } from 'google-auth-library';
@@ -12,15 +18,6 @@
         REFRESH_TOKEN: '1//04NhLPAd5EFvuCgYIARAAGAQSNwF-L9IrJ30RuZNLmgXDdiCcw2RVyu7MbBD4fS3tYpZ_V7NSa5TxfCb5JXd_oZUNXkTuhEk8gT4',
         oAuth2Client: new google.auth.OAuth2(this.CLIENT_ID, this.CLIENT_SECRET, this.REDIRECT_URI),
       };
-    },
-    created() {
-      this.initOAuth2Client();
-      this.sendPatientMail()
-        .then(result => console.log('Scheduling Details Email Sent!', result))
-        .catch(error => console.log(error.message));
-      this.sendDocMail()
-        .then(result => console.log('Your doctor has been notified about the upcoming appointment.', result))
-        .catch(error => console.log(error.message));
     },
     methods: {
       initOAuth2Client() {
