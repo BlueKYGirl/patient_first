@@ -7,10 +7,17 @@ export default {
     listAllTimeBlocks() {
         return http.get('/appointments/alltimes');
     },
+
     listTimeBlocksByOfficeHours(startTimeId, endTimeId) {
         return http.get(`/appointments/times/${startTimeId}/${endTimeId}`);
     },
+
     listScheduleStatuses () {
         return http.get('/appointments/schedulestatus');
+    },
+
+    createAvailability(appointments) {
+        return http.post('/appointments/agenda/add', appointments);
     }
+
 }

@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.sql.DataSource;
 import java.time.LocalDate;
@@ -24,6 +25,7 @@ public class JdbcAppointmentDao implements AppointmentDao{
     public JdbcAppointmentDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
+
 
     @Override
     public Appointment getAppointmentById(int apptId) {
@@ -44,6 +46,7 @@ public class JdbcAppointmentDao implements AppointmentDao{
         return appt;
     }
 
+
     @Override
     public List<Appointment> getDoctorAgendaByDate(int doctorId, LocalDate date){
         List<Appointment> agenda = new ArrayList<>();
@@ -56,6 +59,7 @@ public class JdbcAppointmentDao implements AppointmentDao{
         }
         return agenda;
     }
+
 
     @Override
     public Appointment createAppointment(Appointment appt) {
@@ -76,9 +80,13 @@ public class JdbcAppointmentDao implements AppointmentDao{
         return newAppt;
     }
 
+
     @Override
-    public List<Appointment> createAppointments(List<Appointment> appointments) {
-        return null;
+    public void createAppointments(List<Appointment> appointments) {
+        for (Appointment appt : appointments) {
+            createAppointment(appt);
+        }
+
 
     }
 

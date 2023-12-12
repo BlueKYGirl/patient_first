@@ -1,11 +1,11 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 
 import java.util.List;
 
 public interface OfficeDao {
-
 
 
     List<Office> getAllOffices();
@@ -16,6 +16,8 @@ public interface OfficeDao {
 
     Office createOffice(Office office);
 
-    Office updateOffice(Office office);
+    void addDoctorsToOfficeByOfficeId(List<Doctor> doctors, int officeId);
 
+
+    Office updateOfficeById(Office office, int officeId);
 }

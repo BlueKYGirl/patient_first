@@ -4,9 +4,9 @@
       <global-header />
     </div> 
   <!-- TODO: Reform the register method into a "schedule" method -->
-    <div id="register" class="text-center">
+    <div id="schedule" class="text-center">
       <form v-on:submit.prevent="register" >
-        <h1>Create Account</h1>
+        <h1>Office Details:</h1>
         <div role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
         </div>
@@ -117,11 +117,8 @@
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
         <button type="create-office" v-on:click="createOffice()">Create Office</button>
-      </form>
-        <p style="text-align: center;"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-  
-      <f1 class="footer-text">Having trouble? Please contact us at:</f1>
-      <f2 class="footer-text">1-888-8888</f2>
+      </form>  
+
     </div>
     <div class="footer">
       <global-footer/>
@@ -152,5 +149,53 @@
 </script>
 
 <style>
+h1{
+  text-align: center;
+  font-weight: 100;
+}
+
+.form-input-group{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0fr 0fr 0fr 0fr;
+  margin-left: 40%;
+  margin-right: auto;
+  text-align: left;
+}
+
+.input-box{
+  margin-bottom: 2%;
+  display: flex;
+ justify-content: space-around;
+}
+
+button{
+  background-color: #614BC3;
+  color: white;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  margin-left: 45%;
+  margin-right: 45%;
+  padding: 5px;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
+}
+
+form{
+  padding: 2%;
+  padding-top: 1%;
+  border-width: .5px;
+  border-radius: 2%;
+  box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+  background-color: white;
+}
+
+.text-center{
+  border-color: gray;
+  border-width: .5px;
+  margin-top: 5%;
+}
+
 
 </style>

@@ -48,10 +48,26 @@ SELECT * FROM office;
 SELECT * FROM doctor_office;
 SELECT * FROM users;
 
-
-
+-- Testing Update Address --
 UPDATE address a
-SET a.street_address = '2222 Testaroo', a.city = 'McTesterville', a.state_abbreviation = 'TEST', a.zip_code = '22222',
-o.office_phone_number = '(222)222-2222', o.practice_name = 'OMEGATEST', o.office_hours_start_time = ?, o.office_hours_end_time = ?
-JOIN office o ON a.address_id = o.address_id
-WHERE office_id = ?;
+SET 
+  street_address = '2222 Testaroo',
+  city = 'McTesterville',
+  state_abbreviation = 'TEST',
+  zip_code = '22222'
+FROM office o
+WHERE a.address_id = o.address_id
+  AND o.office_id = 2;
+
+-- Testing Update Office Details --
+UPDATE office o
+SET 
+  office_phone_number = '(222)222-2222',
+  practice_name = 'OMEGATEST',
+  office_hours_start_time = '08:00:00',
+  office_hours_end_time = '16:00:00'
+FROM address a
+WHERE o.address_id = a.address_id
+  AND o.office_id = 2;
+
+

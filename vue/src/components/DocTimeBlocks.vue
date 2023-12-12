@@ -51,7 +51,7 @@
     
     
     <div class="button">
-        <button type="submit">Submit</button>
+        <button type="submit" v-on:click="createAvailabilityRecords">Submit</button>
         <button type="reset" v-on:click="resetOfficeTimeBlocks">Reset</button>
     </div>    
 </body>
@@ -65,6 +65,7 @@
 
 <script>
 import GlobalFooter from '../components/GlobalFooter.vue';
+import doctorAvailabilityService from '../services/DoctorAvailabilityService';
 
 
 export default{
@@ -76,7 +77,8 @@ export default{
         return {
             defaultDuration: 0,
             officeTimeBlocks: [],
-            timeBlocks: [],
+            // timeBlocks: [],
+            availabilityRecords: [],
         }
     },
     props: {
@@ -162,6 +164,39 @@ export default{
                 timeBlock.scheduleStatusId = 0;
                 timeBlock.enabled = true;
             });
+        },
+
+        createAvailabilityRecords() {
+            
+            const availabilityRecs = [];
+            this.officeTimeBlocks.forEach((timeBlock) => {
+                const appt = {};
+                appt.doctorId = this.$store.state.user.doctorId;
+                appt.patientId = 0;
+                appt.date = this.$store.state.dayToBeScheduled;
+                appt.timeBlockId = timeBlock.timeBlockId;
+                appt.officeId = this.$store.state.selectedOfficeId;
+                appt.appointmentReasonId = 1;          // ******** NOTE, THIS WILL HAVE TO BE CHANGED WHEN WE DECIDE WHAT TO DO IN THE DB ******
+                appt.appointmentStatusId = 1;
+                appt.scheduleStatusId = timeBlock.scheduleStatusId;
+                if (timeBlock.scheduleStatusId > 0) {       // ONLY send records that have an assigned status
+                    availabilityRecs.push(appt);
+                }
+                //alert(appt)
+            });
+            
+            this.availabilityRecords = availabilityRecs;
+
+            // Call HTTP PUT 
+            doctorAvailabilityService.createAvailability(this.availabilityRecords) 
+                .then(response => {
+                    if (response.status === 201) {
+                        alert("Schedule successfully submitted!!")
+                    } else {
+                        alert("Something went wrong.  :-( ")
+                    }
+                });
+
         },
 
 
