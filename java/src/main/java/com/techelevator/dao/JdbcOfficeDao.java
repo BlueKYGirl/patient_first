@@ -95,21 +95,12 @@ public class JdbcOfficeDao implements OfficeDao {
         } catch (Exception e) {
             throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
         }
-
-
-        // TODO: Take this and make it a separate routine to just add doctors to the office.
-        // Add Doctor(s) to Office -- Not entirely sure right off the rip how to iterate through the list to add each pairing
-        String sqlDoctorsInOffice = "INSERT INTO doctor_office (doctor_id, office_id) " +
-                                    "VALUES (?, ?);";
-        for (Doctor doctor : office.getDoctorsInOffice()){
-            jdbcTemplate.update(sqlDoctorsInOffice, doctor.getDoctorId(), newOfficeId);
-        }
-
     // Return the fully populated office object
         return office;
     }
 
-
+    @Override
+    public List<Doctor> addDoctorsToOffice()
 
    // TODO: Fix this method.
     @Override
