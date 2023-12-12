@@ -21,7 +21,7 @@
   <router-link to="/schedule"><img src="../assets/Calendar.png" class="icons"/><figcaption>Set Schedule</figcaption></router-link>
 </figure>
 <figure>
-  <img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Check Reviews</figcaption>
+  <router-link to="/docportal/reviews"><img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Check Reviews</figcaption></router-link>
 </figure>
 <figure>
   <router-link to="/agenda"><img class="icons" src="../assets/stethoscope.png"/><figcaption>See Appointments</figcaption></router-link>
@@ -117,14 +117,34 @@ h3 {
   justify-content: space-around;
   padding-top: 1%;
   padding-bottom: 1%;
+  a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+      }
+  
+}
   
 }
 .icons {
   width: 25%;
+  a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+        opacity: 40%;
+      }
+    }
 }
 figcaption {
   font-weight: bold;
   font-size: larger;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+    }
+}
 }
 .button {
   background-color: #33BBC5;
@@ -142,6 +162,12 @@ figcaption {
 .portals {
     color: black;
     margin-left: 85%;
+      a {
+        text-decoration: none;
+        &:hover {
+          color: #614BC3;
+        }
+      }
   }
   .test {
     color: #33BBC5;

@@ -36,15 +36,12 @@
     margin-bottom: 10px;
     width: 55px;
     height: auto;
-
+      
   }
-
-  a {
-    text-decoration: none;
-    color: #614BC3;
-  }
-  a.active {
+  .social-media:hover {
     color: #33BBC5;
   }
+
+  
 
 </style>  

@@ -59,9 +59,15 @@ public class JdbcOfficeDao implements OfficeDao {
 
     @Override
     public Office getOfficeById(int officeId){
-
-
-        return null;
+        Office office = new Office();
+        String sql = "SELECT office_id, address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time " +
+                     "FROM office " +
+                     "WHERE office_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while (results.next()) {
+            office = mapRowToOffice(results);
+        }
+        return office;
     }
 
     @Override
@@ -85,9 +91,10 @@ public class JdbcOfficeDao implements OfficeDao {
                 "VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING office_id;";
         int newOfficeId;
+        Office newOffice;
         try {
             newOfficeId = jdbcTemplate.queryForObject(sqlOffice, int.class, newAddressId, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd());
-//            Office newOffice = office.getOfficeById
+            newOffice = getOfficeById(newOfficeId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -97,7 +104,7 @@ public class JdbcOfficeDao implements OfficeDao {
         }
         // Return the fully populated office object
 
-        return office;
+        return newOffice;
     }
 
 
@@ -113,13 +120,12 @@ public class JdbcOfficeDao implements OfficeDao {
 
     @Override
     public Office updateOfficeById(Office office, int officeId){
-        // Creates Address
-        String sqlAddress = "INSERT INTO address (street_address, city, state_abbreviation, zip_code) " +
-                "VALUES (?, ?, ?, ?) " +
-                "RETURNING address_id;";
-        int newAddressId;
+        // Updates Address By Office ID
+        String sqlAddress = "UPDATE address " +
+                            "SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ? " +
+                            "WHERE office_id IN (SELECT office_id FROM office WHERE office_id = ?);";
         try {
-            newAddressId = jdbcTemplate.update(sqlAddress, int.class, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode());
+            jdbcTemplate.update(sqlAddress, int.class, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -127,13 +133,12 @@ public class JdbcOfficeDao implements OfficeDao {
         } catch (Exception e) {
             throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
         }
-        // Creates Office
-        String sqlOffice = "INSERT INTO office (address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time) " +
-                "VALUES (?, ?, ?, ?, ?) " +
-                "RETURNING office_id;";
-        int newOfficeId;
+        // Updates Office By Office ID
+        String sqlOffice = "UPDATE office " +
+                "SET office_phone_number = ?, practice_name = ?, office_hours_start_time = ?, office_hours_end_time = ?\n" +
+                "WHERE office_id = ?;";
         try {
-            newOfficeId = jdbcTemplate.update(sqlOffice, newAddressId, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd());
+            jdbcTemplate.update(sqlOffice, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -141,7 +146,10 @@ public class JdbcOfficeDao implements OfficeDao {
         } catch (Exception e) {
             throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
         }
-        // Return the fully populated office object
+
+
+//        updatedOffice = jdbcTemplate.queryForObject()
+        // Return the updated office object
         return office;
     }
 

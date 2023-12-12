@@ -13,10 +13,13 @@ const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_U
 
 oAuth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
 
-async function sendDocMail() {
+
+export default {
+    methods: {
+    sendDocMail() {
 
     try {
-        const accessToken = await oAuth2Client.getAccessToken()
+        const accessToken = oAuth2Client.getAccessToken()
 
         const transport = nodemailer.createTransport({
             service: 'gmail',
@@ -29,6 +32,7 @@ async function sendDocMail() {
                 accessToken: accessToken
             }
         })
+        
 
         const mailOptions = {
             from: 'Patient First <patientfirst2023@gmail.com>',
@@ -44,12 +48,12 @@ async function sendDocMail() {
     } catch (error) {
         return error
     }
-}
+},
 
-async function sendPatientMail() {
+    sendPatientMail() {
 
     try {
-        const accessToken = await oAuth2Client.getAccessToken()
+        const accessToken = oAuth2Client.getAccessToken()
 
         const transport = nodemailer.createTransport({
             service: 'gmail',
@@ -78,11 +82,13 @@ async function sendPatientMail() {
         return error
     }
 }
+}
 
-sendPatientMail()
-    .then(result => console.log('Scheduling Details Email Sent!', result))
-    .catch(error => console.log(error.message));
-sendDocMail()
-    .then(result => console.log('Your doctor has been notified about the upcoming appointment.', result))
-    .catch(error => console.log(error.message));
+}
+// sendPatientMail()
+//     .then(result => console.log('Scheduling Details Email Sent!', result))
+//     .catch(error => console.log(error.message));
+// sendDocMail()
+//     .then(result => console.log('Your doctor has been notified about the upcoming appointment.', result))
+//     .catch(error => console.log(error.message));
     
