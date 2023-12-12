@@ -79,9 +79,9 @@ public class OfficeController {
             Office updatedOfficeInfo = officeDao.updateOfficeById(office, officeId);
             return updatedOfficeInfo;
         } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "This doctor doesn't have an office...Sad." + e);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There is no office with this ID. Please try again, or contact your system administrator." + e);
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Scientfic Postgres  " + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Scientfic Postgres goes boink " + e);
         }
     }
 }

@@ -71,3 +71,24 @@ SELECT * FROM doctor_office;
 SELECT * FROM users;
 SELECT * FROM doctor;
 SELECT * FROM person;
+
+
+-- Office Select By Office ID --
+SELECT office_id, address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time
+FROM office
+WHERE office_id = 2;
+
+-- Office Object Fields Select By Office Id --
+
+SELECT o.office_id, o.address_id, o.office_phone_number, o.practice_name, 
+o.office_hours_start_time, o.office_hours_end_time, ad.street_address, ad.city,
+ad.state_abbreviation, ad.zip_code, dof.doctor_id
+FROM office o
+JOIN address ad ON o.address_id = ad.address_id
+JOIN doctor_office dof ON o.office_id = dof.office_id
+JOIN doctor doc ON dof.doctor_id = doc.doctor_id
+WHERE o.office_id = 1;
+
+
+
+
