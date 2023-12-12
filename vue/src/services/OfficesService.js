@@ -13,5 +13,4 @@ export default {
     updateOffice(officeId, office) {
         return http.put(`/office/${officeId}`, office);
     }
-    // ...This needs to pass an office object...How do that..? -Tyler-
 }

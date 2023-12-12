@@ -73,4 +73,8 @@ public class OfficeController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Scientfic Postgres  " + e);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 31a5ef0c3e03a58a94d526b77e09871c1069934a
