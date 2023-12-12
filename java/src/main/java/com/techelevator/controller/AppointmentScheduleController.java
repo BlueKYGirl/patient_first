@@ -36,15 +36,28 @@ public class AppointmentScheduleController {
     // *** Get AGENDA: a list of appointments by Doctor ID and date  ****
     @CrossOrigin
     @RequestMapping(path = "/agenda/{doctorId}/{date}", method = RequestMethod.GET)
-    public List<Appointment> getDoctorAgenda(@PathVariable int doctorId, @PathVariable String date){
+    public List<AgendaDto> getDoctorAgenda(@PathVariable int doctorId, @PathVariable String date){
         LocalDate appt_date = LocalDate.parse(date);
         try {
-            List<Appointment> agenda = appointmentDao.getDoctorAgendaByDate(doctorId, appt_date);
+            List<AgendaDto> agenda = appointmentDao.getDoctorAgendaByDate(doctorId, appt_date);
             return agenda;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
         }
     }
+
+    // *** SAVING ORIGINAL PLAIN GET APPOINTMENT OBJECT IN CASE WE NEED IT LATER  ****
+//    @CrossOrigin
+//    @RequestMapping(path = "/agenda/{doctorId}/{date}", method = RequestMethod.GET)
+//    public List<Appointment> getDoctorAgenda(@PathVariable int doctorId, @PathVariable String date){
+//        LocalDate appt_date = LocalDate.parse(date);
+//        try {
+//            List<Appointment> agenda = appointmentDao.getDoctorAgendaByDate(doctorId, appt_date);
+//            return agenda;
+//        } catch (DaoException e) {
+//            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
+//        }
+//    }
 
     // *** Create a list of appointments from the Doctor Availability page  ****
     @CrossOrigin
