@@ -76,7 +76,7 @@ public class OfficeController {
     public Office updateOfficeInfo(@Valid @RequestBody Office office, @PathVariable int officeId) {
         office.setOfficeId(officeId);
         try {
-            Office updatedOfficeInfo = officeDao.updateOfficeById(office, officeId);
+            Office updatedOfficeInfo = officeDao.updateOfficeById(office);
             return updatedOfficeInfo;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There is no office with this ID. Please try again, or contact your system administrator." + e);

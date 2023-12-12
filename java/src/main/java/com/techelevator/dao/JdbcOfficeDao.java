@@ -122,13 +122,13 @@ public class JdbcOfficeDao implements OfficeDao {
 
 
     @Override
-    public Office updateOfficeById(Office office, int officeId){
+    public Office updateOfficeById(Office office){
         // Updates Address By Office ID
         String sqlAddress = "UPDATE address " +
                             "SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ? " +
-                            "WHERE office_id IN (SELECT office_id FROM office WHERE office_id = ?);";
+                            "WHERE address_id = (SELECT address_id FROM office WHERE office_id = ?);";
         try {
-            jdbcTemplate.update(sqlAddress, int.class, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode());
+            jdbcTemplate.update(sqlAddress, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode(), office.getOfficeId());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -141,7 +141,7 @@ public class JdbcOfficeDao implements OfficeDao {
                            "SET office_phone_number = ?, practice_name = ?, office_hours_start_time = ?, office_hours_end_time = ? " +
                            "WHERE office_id = ?;";
         try {
-            jdbcTemplate.update(sqlOffice, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd(), officeId);
+            jdbcTemplate.update(sqlOffice, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd(), office.getOfficeId());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -150,7 +150,7 @@ public class JdbcOfficeDao implements OfficeDao {
             throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
         }
 
-        Office updatedOffice = getOfficeById(officeId);
+        Office updatedOffice = getOfficeById(office.getOfficeId());
         // Return the updated office objectF
         return updatedOffice;
     }
