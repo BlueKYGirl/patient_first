@@ -93,6 +93,7 @@ export default {
 @import '../css/styles.css';
 
 label {
+  display: flex;
   margin-right: 0.5rem;
 }
 
@@ -140,6 +141,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-content: center;
+    
 }
 .input-box{
   margin-bottom: 1%;
@@ -168,6 +170,13 @@ h2 {
   display: block;
   font-size: small;
   text-align: center;
+}
+a {
+  text-decoration: none;
+  color: #614BC3;
+}
+a:hover {
+  color: #85E6C5;
 }
 
 </style>

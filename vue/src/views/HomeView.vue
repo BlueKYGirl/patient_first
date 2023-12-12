@@ -138,8 +138,12 @@ main {
   padding-bottom: 1%;
     a {
       text-decoration: none;
+      color:#614BC3;
       &:hover {
         color: #33BBC5;
+      }
+      &:link {
+        color:#614BC3;
       }
   
 }
@@ -184,10 +188,21 @@ footer {
   width: 25%;
     a {
       text-decoration: none;
+      color: #614BC3;
       &:hover {
         color: #33BBC5;
         opacity: 40%;
       }
+      &.router-link-exact-active {
+        color: #614BC3;
+      }
+      &:visited {
+        color: #614BC3;
+      }
+      &:link {
+        color: #614BC3;
+      }
+
     }
 }
 .icons:hover {
@@ -196,6 +211,7 @@ footer {
 figcaption {
   font-weight: bold;
     a {
+      color:#614BC3;
       text-decoration: none;
       &:hover {
         color: #33BBC5;

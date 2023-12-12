@@ -108,6 +108,9 @@ h1 {
   justify-content: space-around;
   padding-top: 1%;
   padding-bottom: 1%;
+    a {
+      color:#614BC3;
+    }
   
 }
 .icons {
