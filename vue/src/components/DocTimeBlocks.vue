@@ -5,12 +5,12 @@
         <div class="default-duration">
             <label>Default Duration (mins): </label>
             <select v-model=this.defaultDuration v-on:change="updateDurations(this.defaultDuration)">
-                <option>15</option>
-                <option>30</option>
-                <option>45</option>
-                <option>60</option>
-                <option>75</option>
-                <option>90</option>
+                <option class="time-lengths">15</option>
+                <option class="time-lengths">30</option>
+                <option class="time-lengths">45</option>
+                <option class="time-lengths">60</option>
+                <option class="time-lengths">75</option>
+                <option class="time-lengths">90</option>
             </select>
         </div>
         <div>&nbsp;</div>
@@ -27,12 +27,14 @@
                 <select v-model="timeBlock.duration" style="background-color: #C8FFE0;" 
                         v-bind:disabled="!timeBlock.enabled"
                         v-on:change="timeBlock.scheduleStatusId=0; enableTimeBlocks(timeBlock.startTime)">
-                    <option>15</option>
-                    <option>30</option>
-                    <option>45</option>
-                    <option>60</option>
-                    <option>75</option>
-                    <option>90</option>
+                    
+                    <option class="options">15</option>
+                    <option class="options">30</option>
+                    <option class="options">45</option>
+                    <option class="options">60</option>
+                    <option class="options">75</option>
+                    <option class="options">90</option>
+                
                 </select>
             </div>
             <div class="status-list-container">
@@ -239,9 +241,12 @@ h2{
 }
 
 .default-duration{
+    display: flex;
     margin-top: 11%;
-    align-items: end;
-    font-size: small;
+    align-items:flex-start;
+    font-size: medium;
+    font-weight: bold;
+   
 }
 
 .button{
@@ -253,12 +258,22 @@ h2{
 button{
   background-color: #614BC3;
   color: white;
+  font-size: large;
   width: 100px;
-  padding: 3px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-style: none;
   border-radius: 3px;
   box-shadow: 0 3px 2px #0000001f, inset 0 0 1px #00000052;
 }
+button:hover {
+    background-color: #85E6C5;
+}
+.options {
+    font-weight: bold;
+}
+
 
 
 </style>

@@ -151,28 +151,36 @@
 }
 
 .office {
-    border: 2px solid black;
+    box-shadow: 0 2px 5px white,  inset 0 0 6px whitesmoke;
+    border: 2px solid whitesmoke;
     width: 120%;
     padding: 5px;
-    padding-top: 1%;
+    padding-top: 0%;
     margin-top: 2px;
-    background-color: #C8FFE0;
+    background-color: #85E6C5;    
     font-weight:normal;
     font-size: normal;
     color: black;
     border-radius: 7px;
     box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+    
 
+}
+.office:hover {
+    border: 2px solid black;
 }
 
 p{
     font-weight: bold;
-    margin-top: 4%;
+    margin-top: 2%;
     margin-bottom: 1%;
 }
 
 .selected {
-    background-color: rgb(212, 190, 212);
+    border: 2px solid black;
+    opacity: 80%;
+    box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+    background-color: #C8FFE0;
 }
 
 .day-input {

@@ -24,10 +24,10 @@
   <img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Check Reviews</figcaption>
 </figure>
 <figure>
-  <img class="icons" src="../assets/stethoscope.png"/><figcaption>See Appointments</figcaption>
+  <router-link to="/agenda"><img class="icons" src="../assets/stethoscope.png"/><figcaption>See Appointments</figcaption></router-link>
 </figure>
 <figure>
-  <img class="icons" src="../assets/medicalStaff.png"/><figcaption>Set Office Information</figcaption>
+  <router-link to="/docportal/addoffices"><img class="icons" src="../assets/medicalStaff.png"/><figcaption>Set Office Information</figcaption></router-link>
 </figure>
 </div>
         </section>
