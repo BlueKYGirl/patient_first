@@ -31,7 +31,7 @@
   <img src="../assets/Calendar.png" class="icons"/><figcaption>Schedule a Visit</figcaption>
 </figure>
 <figure>
-  <img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Leave Reviews</figcaption>
+  <router-link to="/docportal/reviews"><img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Leave Reviews</figcaption></router-link>
 </figure>
 <figure>
   <img class="icons" src="../assets/stethoscope.png"/><figcaption>See Your Visits</figcaption>

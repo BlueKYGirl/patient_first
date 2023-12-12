@@ -21,7 +21,7 @@
   <router-link to="/schedule"><img src="../assets/Calendar.png" class="icons"/><figcaption>Set Schedule</figcaption></router-link>
 </figure>
 <figure>
-  <img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Check Reviews</figcaption>
+  <router-link to="/docportal/reviews"><img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Check Reviews</figcaption></router-link>
 </figure>
 <figure>
   <router-link to="/agenda"><img class="icons" src="../assets/stethoscope.png"/><figcaption>See Appointments</figcaption></router-link>
