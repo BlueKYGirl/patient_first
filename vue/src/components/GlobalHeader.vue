@@ -36,7 +36,8 @@
   font-size: large; 
   
     a {
-      font-weight: bold;
+      font-weight:normal;
+      color: #614BC3;
       text-decoration: none;
       &:hover {
         color: #33BBC5;

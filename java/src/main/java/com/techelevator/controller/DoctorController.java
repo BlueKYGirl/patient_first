@@ -7,12 +7,15 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
+import com.techelevator.model.RegisterUserDto;
+import com.techelevator.model.User;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -68,6 +71,20 @@ public class DoctorController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "This doctor doesn't have an office...Sad." + e);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Scientfic Postgres  " + e);
+        }
+    }
+
+    @CrossOrigin
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "", method = RequestMethod.POST)
+    public void createDoctor(@Valid @RequestBody Doctor doctor) {
+        try {
+           Doctor newDoctor = doctorDao.createDoctor(doctor);
+            if (doctor == null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User registration failed.");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed." + e);
         }
     }
 
