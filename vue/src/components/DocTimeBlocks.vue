@@ -75,7 +75,7 @@ export default{
         return {
             defaultDuration: 0,
             officeTimeBlocks: [],
-            timeBlocks: [],
+            // timeBlocks: [],
             availabilityRecords: [],
         }
     },
