@@ -131,7 +131,7 @@
 
 </script>
 
-<style>
+<style scoped>
 @import '../css/styles.css';
 
 .conditions {

@@ -24,8 +24,8 @@
 </main>
 <div class="subfooter">
   <figure>
-  <router-link to="/doctors"><img class="icons" src="../assets/medicalStaff.png" alt="Find a doctor"/></router-link>
-  <figcaption>Find a Doctor</figcaption>
+  <router-link to="/doctors"><img class="icons" src="../assets/medicalStaff.png"/>
+  <figcaption>Find a Doctor</figcaption></router-link>
 </figure>
 <figure>
   <img src="../assets/Calendar.png" class="icons"/><figcaption>Schedule a Visit</figcaption>
@@ -121,6 +121,12 @@ main {
   font-size: x-large; 
   align-content: center;
   margin-left: 10%;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #614BC3;
+      }
+    }
   
   
 }
@@ -130,7 +136,13 @@ main {
   justify-content: space-around;
   padding-top: 5%;
   padding-bottom: 1%;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+      }
   
+}
 }
 footer {
   grid-area: footer;
@@ -147,6 +159,13 @@ footer {
   margin-left: auto;
   margin-right: auto;
   width: 25%;
+  
+  a {
+      text-decoration: none;
+      &.router-link-exact-active {
+        text-decoration: none;
+      }
+    }
 }
 .welcome {
   justify-content: end;
@@ -163,9 +182,26 @@ footer {
 }
 .icons {
   width: 25%;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+        opacity: 40%;
+      }
+    }
+}
+.icons:hover {
+  opacity: 100%;
 }
 figcaption {
   font-weight: bold;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+        
+      }
+    }
   
 }
 #footer {
@@ -190,6 +226,12 @@ figcaption {
   .portals {
     color: black;
     margin-left: 85%;
+      a {
+        text-decoration: none;
+        &:hover {
+          color: #614BC3;
+        }
+      }
   }
   .test {
     color: #33BBC5;

@@ -117,14 +117,34 @@ h3 {
   justify-content: space-around;
   padding-top: 1%;
   padding-bottom: 1%;
+  a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+      }
+  
+}
   
 }
 .icons {
   width: 25%;
+  a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+        opacity: 40%;
+      }
+    }
 }
 figcaption {
   font-weight: bold;
   font-size: larger;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #33BBC5;
+    }
+}
 }
 .button {
   background-color: #33BBC5;
@@ -142,6 +162,12 @@ figcaption {
 .portals {
     color: black;
     margin-left: 85%;
+      a {
+        text-decoration: none;
+        &:hover {
+          color: #614BC3;
+        }
+      }
   }
   .test {
     color: #33BBC5;
