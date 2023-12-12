@@ -65,7 +65,7 @@ public class OfficeController {
     public Office updateOfficeInfo(@Valid @RequestBody Office office, @PathVariable int officeId){
         office.setOfficeId(officeId);
         try {
-            Office updatedOfficeInfo = officeDao.updateOffice(office);
+            Office updatedOfficeInfo = officeDao.updateOfficeById(office, officeId);
             return updatedOfficeInfo;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "This doctor doesn't have an office...Sad." + e);
@@ -73,6 +73,4 @@ public class OfficeController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Scientfic Postgres  " + e);
         }
     }
-
-
 }
