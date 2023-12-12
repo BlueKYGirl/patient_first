@@ -116,7 +116,7 @@
             </div>
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
-        <button type="create-office" v-on:click="createOffice()">Create Office</button>
+        <button class="create-office-button" type="create-office" v-on:click="createOffice()">Create Office</button>
       </form>  
 
     </div>
@@ -148,7 +148,7 @@
 }   
 </script>
 
-<style>
+<style scoped>
 h1{
   text-align: center;
   font-weight: 100;
@@ -170,12 +170,14 @@ h1{
  position: relative;
 }
 
-button{
+.create-office-button{
+  display: flex;
+  justify-content: center;
   background-color: #614BC3;
   color: white;
   margin-top: 2%;
   margin-bottom: 2%;
-  margin-left: 45%;
+  margin-left: 30%;
   margin-right: 45%;
   padding: 3px;
   border-radius: 3px;

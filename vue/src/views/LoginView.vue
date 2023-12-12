@@ -27,7 +27,7 @@
         <label for="password">Password: &nbsp;</label> 
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit" style="margin-top: 2%;">Sign in</button>
+      <button class="sign-in-button" type="submit" style="margin-top: 2%;">Sign in</button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
@@ -93,7 +93,7 @@ label {
   margin-right: 0.5rem;
 }
 
-button{
+.sign-in-button{
   background-color: #614BC3;
   color: white;
   padding: 3px;
