@@ -43,6 +43,17 @@ public class OfficeController {
         }
     }
 
+    // Get Office By Office Id *************************************
+    @RequestMapping(path = "/{officeId}", method = RequestMethod.GET)
+    public Office getOfficeByOfficeId(@PathVariable int officeId) {
+        try {
+            Office office = officeDao.getOfficeById(officeId);
+            return office;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There is no office with this ID." + e);
+        }
+    }
+
     // POST Create New Office *************************************
     @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)

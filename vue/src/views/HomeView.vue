@@ -69,7 +69,11 @@
 </template>
 
 <script>
+// import SendMail from '../services/SendMail.js'; --> Axios Email Service
 
+
+
+// import SendEmail from '../components/SendEmail.vue';
 
 //*********************************************************************
 //ADDED THE FOOTER ON HERE FOR YOU, IF YOU DON'T NEED IT, JUST DELETE :) -Shianne
@@ -87,7 +91,10 @@ export default {
     //GlobalHeader,
     //GlobalFooter
     
-  }
+  },
+  // created(){             --> Axios Email Service
+  //   SendMail.sendMail();
+  // }
 };
 </script>
 
