@@ -9,7 +9,7 @@
         <img class="review-star-five" src="../assets/5star.png" />
             <p1 class="review-title">Dr. LovesChachi is awesome!</p1>
             <p2>"He is caring, listens to my concerns, and 
-                always pleasant. Dr. LovesChachi's nursing staff is equally awesome
+                always pleasant. Dr. Chachi's nursing staff is equally awesome
                 and full of friendly faces!"</p2>
                 <p3>- Patient of Dr. LovesChachi</p3>
         </div>
@@ -17,10 +17,10 @@
         <div class="review">
             <img style="margin-top: 5%;" src="../assets/4star.png" />
             <p1 class="review-title" style="margin-top: 5%;"> Perfect as always!</p1>
-            <p2>"Dr. Ie has great bed side manner and a soft touch.
+            <p2>"Dr. Patel has great bed side manner and a soft touch.
                 I was able to get in and out in a timely manner. It is 
                 always a pleasant experience."</p2>
-                <p3>- Patient of Dr. Ie</p3>
+                <p3>- Patient of Dr. Patel</p3>
         </div>
 
         <div class="review">

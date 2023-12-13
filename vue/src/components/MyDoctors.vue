@@ -9,8 +9,8 @@
             <img class="doctor-headshot" src="../assets/PF-doctor-headshot-MG.jpg" />
             </div>
            <div class="display"> 
-         <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }"><button type="submit" class="doctor-links">View Office Details</button>
-        <button type="submit" class="doctor-links">Book Appointment</button></router-link>
+         <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }"><button type="submit" class="doctor-links">View Office Details</button></router-link>
+         <button type="submit" class="doctor-links">Book Appointment</button>
             </div>
         </div>    
 
