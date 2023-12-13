@@ -4,9 +4,19 @@
     <global-header/>
   </div> 
     
-  <div class="graphic">
-    <img src="../assets/transparentText.png">
+  <main>
+  <img src="../assets/helpingHand.jpg" class="main-image"/>
+  <div class="welcome">
+    <div class="text">
+    <h1>Welcome! We're glad you're here.</h1>
+    
   </div>
+  <div class="register">
+    <p><img src="../assets/transparentText.png" class="text-logo"/></p>
+    <p>Need an account? Sign up.</p>
+    <router-link to="/register"><a href="#" class="button">Get Started</a></router-link></div>
+  
+
     
    
   <div id="login">
@@ -32,13 +42,15 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button class="sign-in-button" type="submit" style="margin-top: 2%;">Sign in</button>
-      <p><router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p> 
+      <f1 class="footer-text" style="margin-top: 2%;">Having trouble? Please contact us at:</f1>
+    <f2 class="footer-text">1-888-8888</f2>
     </form>
+  </div>
   </div> 
+</main>
 </body>
 <div>
-    <f1 class="footer-text" style="margin-top: 2%;">Having trouble? Please contact us at:</f1>
-    <f2 class="footer-text">1-888-8888</f2>
+    
   </div>
   <div class="footer"> 
       <global-footer/>
@@ -91,7 +103,66 @@ export default {
 <style scoped >
 /* <rel="stylesheet" href="../css/styles.css" /> */
 @import '../css/styles.css';
-
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 5%;
+  a {
+      text-decoration: none;
+      &:hover {
+        color: #614BC3;
+      }
+    }
+}
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+  margin-right: 10%;
+  margin-left: 3%;
+ 
+ 
+}
+.main-image {
+  
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+.button {
+  font-size: large;
+  background-color: #33BBC5;
+  color: white;
+  display: inline-block;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  text-align: center;
+  padding-bottom: 3%;
+  padding-top: 3%;
+  
+  a {
+      text-decoration: none;
+      &.router-link-exact-active {
+        text-decoration: none;
+      }
+      &:hover {
+        color: #614BC3;
+      }
+    }
+}
+.register {
+  padding-bottom: 5%;
+}
 label {
   display: flex;
   margin-right: 0.5rem;
@@ -101,7 +172,7 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 43%;
+  margin-left: 35%;
   margin-right: auto;
   background-color: #614BC3;
   color: white;
@@ -131,9 +202,10 @@ button:hover {
   border-radius: 2%;
   box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
   background-color: white;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: center;
+  width:400px;
 
 }
 
