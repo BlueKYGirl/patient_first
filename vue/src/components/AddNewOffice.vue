@@ -101,13 +101,13 @@
           <label for="office-hours-start">Office Hours Start Time: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="office-hours-start" v-model="editOffice.officeHoursStart" required />
+                <input type="time" id="office-hours-start" v-model="editOffice.officeHoursStart" required />
             </div>
         <div class="form-input">
           <label for="office-hours-end">Office Hours End Time: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="office-hours-end" v-model="editOffice.officeHoursEnd" required />
+                <input type="time" id="office-hours-end" v-model="editOffice.officeHoursEnd" required />
             </div>
         <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
             <div class="doctor-list">
@@ -116,7 +116,7 @@
             </div>
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
-        <button class="create-office-button" type="create-office" v-on:click="createOffice()">Create Office</button>
+        <button class="create-office-button" type="submit" v-on:click.prevent="createOffice()">Create Office</button>
       </form>  
 
     </div>
@@ -153,10 +153,10 @@ import OfficesService from '../services/OfficesService';
       },
       methods: {
         createOffice() {
+          alert("CHECKCHECKCHECK"); // MAKE SURE TO REMOVE THIS ALERT!!! @@@@@@@@@@@@@@@@@@
+
           if (!this.validateForm()) {
             //Form isn't valid, user must update and submit again.
-            alert("Does this work? Top.");
-
             return;
           }
           // Check for add or edit
@@ -164,8 +164,6 @@ import OfficesService from '../services/OfficesService';
             OfficesService.createNewOffice(this.editOffice)
               .then ( response => {
                 if (response.status === 201) {
-                  alert("Does this work? Middle.");
-
                   this.$router.push({ name: 'AddOfficeView'});
                 }
               })
@@ -195,13 +193,13 @@ import OfficesService from '../services/OfficesService';
         if (error.response.status == 404) {
           this.$router.push({name: 'NotFoundView'});
         } else {
-          this.$store.commit('SET_NOTIFICATION_TEXT',
+          this.$store.commit('SET_NOTIFICATION',
           `Error ${verb} message. Response received was "${error.response.statusText}".`);
         }
       } else if (error.request) {
-        this.$store.commit('SET_NOTIFICATION_TEXT', `Error ${verb} message. Server could not be reached.`);
+        this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
       } else {
-        this.$store.commit('SET_NOTIFICATION_TEXT', `Error ${verb} message. Request could not be created.`);
+        this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
       }
     },
     validateForm() {
@@ -250,7 +248,7 @@ import OfficesService from '../services/OfficesService';
       
 
       if (msg.length > 0) {
-        this.$store.commit('SET_NOTIFICATION_TEXT', msg);
+        this.$store.commit('SET_NOTIFICATION', msg);
         return false;
       }
       return true;

@@ -39,9 +39,6 @@
 
             }
         },
-        created() {
-            this.createOffices();
-        }
     }
 </script>
 
