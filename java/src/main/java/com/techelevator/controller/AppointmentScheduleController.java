@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 
 import com.techelevator.dao.AppointmentDao;
+import com.techelevator.dao.AppointmentReasonDao;
 import com.techelevator.dao.ScheduleStatusDao;
 import com.techelevator.dao.TimeBlockDao;
 import com.techelevator.exception.DaoException;
@@ -26,11 +27,13 @@ public class AppointmentScheduleController {
     private ScheduleStatusDao scheduleStatusDao;
 
     private AppointmentDao appointmentDao;
+    private AppointmentReasonDao appointmentReasonDao;
 
-    public AppointmentScheduleController(TimeBlockDao timeBlockDao, ScheduleStatusDao scheduleStatusDao, AppointmentDao appointmentDao) {
+    public AppointmentScheduleController(TimeBlockDao timeBlockDao, ScheduleStatusDao scheduleStatusDao, AppointmentDao appointmentDao, AppointmentReasonDao appointmentReasonDao) {
         this.timeBlockDao = timeBlockDao;
         this.scheduleStatusDao = scheduleStatusDao;
         this.appointmentDao = appointmentDao;
+        this.appointmentReasonDao = appointmentReasonDao;
     }
 
     // *** Get AGENDA: a list of appointments by Doctor ID and date  ****
@@ -53,6 +56,18 @@ public class AppointmentScheduleController {
         try {
             List<AgendaDto> agenda = appointmentDao.getDoctorAgenda(doctorId);
             return agenda;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
+        }
+    }
+
+    // *** Get AVAILABLE APPOINTMENTS : a list of appointments ONLY BY DOCTOR ID (so,all dates)  ****
+    @CrossOrigin
+    @RequestMapping(path = "/available/{doctorId}", method = RequestMethod.GET)
+    public List<Appointment> getAvailableAppts(@PathVariable int doctorId){
+        try {
+            List<Appointment> availableAppts = appointmentDao.getAvailableAppointmentsByDoctorId(doctorId);
+            return availableAppts;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
         }
@@ -84,6 +99,21 @@ public class AppointmentScheduleController {
         }
     }
 
+    // *** Create a list of appointments from the Doctor Availability page  ****
+    @CrossOrigin
+    @RequestMapping(path = "/available/{appointmentId}", method = RequestMethod.PUT)
+    public Appointment updateAppointment(@RequestBody AppointmentDto appointmentDto, @PathVariable int appointmentId){
+        appointmentDto.setAppointmentId(appointmentId);
+        //String dateStr = appointment.getDate();
+        try {
+            Appointment updatedAppointment = appointmentDao.updateAppointment(appointmentDto);
+            return updatedAppointment;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Reservation not found." + e);
+        }
+
+    }
+
     // *** Get a list of timeBlocks by office hours start and end ****
     @CrossOrigin
     @RequestMapping(path = "/times/{startTime}/{endTime}", method = RequestMethod.GET)
@@ -113,7 +143,18 @@ public class AppointmentScheduleController {
             List<ScheduleStatusDto> scheduleStatuses = scheduleStatusDao.getScheduleStatuses();
             return scheduleStatuses;
         } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no doctors here...Bummer..." + e);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no schedule statuses here...Bummer..." + e);
+        }
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/appointmentreason", method = RequestMethod.GET)
+    public List<AppointmentReasonDto> getAppointmentReasons(){
+        try {
+            List<AppointmentReasonDto> apptReasons = appointmentReasonDao.getAppointmentReasons();
+            return apptReasons;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointment reasons here...Bummer..." + e);
         }
     }
 

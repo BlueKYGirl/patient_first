@@ -81,7 +81,7 @@ const routes = [
     name: "offices",
     component: OfficeDetailsView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -89,7 +89,7 @@ const routes = [
     name: "schedule",
     component: UpdateAvailabilityView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -102,7 +102,7 @@ const routes = [
     name: "doc-portal",
     component: DocPortalView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -110,7 +110,7 @@ const routes = [
     name: "admin",
     component: AdminPortalView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -118,7 +118,7 @@ const routes = [
     name: "add-offices",
     component: AddOfficeView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -126,17 +126,25 @@ const routes = [
     name: "reviews",
     component: ReviewsView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
-    path: "/appointments",
+    path: "/appointments/:doctorId",
     name: "schedule-appointment",
     component: ScheduleAppointmentView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
+  {
+    path: "/mydoctors",
+    name: "my-doctors",
+    component: OfficeDetailsView,
+    meta: {
+      requiresAuth: false
+    }
+  }
  
 ];
 

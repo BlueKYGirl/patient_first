@@ -4,7 +4,7 @@
             <global-header />
         </div>
         <div class="patient-schedule-appointment">
-            <schedule-appointment v-bind:doctorAvailableTimes="doctorAvailableTimes" />
+            <schedule-appointment />
         </div>
         
         
@@ -22,7 +22,7 @@ export default {
     },
     data() {
         return {
-            doctorAvailableTimes: [],
+            
         };
     },
     // methods: {

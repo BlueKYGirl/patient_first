@@ -43,6 +43,54 @@ public class JdbcAppointmentDao implements AppointmentDao{
         return appt;
     }
 
+    public Appointment updateAppointment(AppointmentDto apptDto){
+        // **** had issues with getting the LocalDate in the JSON from the front end.  Created DTO in order to get the date
+        //      as a string, and then parse it as a LocalDate. ***
+        Appointment appointment = mapApptDtoToAppointment(apptDto);
+        Appointment updatedAppt = null;
+
+        String sql = "UPDATE appointment_schedule SET doctor_id=?, patient_id=?, appointment_date=?, " +
+                        "time_block_id=?, office_id=?, appointment_reason_id=?, appointment_status_id=?, schedule_status_id=? " +
+                        "WHERE appointment_id = ?;";
+
+        try {
+            int numberOfRows = jdbcTemplate.update(sql, appointment.getDoctorId(), appointment.getPatientId(), appointment.getDate(), appointment.getTimeBlockId(),
+                        appointment.getOfficeId(), appointment.getAppointmentReasonId(), appointment.getAppointmentStatusId(), appointment.getScheduleStatusId(), appointment.getAppointmentId());
+            if (numberOfRows == 0) {
+                throw new DaoException("Zero rows affected. Something's wrong updating department_id: " + appointment.getAppointmentId());
+            } else {
+                updatedAppt = getAppointmentById(appointment.getAppointmentId());
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server.  Server go boom!", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation!", e);
+        } catch (Exception e) {
+            throw new DaoException("Something is wrong!!", e);
+        }
+        return updatedAppt;
+    }
+
+
+    public List<Appointment> getAvailableAppointmentsByDoctorId(int doctorId){
+        List<Appointment> availableAppts = new ArrayList<>();
+        int apptStatus = 1;                             // this is the value for "Available" appointments
+        String sql = "SELECT appointment_id, doctor_id, patient_id, appointment_date, time_block_id, office_id, appointment_reason_id, appointment_status_id, schedule_status_id " +
+                "FROM appointment_schedule " +
+                "WHERE appointment_status_id = ? AND doctor_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, apptStatus, doctorId);
+            while(results.next()) {
+                availableAppts.add(mapRowToAppointment(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return availableAppts;
+    }
+
 
     @Override
     public List<AgendaDto> getDoctorAgendaByDate(int doctorId, LocalDate date){
@@ -150,6 +198,21 @@ public class JdbcAppointmentDao implements AppointmentDao{
         appt.setAppointmentReasonId(rowSet.getInt("appointment_reason_id"));
         appt.setAppointmentStatusId(rowSet.getInt("appointment_status_id"));
         appt.setScheduleStatusId(rowSet.getInt("schedule_status_id"));
+
+        return appt;
+    }
+
+    private Appointment mapApptDtoToAppointment(AppointmentDto apptDto) {
+        Appointment appt = new Appointment();
+        appt.setAppointmentId(apptDto.getAppointmentId());
+        appt.setDoctorId(apptDto.getDoctorId());
+        appt.setPatientId(apptDto.getPatientId());
+        appt.setDate(LocalDate.parse(apptDto.getDate()));
+        appt.setTimeBlockId(apptDto.getTimeBlockId());
+        appt.setOfficeId(apptDto.getOfficeId());
+        appt.setAppointmentReasonId(apptDto.getAppointmentReasonId());
+        appt.setAppointmentStatusId(apptDto.getAppointmentStatusId());
+        appt.setScheduleStatusId(apptDto.getScheduleStatusId());
 
         return appt;
     }
