@@ -10,6 +10,10 @@ export default {
         return http.get(`/appointments/available/${doctorId}`);
     },
 
+    updateBookedAppointment(apptId, appointmentObject) {
+        return http.put(`/appointments/available/${apptId}`, appointmentObject);
+    },
+
     listAppointmentReasons () {
         return http.get('/appointments/appointmentreason');
     },

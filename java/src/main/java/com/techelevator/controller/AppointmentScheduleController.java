@@ -99,6 +99,21 @@ public class AppointmentScheduleController {
         }
     }
 
+    // *** Create a list of appointments from the Doctor Availability page  ****
+    @CrossOrigin
+    @RequestMapping(path = "/available/{appointmentId}", method = RequestMethod.PUT)
+    public Appointment updateAppointment(@RequestBody AppointmentDto appointmentDto, @PathVariable int appointmentId){
+        appointmentDto.setAppointmentId(appointmentId);
+        //String dateStr = appointment.getDate();
+        try {
+            Appointment updatedAppointment = appointmentDao.updateAppointment(appointmentDto);
+            return updatedAppointment;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Reservation not found." + e);
+        }
+
+    }
+
     // *** Get a list of timeBlocks by office hours start and end ****
     @CrossOrigin
     @RequestMapping(path = "/times/{startTime}/{endTime}", method = RequestMethod.GET)

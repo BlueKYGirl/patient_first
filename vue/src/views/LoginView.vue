@@ -4,6 +4,8 @@
     <global-header/>
   </div> 
     
+
+  
   <div class="graphic">
     <img src="../assets/transparentText.png">
   </div>
