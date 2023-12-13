@@ -1,6 +1,8 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
 
+const NOTIFICATION_TIMEOUT = 3001;
+
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
@@ -9,8 +11,42 @@ export function createStore(currentToken, currentUser) {
       officeTimeBlocks: [],
       selectedOfficeId: '',
       dayToBeScheduled: '',
+      notification: null,
     },
     mutations: {
+      SET_NOTIFICATION(state, notification) {
+        // Clear the current notification if one exists
+        if (state.notification) {
+          this.commit('CLEAR_NOTIFICATION');
+        }
+
+        if (typeof notification === 'string') {
+          // If only a string was sent, create a notification object with defaults
+          notification = {
+            message: notification,
+            type: 'error',
+            timeout: NOTIFICATION_TIMEOUT
+          }
+        } else {
+          // Else add default values if needed
+          notification.type = notification.type || 'error';
+          notification.timeout = notification.timeout || NOTIFICATION_TIMEOUT;
+        }
+
+        // Set the notification in state
+        state.notification = notification;
+
+        // Clear the message after timeout (see https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+        notification.timer = window.setTimeout(() => {
+          this.commit('CLEAR_NOTIFICATION');
+        }, notification.timeout);
+      },
+      CLEAR_NOTIFICATION(state) {
+        if (state.notification && state.notification.timer) {
+          window.clearTimeout(state.notification.timer);
+        }
+        state.notification = null;
+      },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
         localStorage.setItem('token', token);
