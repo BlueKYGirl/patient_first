@@ -6,8 +6,12 @@ const http = axios.create({
 
 
 export default {
-    listAllAppointments(doctorId) {
-        return http.get('');
+    listAvailableAppointments(doctorId) {
+        return http.get(`/appointments/available/${doctorId}`);
+    },
+
+    listAppointmentReasons () {
+        return http.get('/appointments/appointmentreason');
     },
 
 

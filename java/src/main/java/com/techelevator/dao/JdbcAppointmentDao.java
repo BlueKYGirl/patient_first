@@ -43,6 +43,25 @@ public class JdbcAppointmentDao implements AppointmentDao{
         return appt;
     }
 
+    public List<Appointment> getAvailableAppointmentsByDoctorId(int doctorId){
+        List<Appointment> availableAppts = new ArrayList<>();
+        int apptStatus = 1;                             // this is the value for "Available" appointments
+        String sql = "SELECT appointment_id, doctor_id, patient_id, appointment_date, time_block_id, office_id, appointment_reason_id, appointment_status_id, schedule_status_id " +
+                "FROM appointment_schedule " +
+                "WHERE appointment_status_id = ? AND doctor_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, apptStatus, doctorId);
+            while(results.next()) {
+                availableAppts.add(mapRowToAppointment(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return availableAppts;
+    }
+
 
     @Override
     public List<AgendaDto> getDoctorAgendaByDate(int doctorId, LocalDate date){
