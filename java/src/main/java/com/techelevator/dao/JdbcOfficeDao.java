@@ -60,9 +60,12 @@ public class JdbcOfficeDao implements OfficeDao {
     @Override
     public Office getOfficeById(int officeId){
         Office office = new Office();
-        String sql = "SELECT office_id, address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time " +
-                     "FROM office " +
-                     "WHERE office_id = ?;";
+        String sql = "SELECT o.office_id, o.address_id, o.office_phone_number, o.practice_name, " +
+                     "o.office_hours_start_time, o.office_hours_end_time, ad.street_address, ad.city, " +
+                     "ad.state_abbreviation, ad.zip_code " +
+                     "FROM office o " +
+                     "JOIN address ad ON o.address_id = ad.address_id " +
+                     "WHERE o.office_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
         while (results.next()) {
             office = mapRowToOffice(results);
@@ -119,13 +122,13 @@ public class JdbcOfficeDao implements OfficeDao {
 
 
     @Override
-    public Office updateOfficeById(Office office, int officeId){
+    public Office updateOfficeById(Office office){
         // Updates Address By Office ID
         String sqlAddress = "UPDATE address " +
                             "SET street_address = ?, city = ?, state_abbreviation = ?, zip_code = ? " +
-                            "WHERE office_id IN (SELECT office_id FROM office WHERE office_id = ?);";
+                            "WHERE address_id = (SELECT address_id FROM office WHERE office_id = ?);";
         try {
-            jdbcTemplate.update(sqlAddress, int.class, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode());
+            jdbcTemplate.update(sqlAddress, office.getStreetAddress(), office.getCity(), office.getStateAbbreviation(), office.getZipcode(), office.getOfficeId());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -135,10 +138,10 @@ public class JdbcOfficeDao implements OfficeDao {
         }
         // Updates Office By Office ID
         String sqlOffice = "UPDATE office " +
-                "SET office_phone_number = ?, practice_name = ?, office_hours_start_time = ?, office_hours_end_time = ?\n" +
-                "WHERE office_id = ?;";
+                           "SET office_phone_number = ?, practice_name = ?, office_hours_start_time = ?, office_hours_end_time = ? " +
+                           "WHERE office_id = ?;";
         try {
-            jdbcTemplate.update(sqlOffice, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd());
+            jdbcTemplate.update(sqlOffice, office.getPhone(), office.getPracticeName(), office.getOfficeHoursStart(), office.getOfficeHoursEnd(), office.getOfficeId());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database. ", e);
         } catch (DataIntegrityViolationException e) {
@@ -147,10 +150,9 @@ public class JdbcOfficeDao implements OfficeDao {
             throw new DaoException("An unknown error occurred.  Contact your system administrator. ", e);
         }
 
-
-//        updatedOffice = jdbcTemplate.queryForObject()
-        // Return the updated office object
-        return office;
+        Office updatedOffice = getOfficeById(office.getOfficeId());
+        // Return the updated office objectF
+        return updatedOffice;
     }
 
     private Office mapRowToOffice(SqlRowSet rowSet) {

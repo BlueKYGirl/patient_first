@@ -20,7 +20,7 @@
                 <table>
                     <thead>
                         <tr >
-                            <th class="table-title" colspan="5">Agenda for {{ this.filterDate }}</th>
+                            <th class="table-title" colspan="5">Agenda for: {{ this.filterDate }}</th>
                         </tr>
                         <tr>
                             <th>Time</th>
@@ -126,17 +126,52 @@ export default{
 @import '../css/styles.css';
 
 th {
+    display: flex;
     text-transform: uppercase;
     padding: 10px;
     text-align: center;
+    margin-bottom: 3%;
+}
+
+td{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    text-align: left;
+}
+tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .table-title {
     text-transform: none;
-    text-decoration: underline;
     font-size: x-large;
 }
-td {
-    padding: 20px;
+
+
+.header-agenda{
+    display: flex;
+    flex-direction: row;
+    margin-top: 7%;
+    margin-left: 10%;
+    font-weight: bold;
+
 }
 
+table{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 4%;
+  padding-top: 1%;
+  border-width: .5px;
+  border-radius: 2%;
+  box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+  background-color: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
 </style>

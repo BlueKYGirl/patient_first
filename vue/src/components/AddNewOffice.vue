@@ -14,25 +14,25 @@
           <label for="practice-name">Practice Name: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="practice-name" v-model="office.practiceName" required autofocus />
+                <input type="text" id="practice-name" v-model="editOffice.practiceName" required autofocus />
             </div>
         <div class="form-input">
           <label for="street-address">Street Address: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="street-address" v-model="office.streetAddress" required />
+                <input type="text" id="street-address" v-model="editOffice.streetAddress" required />
             </div>
         <div class="form-input">
           <label for="city">City: </label>
         </div>
             <div class="input-box"> 
-                <input type="text" id="city" v-model="office.city" required />
+                <input type="text" id="city" v-model="editOffice.city" required />
             </div>
         <div class="form-input">
           <label for="state-abbreviation">State: </label>
         </div>
             <div class="input-box">
-                <select id="state-abbreviation" v-model="office.stateAbbreviation" required>
+                <select id="state-abbreviation" v-model="editOffice.stateAbbreviation" required>
                     <option>AL</option>
                     <option>AK</option>         
                     <option>AZ</option>
@@ -89,25 +89,25 @@
           <label for="zipcode">Zip Code (5 digit): </label>
         </div>
             <div class="input-box">
-                <input type="number" id="zipcode" v-model="office.zipcode" required />
+                <input type="text" id="zipcode" v-model="editOffice.zipcode" required />
             </div>
         <div class="form-input">
           <label for="phone">Phone Number: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="phone" v-model="office.phone" required />
+                <input type="text" id="phone" v-model="editOffice.phone" required />
             </div>
         <div class="form-input">
           <label for="office-hours-start">Office Hours Start Time: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="office-hours-start" v-model="office.officeHoursStart" required />
+                <input type="time" id="office-hours-start" v-model="editOffice.officeHoursStart" required />
             </div>
         <div class="form-input">
           <label for="office-hours-end">Office Hours End Time: </label>
         </div>
             <div class="input-box">
-                <input type="text" id="office-hours-end" v-model="office.officeHoursEnd" required />
+                <input type="time" id="office-hours-end" v-model="editOffice.officeHoursEnd" required />
             </div>
         <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
             <div class="doctor-list">
@@ -116,7 +116,7 @@
             </div>
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
-        <button class="create-office-button" type="create-office" v-on:click="createOffice()">Create Office</button>
+        <button class="create-office-button" type="submit" v-on:click.prevent="createOffice()">Create Office</button>
       </form>  
 
     </div>
@@ -126,10 +126,19 @@
   </template>
 
 <script>
+import OfficesService from '../services/OfficesService';
+
   export default {
-      data() {
+    props: {
+      office: {
+        type: Object,
+        required: true
+      }
+    },
+    data() {
           return {
-          office: {
+          editOffice: {
+              officeId: 0,
               practiceName: '',
               streetAddress: '',
               city: '',
@@ -143,7 +152,107 @@
           }
       },
       methods: {
+        createOffice() {
+          alert("CHECKCHECKCHECK"); // MAKE SURE TO REMOVE THIS ALERT!!! @@@@@@@@@@@@@@@@@@
 
+          if (!this.validateForm()) {
+            //Form isn't valid, user must update and submit again.
+            return;
+          }
+          // Check for add or edit
+          if (this.editOffice.officeId === 0) {
+            OfficesService.createNewOffice(this.editOffice)
+              .then ( response => {
+                if (response.status === 201) {
+                  this.$router.push({ name: 'AddOfficeView'});
+                }
+              })
+              .catch ( error => {
+                this.handleErrorResponse(error, 'creating');
+              })
+          } else {
+            // TODO - Determine how to point this at a specific office as this adaptation from the message exercise doesn't translate 1-1.
+            OfficesService.updateOffice(this.office.officeId, this.editOffice)
+              .then ( response => {
+                if (response.status === 200) {
+                  alert("Does this work? Bottom.");
+
+                  this.$router.push({ name: 'AddOfficeView'});
+                }
+              })
+              .catch ( error => {
+                this.handleErrorResponse(error, 'updating');
+              })
+          }
+        },
+    cancelForm() {
+      this.$router.back();
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        if (error.response.status == 404) {
+          this.$router.push({name: 'NotFoundView'});
+        } else {
+          this.$store.commit('SET_NOTIFICATION',
+          `Error ${verb} message. Response received was "${error.response.statusText}".`);
+        }
+      } else if (error.request) {
+        this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
+      } else {
+        this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
+      }
+    },
+    validateForm() {
+      let msg = '';
+
+      this.editOffice.practiceName = this.editOffice.practiceName.trim();
+      if (this.editOffice.practiceName.length === 0) {
+        msg += 'The new office must have a name. ';
+      }
+
+      this.editOffice.streetAddress = this.editOffice.streetAddress.trim();
+      if (this.editOffice.streetAddress.length === 0) {
+        msg += 'The new office must have an address. ';
+      }
+
+      this.editOffice.city = this.editOffice.city.trim();
+      if (this.editOffice.city.length === 0) {
+        msg += 'The new office must have a city. ';
+      }
+
+      // Have this one validate State Abbreviation @@@@@@@@@@@
+      this.editOffice.city = this.editOffice.city.trim();
+      if (this.editOffice.city.length === 0) {
+        msg += 'The new office must have a city. ';
+      }
+
+      this.editOffice.zipcode = this.editOffice.zipcode.trim();
+      if (this.editOffice.zipcode.length === 0 || this.editOffice.zipcode.length > 5) {
+        msg += 'The new office must have a zip code (5 digit). ';
+      }
+
+      this.editOffice.phone = this.editOffice.phone.trim();
+      if (this.editOffice.phone.length === 0) {
+        msg += 'The new office must have a phone number. ';
+      }
+      
+      this.editOffice.officeHoursStart = this.editOffice.officeHoursStart.trim();
+      if (this.editOffice.officeHoursStart.length === 0) {
+        msg += 'The new office must have a opening time. ';
+      }
+
+      this.editOffice.officeHoursEnd = this.editOffice.officeHoursEnd.trim();
+      if (this.editOffice.officeHoursEnd.length === 0) {
+        msg += 'The new office must have a closing time. ';
+      }
+      
+
+      if (msg.length > 0) {
+        this.$store.commit('SET_NOTIFICATION', msg);
+        return false;
+      }
+      return true;
+    },
       }
 }   
 </script>
