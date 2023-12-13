@@ -71,3 +71,26 @@ SELECT * FROM doctor_office;
 SELECT * FROM users;
 SELECT * FROM doctor;
 SELECT * FROM person;
+
+
+-- Office Select By Office ID --
+SELECT office_id, address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time
+FROM office
+WHERE office_id = 2;
+
+-- Office Object Fields Select By Office Id --
+
+SELECT o.office_id, o.address_id, o.office_phone_number, o.practice_name, 
+o.office_hours_start_time, o.office_hours_end_time, ad.street_address, ad.city,
+ad.state_abbreviation, ad.zip_code
+FROM office o
+JOIN address ad ON o.address_id = ad.address_id
+WHERE o.office_id = 1;
+
+
+-- 
+
+UPDATE address 
+SET street_address = 1, city = 'Boink', state_abbreviation = 'BK', zip_code = '11111'
+WHERE address_id = (SELECT address_id FROM office WHERE office_id = 2);
+

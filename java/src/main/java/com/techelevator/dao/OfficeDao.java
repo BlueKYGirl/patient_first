@@ -19,5 +19,5 @@ public interface OfficeDao {
     void addDoctorsToOfficeByOfficeId(List<Doctor> doctors, int officeId);
 
 
-    Office updateOfficeById(Office office, int officeId);
+    Office updateOfficeById(Office office);
 }

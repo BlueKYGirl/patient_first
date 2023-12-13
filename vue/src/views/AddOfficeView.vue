@@ -25,9 +25,6 @@
             GlobalFooter,
             AddNewOffice
         },
-        data() {
-            return {};
-        },
         methods: {
             createOffices() {
                 officesService.createNewOffice()
