@@ -70,8 +70,8 @@ export default {
 }
 .subheader {
   text-align: left;
-  margin-top: 50px;
-  padding-left: 20px;
+  margin-top: 5%;
+  padding-left: 8%;
   font-weight: bold;
 }
 
