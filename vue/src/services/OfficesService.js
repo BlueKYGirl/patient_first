@@ -11,6 +11,6 @@ export default {
         return http.post('/offices', office);
     },
     updateOffice(officeId, office) {
-        return http.put(`/office/${officeId}`, office);
+        return http.put(`/offices/${officeId}`, office);
     }
 }

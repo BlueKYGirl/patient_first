@@ -1,17 +1,17 @@
 <template>
     <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
-        <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }" >
+       <div  class="doctor-names"> 
+        <p style="font-size: large;">{{ doctor.firstName }} {{ doctor.lastName }}</p>
+        <p style="font-weight: 100; font-size: medium;">{{ doctor.specialty }}</p>
+        </div>
         <div class="doctor-list">
             <img class="doctor-headshot" src="../assets/PF-doctor-headshot-MG.jpg" />
-            {{ doctor.firstName }} {{ doctor.lastName }}
+            </div>
+           <div class="display"> 
+         <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }"><button type="submit" class="doctor-links">View Office Details</button></router-link>
+         <button type="submit" class="doctor-links">Book Appointment</button>
+            </div>
     </div>
-        <div class="specialty">{{ doctor.specialty }}</div>
-      </router-link>
-       <!-- <div class="doctorList"> 
-            {{ doctor.firstName }} {{ doctor.lastName }}: {{ doctor.specialty }} -->
-        </div>
-
-    
   </template>
 
 <script>
@@ -29,39 +29,59 @@ export default {
 
 <style>
 @import '../css/styles.css';
-.doctor-list {
-    font-weight: bold;
-    padding-top: 2%;
-    padding-left: 2%;
-    vertical-align: middle;
+
+.doctor-links{
+  display: flex;
+  margin-left: 60%;
+  margin-right: auto;
+  background-color: #614BC3;
+  color: white;
+  margin-bottom: 4%;
+  padding: 7px;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px #0000001f, inset 0 0 1px #00000052;
 }
 
+button:hover {
+    background-color: #85E6C5;
+}
+.doctor-list {
+    display: inline-flex;
+    font-weight: bold;
+    padding-left: 5%;
+    width: 400px;
+}
 .doctor-headshot{
-    display: block;
-   height: 200px;
-   margin-bottom: 10px;
+   display: flex;
+   height: 250px;
    border-style: solid;
    border-radius: 10px;
    border-color: black;
    border-width: 2px;
 }
 
-.specialty{
-    font-weight: 100;
-    font-size: medium;
-    padding-left: 4%;
-    line-height: 2;
+.doctor-names{
+    display: inline-block;
+    align-content: center;
+    margin-top: 2%;
+    padding-left: 10%;
     padding-bottom: 1%;
+   
 }
 
 .doctors{
+    display: flex;
+    flex-direction: column;
     border-style: solid;
-    border-color: #614BC3;
-    border-width: 2px;
     border-radius: 15px;
-    box-shadow: 0 0px 1px #33BBC5, inset 0 0 2px #33BBC5;
-    margin-left: 30%;
-    margin: 2%;
+    padding-top: 1%;
+    border-width: .5px;
+    border-radius: 2%;
+    box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+    background-color: white;
+    margin-left: 10%;
+    margin: 5%;
         a {
             text-decoration: none;
             &:hover {
