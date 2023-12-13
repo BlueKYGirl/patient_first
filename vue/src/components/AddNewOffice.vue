@@ -116,7 +116,11 @@
             </div>
         </div>
         <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
-        <button class="create-office-button" type="create-office" v-on:click="createOffice()">Create Office</button>
+        <div class="buttons">
+        <button class="create-office-button" type="create-office" v-on:click="createOffice()">Submit</button>
+        <p>Need to edit an existing office?</p>
+        <router-link class="update-office-button" to="/doctors/:doctorId/offices">Update Office</router-link>
+      </div>
       </form>  
 
     </div>
@@ -171,12 +175,12 @@ h1{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 43%;
+  margin-left: 47%;
   margin-right: auto;
   background-color: #614BC3;
   color: white;
   margin-top: 4%;
-  margin-bottom: 4%;
+  margin-bottom: 0%;
   padding: 3px;
   padding-left: 5px;
   padding-right: 5px;
@@ -184,9 +188,32 @@ h1{
   border-radius: 3px;
   box-shadow: 0 1px 2px #0000001f, inset 0 0 1px #00000052;
 }
+.update-office-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-left: 43%;
+  margin-right: auto;
+  background-color: #614BC3;
+  color: white;
+  margin-top: 0%;
+  margin-bottom: 4%;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px #0000001f, inset 0 0 1px #00000052;
+  font-size: small;
+    
+}
 
 button:hover {
     background-color: #85E6C5;
+}
+.update-office-button:hover {
+  background-color: #85E6C5;
 }
 
 form{
@@ -207,6 +234,15 @@ form{
   border-color: gray;
   border-width: .5px;
   margin-top: 5%;
+}
+a {
+  text-decoration: none;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
 }
 
 
