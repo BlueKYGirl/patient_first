@@ -27,22 +27,25 @@ export default{
         DocAgenda
     },
 
-    data(){
-
-    },
-
-    props: {
-
-    },
-
-    methods: {
-
-    }
-
 }
 </script>
 
 <style scoped>
 @import '../css/styles.css';
+
+
+th {
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+}
+.table-title {
+    text-transform: none;
+    text-decoration: underline;
+    font-size: x-large;
+}
+td {
+    padding: 20px;
+}
 
 </style>
