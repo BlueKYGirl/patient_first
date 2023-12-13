@@ -16,12 +16,30 @@
 
 
         <div class="agenda">
-            <div v-for="appointment in filteredList" v-bind:key="appointment.appointmentId">
-                    <p> {{ formattedTime(appointment.startTime) }}&nbsp;&nbsp;&nbsp; 
-                        {{ appointment.scheduleStatus }} &nbsp;&nbsp;&nbsp;
-                        {{ appointment.patientName }} &nbsp;&nbsp;&nbsp;
-                        {{ appointment.appointmentReason }} &nbsp;&nbsp;&nbsp;
-                        {{ appointment.appointmentStatus }} </p> 
+            <div >
+                <table>
+                    <thead>
+                        <tr >
+                            <th class="table-title" colspan="5">Agenda for {{ this.filterDate }}</th>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <th>Schedule Status</th>
+                            <th>Patient Name</th>
+                            <th>Appointment Reason</th>
+                            <th>Appointment Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="appointment in filteredList" v-bind:key="appointment.appointmentId">
+                            <td>{{ formattedTime(appointment.startTime) }}</td>
+                            <td>{{ appointment.scheduleStatus }}</td>
+                            <td>{{ appointment.patientName }}</td>
+                            <td>{{ appointment.appointmentReason }}</td>
+                            <td>{{ appointment.appointmentStatus }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>  
         </div>      
     </body>
@@ -107,9 +125,18 @@ export default{
 <style>
 @import '../css/styles.css';
 
-.agenda {
-    display: grid;
-
+th {
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+}
+.table-title {
+    text-transform: none;
+    text-decoration: underline;
+    font-size: x-large;
+}
+td {
+    padding: 20px;
 }
 
 </style>
