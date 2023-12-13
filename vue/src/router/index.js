@@ -126,6 +126,14 @@ const routes = [
       requiresAuth: false
     }
   },
+  {
+    path: "/mydoctors",
+    name: "my-doctors",
+    component: OfficeDetailsView,
+    meta: {
+      requiresAuth: false
+    }
+  }
  
 ];
 

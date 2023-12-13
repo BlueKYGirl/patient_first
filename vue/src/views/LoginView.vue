@@ -5,17 +5,15 @@
   </div> 
     
   <main>
-  <img src="../assets/helpingHand.jpg" class="main-image"/>
+  
   <div class="welcome">
-    <div class="text">
-    <h1>Welcome! We're glad you're here.</h1>
+    <!--<img src="../assets/helpingHand.jpg" class="main-image"/>-->
+    
+      
     
   </div>
-  <div class="register">
-    <p><img src="../assets/transparentText.png" class="text-logo"/></p>
-    <p>Need an account? Sign up.</p>
-    <router-link to="/register"><a href="#" class="button">Get Started</a></router-link></div>
   
+  <div class="text"> <h1>Welcome! We're glad you're here.</h1>
 
     
    
@@ -45,8 +43,13 @@
       <f1 class="footer-text" style="margin-top: 2%;">Having trouble? Please contact us at:</f1>
     <f2 class="footer-text">1-888-8888</f2>
     </form>
+    <div class="register">
+    <p><img src="../assets/transparentText.png" class="text-logo"/></p>
+    <p>Need an account? Sign up.</p>
+    <router-link to="/register"><a href="#" class="button">Get Started</a></router-link></div>
   </div>
   </div> 
+  
 </main>
 </body>
 <div>
@@ -106,7 +109,8 @@ export default {
 main {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content:flex-start;
+  align-content: flex-start;
   padding-bottom: 5%;
   a {
       text-decoration: none;
@@ -117,19 +121,20 @@ main {
 }
 .welcome {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content:flex-start;
  
-  margin-right: 10%;
+  margin-right: 20%;
   margin-left: 3%;
  
  
 }
 .main-image {
   
-  width: 50%;
-  height: auto;
+  width: auto;
+  height: 60%;
   border-radius: 10px;
 }
 .button {
@@ -250,5 +255,9 @@ a {
 a:hover {
   color: #85E6C5;
 }
-
+@media only screen and (max-width: 768px){
+  img {
+    display: none;
+  }
+}
 </style>
