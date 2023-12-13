@@ -20,9 +20,9 @@
                 <table>
                     <thead>
                         <tr >
-                            <th class="table-title" colspan="5">Agenda for: {{ this.filterDate }}</th>
+                            <th1 class="table-title">Agenda for: {{ this.filterDate }}</th1>
                         </tr>
-                        <tr>
+                        <tr class="appointment-info-title">
                             <th>Time</th>
                             <th>Schedule Status</th>
                             <th>Patient Name</th>
@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="appointment in filteredList" v-bind:key="appointment.appointmentId">
+                        <tr class="input" v-for="appointment in filteredList" v-bind:key="appointment.appointmentId">
                             <td>{{ formattedTime(appointment.startTime) }}</td>
                             <td>{{ appointment.scheduleStatus }}</td>
                             <td>{{ appointment.patientName }}</td>
@@ -122,48 +122,94 @@ export default{
 }    
 </script>
 
-<style>
+<style scoped>
 @import '../css/styles.css';
-
-th {
-    display: flex;
-    text-transform: uppercase;
-    padding: 10px;
+.doc-date-list{
+    margin-left: 2%;
+}
+tr{
     text-align: center;
-    margin-bottom: 3%;
+}
+th {   
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+th1{
+    display: flex;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: larger;
+    margin-top: 10%;
+    margin-bottom: 7%;
+}
+
+td:nth-child(1), th:nth-child(1){
+    text-align: center;
+    width: 10%;
+    margin-left: 2%;
+}
+
+td:nth-child(2), th:nth-child(2){
+    text-align: center;
+    width: 15%;
+    margin-left: 2%;
+}
+
+td:nth-child(3), th:nth-child(3){
+    text-align: center;
+    width: 15%;
+    margin-left: 2%;
+}
+td:nth-child(4), th:nth-child(4){
+    text-align: center;
+    width: 20%;
+    margin-left: 2%;
+}
+td:nth-child(5), th:nth-child(5){
+    text-align: center;
+    width: 20%;
+    margin-left: 2%;
 }
 
 td{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     padding: 10px;
-    text-align: left;
 }
-tr {
+.appointment-info-title {
+    display: flex;
+    
+    text-align: center;
+}
+
+.input{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    text-align: center; 
 }
 .table-title {
-    text-transform: none;
-    font-size: x-large;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
 }
 
 
 .header-agenda{
     display: flex;
-    flex-direction: row;
     margin-top: 7%;
     margin-left: 10%;
     font-weight: bold;
-
 }
 
 table{
   display: flex;
   flex-direction: column;
-  align-content: center;
+  
   padding: 4%;
   padding-top: 1%;
   border-width: .5px;
@@ -172,6 +218,6 @@ table{
   background-color: white;
   margin-left: 10%;
   margin-right: 10%;
-  text-align: center;
+ 
 }
 </style>
