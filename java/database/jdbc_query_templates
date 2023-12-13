@@ -66,6 +66,7 @@ WHERE o.address_id = a.address_id
  
 -- SELECT Statements --
 SELECT * FROM address;
+SELECT * FROM users;
 SELECT * FROM office;
 SELECT * FROM doctor_office;
 SELECT * FROM users;
