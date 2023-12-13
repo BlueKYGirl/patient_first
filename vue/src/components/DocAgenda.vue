@@ -130,6 +130,15 @@ th {
     text-transform: uppercase;
     padding: 10px;
     text-align: center;
+    margin-bottom: 3%;
+}
+
+td{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    text-align: left;
 }
 tr {
     display: flex;
@@ -140,9 +149,7 @@ tr {
     text-transform: none;
     font-size: x-large;
 }
-td {
-    padding: 10px;
-}
+
 
 .header-agenda{
     display: flex;
