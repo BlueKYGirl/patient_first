@@ -119,7 +119,7 @@ const routes = [
     }
   },
   {
-    path: "/appointments",
+    path: "/appointments/:doctorId",
     name: "schedule-appointment",
     component: ScheduleAppointmentView,
     meta: {

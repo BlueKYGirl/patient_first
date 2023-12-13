@@ -38,7 +38,7 @@
         return {
             timeBlocks: [],
             availableAppts: [],
-            schedulingDoctorId: 3,   // hard coding this for now will need to be passed from previous screen ($store)?
+            schedulingDoctorId: this.$route.params.doctorId,   
 
     
             appointmentReasons: [],
