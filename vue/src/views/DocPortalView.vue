@@ -164,7 +164,7 @@ figcaption {
     color: black;
     margin-left: 85%;
       a {
-        color: #614BC3;
+        color: #33BBC5;
         text-decoration: none;
         &:hover {
           color: #614BC3;

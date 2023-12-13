@@ -116,8 +116,11 @@
           </div>
       </div>
       <!-- Add a method here to add doctors to the office object to be passed back...Also need to adjust back-end -->
-      <button class="create-office-button" type="submit" v-on:click.prevent="createOffice()">Create Office</button>
+      <div class="buttons">
+      <button class="create-office-button" type="submit" v-on:click.prevent="createOffice()">Submit</button>
+      <p>Need to update an existing office?</p>
       <router-link class="update-office-button" to="/doctors/:doctorId/offices">Update Office</router-link>
+    </div>
     </form>
   </div>
   <div class="footer">
