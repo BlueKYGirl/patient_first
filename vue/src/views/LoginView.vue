@@ -13,9 +13,9 @@
     
   </div>
   
-  <div class="text"> <h1>Welcome! We're glad you're here.</h1>
+  
 
-    
+  <!--<div class="text"> <h1>Welcome! We're glad you're here.</h1></div>-->
    
   <div id="login">
     
@@ -48,7 +48,7 @@
     <p>Need an account? Sign up.</p>
     <router-link to="/register"><a href="#" class="button">Get Started</a></router-link></div>
   </div>
-  </div> 
+ 
   
 </main>
 </body>
@@ -109,7 +109,7 @@ export default {
 main {
   display: flex;
   flex-direction: row;
-  justify-content:flex-start;
+  justify-content:center;
   align-content: flex-start;
   padding-bottom: 5%;
   a {
@@ -119,24 +119,8 @@ main {
       }
     }
 }
-.welcome {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items:center;
-  justify-content:flex-start;
- 
-  margin-right: 20%;
-  margin-left: 3%;
- 
- 
-}
-.main-image {
-  
-  width: auto;
-  height: 60%;
-  border-radius: 10px;
-}
+
+
 .button {
   font-size: large;
   background-color: #33BBC5;

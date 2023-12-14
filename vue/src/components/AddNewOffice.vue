@@ -149,7 +149,10 @@
   </div>
 
   <!-- ***************** OFFICE HOURS START TIME ********************** -->
-  <div class="all-offices" > Select office:
+  <div class="office-area">
+    <div class="select-text">Or select an office to edit:</div>
+  <div class="all-offices" > 
+  
             <div class="office" v-on:click="resetForm()">
                 <div class="new-office" > New Office </div>
             </div>
@@ -159,7 +162,7 @@
                                                              office.doctorsInOffice)">
                     
                     <p>{{ office.practiceName }}</p> {{ office.streetAddress }} {{ office.city }}, {{ office.stateAbbreviation }} {{ office.zipcode }} <br>
-                    
+                  </div>
                 </div>
             </div>
         </div>
@@ -465,6 +468,19 @@ a {
   flex-direction: column;
   text-align: center;
   justify-content: center;
+}
+.office-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: left;
+}
+.office-area {
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding-top: 5%;
 }
 </style>
 
