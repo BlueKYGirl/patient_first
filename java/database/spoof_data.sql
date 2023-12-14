@@ -5,20 +5,20 @@
 BEGIN TRANSACTION;
 
 INSERT INTO person(user_id, first_name, last_name, email, date_of_birth)
-VALUES (1, 'Tommy', 'Tester', 'jcha@patientfirst.com', '1985-09-07'),
+VALUES (1, 'Richie', 'Cunningham', 'rcun@patientfirst.com', '1985-09-07'),
 	   (2, 'Adam', 'Admin', 'jcha@patientfirst.com', '1985-09-07'),
 	   (3, 'Meredith', 'Grey', 'mgrey@patientfirst.com', '1985-09-07'),
- 	   (4, 'James', 'Chachi', 'jcha@patientfirst.com', '1985-09-07'),
-       (5, 'Joni', 'Chachi', 'jcha@patientfirst.com', '1990-01-23'),
-       (6, 'Fonz', 'Eyeae', 'feye@patientfirst.com', '1988-02-07'),
-	   (7, 'Vikram', 'Patel', 'vpat@patientfirst.com', '1977-05-20'),
-	   (8, 'Annie', 'Userton', 'ause@patientfirst.com', '1995-06-10');
+ 	   (4, 'Chachi', 'Arcola', 'carc@patientfirst.com', '1985-09-07'),
+       (5, 'Joni', 'Cunningham', 'jcun@patientfirst.com', '1990-01-23'),
+       (6, 'Arthur', 'Fonzarelli', 'afon@patientfirst.com', '1988-02-07'),
+	   (7, 'Derek', 'McDreamy', 'dmcd@patientfirst.com', '1977-05-20'),
+	   (8, 'Howard', 'Cunningham', 'ause@patientfirst.com', '1995-06-10');
 
 INSERT INTO doctor(person_id, specialty_id, is_primary_care)
-VALUES (4, 1, true),
-       (5, 2, true),
-       (3, 3, true),
-	   (6, 4, true);
+VALUES (6, 5, true),
+       (4, 4, true),
+       (3, 2, true),
+	   (7, 5, true);
 
 INSERT INTO address(street_address, city, state_abbreviation, zip_code)
 VALUES ('500 Main Street' , 'Televille', 'PA', 13145),
@@ -35,7 +35,7 @@ VALUES (1, '(123)456-7890', True);
 
 INSERT INTO office(address_id, office_phone_number, practice_name, office_hours_start_time, office_hours_end_time)
 VALUES (1, '(234)456-7890', 'Chachi & Associates', '8:00', '16:00'),
-       (2, '(555)765-1670', 'Goomba Family Medicine', '9:30', '17:00'),
+       (2, '(555)765-1670', 'Fonzarelli Family Medicine', '9:30', '17:00'),
        (3, '(999)567-2006', 'Larryville Physicians Network', '9:00', '16:30'),
        (4, '(888)510-5504', 'DevMed Health Office', '8:00', '16:30'),
        (5, '(677)543-0994', 'Patient First Family Practice', '8:00', '17:00');
@@ -57,9 +57,11 @@ INSERT INTO appointment_schedule(
 
 INSERT INTO doctor_office(doctor_id, office_id)
 VALUES (1, 1),
-       (2, 2),
        (3, 1),
+	   (3, 2),
 	   (3, 3),
+	   (3, 4),
+	   (3, 5),
 	   (4, 4),
 	   (4, 5);
 
