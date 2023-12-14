@@ -34,29 +34,9 @@
           GlobalFooter
       },
       data() {
-          return {
-              doctors: [],
-          };
+
       },
-      methods: {
-          getDoctors() {
-        
-        doctorsService.list()
-          .then(response => {
-            this.doctors = response.data;
-  
-          })
-          .catch(error => {
-            this.handleErrorResponse();
-          })
-      },
-      handleErrorResponse() {
-  
-      }
-    },
-    created() {
-      this.getDoctors();
-    }
+      
     
     }
   
