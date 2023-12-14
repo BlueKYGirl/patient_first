@@ -25,10 +25,10 @@
 
   <div class="get-started">
 
-  <div class="text"> <h1>Welcome!<br>We're glad you're here.</h1></div>
+  
 
   <div id="login">
-    
+    <div class="text"> <h1>Welcome!<br>We're glad you're here.</h1></div>
     <form class="form-template" v-on:submit.prevent="login">
       <h1 style="font-size:large; font-weight: 150;">Please Log In:</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -61,7 +61,20 @@
 </div>
  <div class="doctor-features">
     <ul class="doctor-list">
+      
+      <li class="feature-label">Doctor Features:</li>
+      <figure><li class="icons"><img src="../assets/office.png"/>
+          <figcaption>Manage Your Offices</figcaption></li></figure>
+      <figure><li class="icons"><img src="../assets/schedule.png"><figcaption>Set Your Schedule</figcaption></li>
+      </figure>
+      <figure><li class="icons"><img src="../assets/stethoscope.png"><figcaption>See Your Daily Schedule <br>and Patients</figcaption></li>
 
+      </figure>
+      <figure><li class="icons"><img src="../assets/edit2.png"><figcaption>Check Reviews</figcaption></li>
+
+</figure>
+      
+   
     </ul>
  </div>
   
@@ -125,7 +138,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content:center;
-  align-content: flex-start;
+  align-content: center;
   padding-bottom: 5%;
   a {
       text-decoration: none;
@@ -137,11 +150,14 @@ main {
 .get-started {
   display: flex;
   flex-direction: column;
+  
+  
 }
 .patient-features {
   display: flex;
   flex-direction: column;
   margin-top: 8%;
+  padding-right: 3%;
 }
 .patient-list {
   display: flex;
@@ -150,10 +166,13 @@ main {
 .doctor-features {
   display: flex;
   flex-direction: column;
+  margin-top: 4%;
+  padding-left: 3%;
 }
 .doctor-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  font-weight: normal;
 }
 
 .icons > img {
