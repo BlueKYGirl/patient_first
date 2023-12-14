@@ -140,7 +140,7 @@ const routes = [
   {
     path: "/mydoctors",
     name: "my-doctors",
-    component: OfficeDetailsView,
+    component: MyDoctorView,
     meta: {
       requiresAuth: false
     }
