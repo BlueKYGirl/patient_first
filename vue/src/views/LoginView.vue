@@ -41,7 +41,7 @@
         <label for="username">Username:</label>
       </div>
       <div class="input-box">  
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input type="text" id="username" v-model="user.username" required autofocus autocomplete="off" />
       </div>
       <div class="form-input-group">
         <label for="password">Password: &nbsp;</label> 
