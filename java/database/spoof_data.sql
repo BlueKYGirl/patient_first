@@ -5,17 +5,20 @@
 BEGIN TRANSACTION;
 
 INSERT INTO person(user_id, first_name, last_name, email, date_of_birth)
-VALUES (4, 'James', 'Chachi', 'jcha@patientfirst.com', '1985-09-07'),
+VALUES (1, 'Tommy', 'Tester', 'jcha@patientfirst.com', '1985-09-07'),
+	   (2, 'Adam', 'Admin', 'jcha@patientfirst.com', '1985-09-07'),
+	   (3, 'Derreck', 'McDreamy', 'jcha@patientfirst.com', '1985-09-07'),
+ 	   (4, 'James', 'Chachi', 'jcha@patientfirst.com', '1985-09-07'),
        (5, 'Joni', 'Chachi', 'jcha@patientfirst.com', '1990-01-23'),
        (6, 'Fonz', 'Eyeae', 'feye@patientfirst.com', '1988-02-07'),
 	   (7, 'Vikram', 'Patel', 'vpat@patientfirst.com', '1977-05-20'),
 	   (8, 'Annie', 'Userton', 'ause@patientfirst.com', '1995-06-10');
 
 INSERT INTO doctor(person_id, specialty_id, is_primary_care)
-VALUES (1, 1, true),
-       (2, 2, true),
+VALUES (4, 1, true),
+       (5, 2, true),
        (3, 3, true),
-	   (4, 4, true);
+	   (6, 4, true);
 
 INSERT INTO address(street_address, city, state_abbreviation, zip_code)
 VALUES ('500 Main Street' , 'Televille', 'PA', 13145),
@@ -54,7 +57,7 @@ INSERT INTO appointment_schedule(
 
 INSERT INTO doctor_office(doctor_id, office_id)
 VALUES (1, 1),
-       (2, 1),
+       (2, 2),
        (3, 1),
 	   (3, 3),
 	   (4, 4),
