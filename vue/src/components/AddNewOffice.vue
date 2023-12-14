@@ -139,8 +139,8 @@
 <!-- ***************** BUTTONS THAT MAKE THINGS GO ********************** -->
     <div class="buttons">
       <button class="create-office-button" type="submit">Submit</button>
-      <p>Need to update an existing office?</p>
-      <router-link class="update-office-button" to="/doctors/:doctorId/offices">Update Office</router-link>
+      <!--<p>Need to update an existing office?</p>
+      <router-link class="update-office-button" to="/doctors/:doctorId/offices">Update Office</router-link>-->
     </div>
     </form>
   </div>

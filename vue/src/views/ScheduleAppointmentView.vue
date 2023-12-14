@@ -77,4 +77,5 @@ export default {
 
 <style scoped>
 @import '../css/styles.css';
+
 </style>

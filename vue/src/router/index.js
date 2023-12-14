@@ -15,6 +15,7 @@ import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
 import ReviewsView from '../views/ReviewsView.vue';
 import DocPortalView from '../views/DocPortalView.vue';
 import AdminPortalView from '../views/AdminPortalView.vue';
+import MyDoctorView from '../views/MyDoctorsView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -65,6 +66,16 @@ const routes = [
       requiresAuth: true
     }
   },
+
+  {
+    path: "/mydoctors",
+    name: "my-doctors",
+    component: MyDoctorView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+
   {
     path: "/doctors/:doctorId/offices",
     name: "offices",

@@ -28,7 +28,7 @@
   <figcaption>Find a Doctor</figcaption></router-link>
 </figure>
 <figure>
-  <router-link to="/mydoctors"><img src="../assets/Calendar.png" class="icons"/><figcaption>See Your Doctors<br>Schedule Visits</figcaption></router-link>
+  <router-link to="/doctors"><img src="../assets/Calendar.png" class="icons"/><figcaption>See Your Doctors<br>Schedule Visits</figcaption></router-link>
 </figure>
 <figure>
   <router-link to="/docportal/reviews"><img class="icons" src="../assets/checkForReviews.png" alt="Check reviews" /><figcaption>Leave Reviews</figcaption></router-link>
