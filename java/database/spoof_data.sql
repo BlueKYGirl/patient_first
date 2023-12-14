@@ -18,11 +18,11 @@ VALUES (1, 1, true),
 	   (4, 4, true);
 
 INSERT INTO address(street_address, city, state_abbreviation, zip_code)
-VALUES (500, 'Televille', 'PA', 13145),
-	   (600, 'Ohmtown', 'IN', 54367),
-	   (700, 'Larryville', 'PA', 54367),
-	   (855, 'Stanton', 'PA', 54367),
-	   (1234, 'Devcreek', 'OH', 45444);
+VALUES ('500 Main Street' , 'Televille', 'PA', 13145),
+	   ('600 Any Street', 'Ohmtown', 'IN', 54367),
+	   ('700 Washington Ave.', 'Larryville', 'PA', 54367),
+	   ('855 Military Ln.', 'Stanton', 'PA', 54367),
+	   ('1234 Maple Blvd.', 'Devcreek', 'OH', 45444);
 
 INSERT INTO phone_type(phone_type)
 VALUES ('Primary');
