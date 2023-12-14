@@ -150,6 +150,9 @@
 
   <!-- ***************** OFFICE HOURS START TIME ********************** -->
   <div class="all-offices" > Select office:
+            <div class="office" v-on:click="resetForm()">
+                <div class="new-office" > New Office </div>
+            </div>
             <div class="office" v-for="office in offices" v-bind:key="office.officeId"  v-bind:class="{selected: this.editOffice.officeId===office.officeId }">
                 <div class="office2" v-on:click="clickOffice(office.officeId, office.practiceName, office.streetAddress, office.city, office.stateAbbreviation,
                                                              office.zipcode, office.phone, office.officeHoursStart, office.officeHoursEnd,
@@ -219,8 +222,17 @@ export default {
             })
         }
       },
-      cancelForm() {
-        this.$router.back();
+      resetForm() {
+            this.editOffice.officeId = 0,
+            this.editOffice.practiceName = '',
+            this.editOffice.streetAddress = '',
+            this.editOffice.city = '',
+            this.editOffice.stateAbbreviation = '',
+            this.editOffice.zipcode = '',
+            this.editOffice.phone = '',
+            this.editOffice.officeHoursStart = '',
+            this.editOffice.officeHoursEnd = '',
+            this.editOffice.doctorsInOffice = []
       },
       handleErrorResponse(error, verb) {
         if (error.response) {
@@ -316,6 +328,61 @@ export default {
 }
 </script>
 <style scoped>
+
+/* The base styling below this comment was pulled from DocAvailabilityConditions.vue */
+.all-offices {
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 5%;
+  
+}
+
+.office {
+    box-shadow: 0 2px 5px white,  inset 0 0 6px whitesmoke;
+    border: 2px solid whitesmoke;
+    width: 120%;
+    padding: 5px;
+    padding-top: 0%;
+    margin-top: 2px;
+    background-color: #85E6C5;    
+    font-weight:normal;
+    font-size: normal;
+    color: black;
+    border-radius: 7px;
+    box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+    
+
+}
+.office:hover {
+    border: 2px solid black;
+}
+
+p{
+    font-weight: bold;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.selected {
+    border: 2px solid black;
+    opacity: 80%;
+    box-shadow: 0 2px 2px #0000001f, inset 0 0 6px #00000052;
+    background-color: #C8FFE0;
+}
+
+.new-office {
+  margin: auto;
+  width: 50%;
+  padding: 18px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+/* The base styling above this comment was pulled from DocAvailabilityConditions.vue */
+
+
 h1{
   text-align: center;
   font-weight: 100;

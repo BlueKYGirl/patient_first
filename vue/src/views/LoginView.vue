@@ -56,7 +56,7 @@
     
   </div>
   <div class="footer"> 
-      <global-footer/>
+      <global-footer />
   </div>
 </template>
 
