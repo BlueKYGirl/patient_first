@@ -5,18 +5,28 @@
   </div> 
     
   <main>
-  
-  <div class="welcome">
-    <!--<img src="../assets/helpingHand.jpg" class="main-image"/>-->
-    
+ <div class="patient-features">
+    <ul class="patient-list">
+      <li class="feature-label">Patient Features:</li>
+      <figure><li class="icons"><img src="../assets/medicalStaff.png"/>
+          <figcaption>Find a Doctor</figcaption></li></figure>
+      <figure><li class="icons"><img src="../assets/Calendar.png"><figcaption>Schedule an Appointment</figcaption></li>
+      </figure>
+      <figure><li class="icons"><img src="../assets/checkForReviews.png"><figcaption>Read and Leave Reviews</figcaption></li>
+
+      </figure>
       
-    
-  </div>
-  
+    </ul>
+
+ </div>
+ 
+    <!--<img src="../assets/helpingHand.jpg" class="main-image"/>--> 
   
 
-  <!--<div class="text"> <h1>Welcome! We're glad you're here.</h1></div>-->
-   
+  <div class="get-started">
+
+  <div class="text"> <h1>Welcome!<br>We're glad you're here.</h1></div>
+
   <div id="login">
     
     <form class="form-template" v-on:submit.prevent="login">
@@ -48,7 +58,12 @@
     <p>Need an account? Sign up.</p>
     <router-link to="/register"><a href="#" class="button">Get Started</a></router-link></div>
   </div>
- 
+</div>
+ <div class="doctor-features">
+    <ul class="doctor-list">
+
+    </ul>
+ </div>
   
 </main>
 </body>
@@ -118,6 +133,41 @@ main {
         color: #614BC3;
       }
     }
+}
+.get-started {
+  display: flex;
+  flex-direction: column;
+}
+.patient-features {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8%;
+}
+.patient-list {
+  display: flex;
+  flex-direction: column;
+}
+.doctor-features {
+  display: flex;
+  flex-direction: column;
+}
+.doctor-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.icons > img {
+  height: 40px;
+
+}
+.feature-label {
+  text-align: center;
+  margin-bottom: 5%;
+  font-weight: bold;
+  font-size: large;
+}
+ul {
+  list-style-type: none;
 }
 
 
@@ -229,6 +279,10 @@ h2 {
 
 .footer-text{
   display: block;
+  font-size: small;
+  text-align: center;
+}
+.text {
   font-size: small;
   text-align: center;
 }
