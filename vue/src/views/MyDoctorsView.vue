@@ -11,7 +11,7 @@
     </div>
     <div class="doctor-list">
       
-          <doctors-list v-bind:doctors="doctors" />
+          <my-doctors v-bind:doctors="doctors" v-bind:patientAppointments="patientAppointments"  />
   </div>
   <div class="footer">
   
@@ -21,22 +21,57 @@
   </template>
   
   <script>
-  import DoctorsList from '../components/DoctorsList.vue';
-  import doctorsService from '../services/DoctorsService.js';
+  import MyDoctors from '../components/MyDoctors.vue';
   import GlobalHeader from '../components/GlobalHeader.vue';
   import GlobalFooter from '../components/GlobalFooter.vue';
+  import doctorsService from '../services/DoctorsService';
+  import appointmentService from '../services/AppointmentService'; 
   
   
   export default {
       components: {
-          DoctorsList,
+          MyDoctors,
           GlobalHeader,
           GlobalFooter
       },
       data() {
-
+        return {
+            doctors: [],
+            patientAppointments: [],
+        };
       },
-      
+      methods: {
+        getDoctors() {        
+            
+            doctorsService.list()
+            .then(response => {
+                this.doctors = response.data;
+                
+  
+             })
+            .catch(error => {
+            
+            })
+        },
+        getPatientAppointments(patientId) {
+            
+            appointmentService.listAppointmentsByPatientId(patientId)
+            .then(response => {
+                //alert("got response" + response.data);
+                this.patientAppointments = response.data;
+                this.getDoctors();
+  
+             })
+            .catch(error => {
+                alert("Something went wrong");
+            })
+        }, 
+        },
+      created() {
+        this.getPatientAppointments(this.$store.state.user.personId);
+
+      }
+    
     
     }
   

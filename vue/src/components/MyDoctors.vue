@@ -10,7 +10,7 @@
             </div>
            <div class="display"> 
          <router-link v-bind:to ="{ name: 'offices', params: { doctorId: doctor.doctorId } }"><button type="submit" class="doctor-links">View Office Details</button></router-link>
-         <button type="submit" class="doctor-links">Book Appointment</button>
+         <router-link v-bind:to ="{ name: 'schedule-appointment', params: { doctorId: doctor.doctorId }}"> <button type="submit" class="doctor-links">Book Appointment</button></router-link>
             </div>
         </div>    
 
@@ -22,49 +22,58 @@ import appointmentService from '../services/AppointmentService'
 
 
 export default {
-
-    data() {
-          return {
-              doctors: [],
-              patientAppointments: [],
-          };
-    },
-    methods: {
-        getDoctors() {        
-            doctorsService.list()
-            .then(response => {
-                this.doctors = response.data;
-                this.getPatientAppointments(this.$store.state.user.personId)
-  
-             })
-            .catch(error => {
-            
-            })
+    props: {
+        doctors: {
+            type: Array,
+            required: true
         },
-        getPatientAppointments(patientId) {
-            appointmentService.listAppointmentsByPatientId(patientId)
-            .then(response => {
-                this.patientAppointments = response.data;
-  
-             })
-            .catch(error => {
+        patientAppointments: {
+            type: Array,
+            required: true
+        },
+    },
+
+    // data() {
+    //       return {
+    //           doctors: [],
+    //           patientAppointments: [],
+    //       };
+    // },
+    methods: {
+        // getDoctors() {        
             
-            })
-        },    
+        //     doctorsService.list()
+        //     .then(response => {
+        //         this.doctors = response.data;
+                
+  
+        //      })
+        //     .catch(error => {
+            
+        //     })
+        // },
+        // getPatientAppointments(patientId) {
+        //     alert("get appointments fired " + patientId)
+        //     appointmentService.listAppointmentsByPatientId(patientId)
+        //     .then(response => {
+        //         //alert("got response" + response.data);
+        //         this.patientAppointments = response.data;
+        //         this.getDoctors();
+  
+        //      })
+        //     .catch(error => {
+        //         alert("Something went wrong");
+        //     })
+        // },    
     },
     computed: {
-        filteredDoctorList() {
-        let filteredDoctors = this.doctors;
-
-            filteredDoctors = filteredDoctors.filter((doctor) => this.patientAppointments.doctorId.includes(doctor.doctorId));
-   
-        return filteredDoctors;
-        },
+        filteredDoctorList() {         
+            return this.doctors.filter((doctor1) =>
+                this.patientAppointments.some((doctor2) => doctor2.doctorId === doctor1.doctorId));
+          },
     },
 
-    created() {
-      this.getDoctors();
-    }
+
 
 };
 
