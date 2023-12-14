@@ -200,4 +200,15 @@ label {
   margin-top: 15px;
   text-align: center;
 }
+a {
+  text-decoration: none;
+  
+  color: #614BC3;
+  &:hover {
+    color: #85E6C5;
+  }
+}
+p {
+  text-align: center;
+}
 </style>
