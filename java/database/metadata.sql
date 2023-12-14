@@ -119,14 +119,16 @@ INSERT INTO time_block (start_time) VALUES ('23:45');
 -- Appointment Reason Metadata Insert Statements --
 
 INSERT INTO appointment_reason (appointment_reason) VALUES (' ');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('New Patient Appointment');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('New Problem');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Follow-Up');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Wellness (Adult)');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Women''s Annual Wellness');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Well Child Visit');
-INSERT INTO appointment_reason (appointment_reason) VALUES ('Ill Child Visit');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Sick Child Visit');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Medicare Wellness');
 INSERT INTO appointment_reason (appointment_reason) VALUES ('Annual Mammogram');
+INSERT INTO appointment_reason (appointment_reason) VALUES ('Other');
 
 
 -- Appointment Status Metadata Insert Statements --
@@ -136,6 +138,7 @@ INSERT INTO appointment_status (appointment_status) VALUES ('Scheduled');
 INSERT INTO appointment_status (appointment_status) VALUES ('Rescheduled');
 INSERT INTO appointment_status (appointment_status) VALUES ('Canceled');
 INSERT INTO appointment_status (appointment_status) VALUES ('Completed');
+INSERT INTO appointment_status (appointment_status) VALUES ('--');
 
 
 -- Schedule Status Metadata Insert Statements -- 

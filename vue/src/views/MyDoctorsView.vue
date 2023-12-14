@@ -4,7 +4,7 @@
           <global-header />
           <h1>Welcome to Patient First</h1>
       <p>We're glad you're here.</p>
-      <p class="subheader" >
+      <p class="subheader-two" >
         Your Physicians:
       </p>
       
@@ -34,29 +34,9 @@
           GlobalFooter
       },
       data() {
-          return {
-              doctors: [],
-          };
+
       },
-      methods: {
-          getDoctors() {
-        
-        doctorsService.list()
-          .then(response => {
-            this.doctors = response.data;
-  
-          })
-          .catch(error => {
-            this.handleErrorResponse();
-          })
-      },
-      handleErrorResponse() {
-  
-      }
-    },
-    created() {
-      this.getDoctors();
-    }
+      
     
     }
   
@@ -68,7 +48,7 @@
   .header {
     text-align: center;
   }
-  .subheader {
+  .subheader-two {
     text-align: left;
     margin-top: 5%;
     padding-left: 8%;

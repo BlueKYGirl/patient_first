@@ -177,8 +177,14 @@ export default{
                 appt.timeBlockId = timeBlock.timeBlockId;
                 appt.officeId = this.$store.state.selectedOfficeId;
                 appt.appointmentReasonId = 1;          // ******** NOTE, THIS WILL HAVE TO BE CHANGED WHEN WE DECIDE WHAT TO DO IN THE DB ******
-                appt.appointmentStatusId = 1;
                 appt.scheduleStatusId = timeBlock.scheduleStatusId;
+                if (appt.scheduleStatusId === 1) {
+                    appt.appointmentStatusId = 1;
+                } else {
+                    appt.appointmentStatusId = 6;
+                }
+
+                
                 if (timeBlock.scheduleStatusId > 0) {       // ONLY send records that have an assigned status
                     availabilityRecs.push(appt);
                 }

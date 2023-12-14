@@ -1,6 +1,6 @@
 <template>
 
-    <div class="doctors" v-for="doctor in doctors" v-bind:key="doctor.doctorId">
+    <div class="doctors" v-for="doctor in filteredDoctorList" v-bind:key="doctor.doctorId">
        <div  class="doctor-names"> 
         <p style="font-size: large;">{{ doctor.firstName }} {{ doctor.lastName }}</p>
         <p style="font-weight: 100; font-size: medium;">{{ doctor.specialty }}</p>
@@ -17,15 +17,57 @@
   </template>
 
 <script>
+import doctorsService from '../services/DoctorsService';
+import appointmentService from '../services/AppointmentService'
+
+
 export default {
 
-    props: {
-        doctors: {
-            type: Array,
-            required: true
-        }
+    data() {
+          return {
+              doctors: [],
+              patientAppointments: [],
+          };
     },
+    methods: {
+        getDoctors() {        
+            doctorsService.list()
+            .then(response => {
+                this.doctors = response.data;
+                this.getPatientAppointments(this.$store.state.user.personId)
+  
+             })
+            .catch(error => {
+            
+            })
+        },
+        getPatientAppointments(patientId) {
+            appointmentService.listAppointmentsByPatientId(patientId)
+            .then(response => {
+                this.patientAppointments = response.data;
+  
+             })
+            .catch(error => {
+            
+            })
+        },    
+    },
+    computed: {
+        filteredDoctorList() {
+        let filteredDoctors = this.doctors;
+
+            filteredDoctors = filteredDoctors.filter((doctor) => this.patientAppointments.doctorId.includes(doctor.doctorId));
+   
+        return filteredDoctors;
+        },
+    },
+
+    created() {
+      this.getDoctors();
+    }
+
 };
+
 
 </script>
 

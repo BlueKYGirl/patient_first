@@ -73,6 +73,18 @@ public class AppointmentScheduleController {
         }
     }
 
+    // *** Get APPOINTMENTS by PATIENT ID  ****
+    @CrossOrigin
+    @RequestMapping(path = "/myappointments/{patientId}", method = RequestMethod.GET)
+    public List<Appointment> getPatientAppts(@PathVariable int patientId){
+        try {
+            List<Appointment> patientAppts = appointmentDao.getAppointmentsByPatientId(patientId);
+            return patientAppts;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no appointments here...Bummer..." + e);
+        }
+    }
+
     // *** SAVING ORIGINAL PLAIN GET APPOINTMENT OBJECT IN CASE WE NEED IT LATER  ****
 //    @CrossOrigin
 //    @RequestMapping(path = "/agenda/{doctorId}/{date}", method = RequestMethod.GET)
