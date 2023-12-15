@@ -3,7 +3,7 @@
     <div class="time-block-header">
         <h2> Set Your Availability </h2>
         <div class="default-duration">
-            <label>Default Duration (mins): </label>
+            <label class="duration-block">Default Duration (mins): </label>
             <select v-model=this.defaultDuration v-on:change="updateDurations(this.defaultDuration)">
                 <option class="time-lengths">15</option>
                 <option class="time-lengths">30</option>
@@ -283,12 +283,13 @@ h2{
 
 .default-duration{
     display: flex;
-    margin-top: 11%;
+    margin-top: 9%;
     align-items:flex-start;
     font-size: medium;
     font-weight: bold;
    
 }
+
 
 .button{
     display: flex;

@@ -156,7 +156,8 @@ main {
 .patient-features {
   display: flex;
   flex-direction: column;
-  margin-top: 8%;
+
+  margin-top: 3%;
   padding-right: 3%;
 }
 .patient-list {
@@ -166,7 +167,7 @@ main {
 .doctor-features {
   display: flex;
   flex-direction: column;
-  margin-top: 4%;
+  margin-top: 1%;
   padding-left: 3%;
 }
 .doctor-list {

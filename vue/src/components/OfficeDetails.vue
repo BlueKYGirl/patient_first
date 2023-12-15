@@ -41,7 +41,9 @@ export default {
 .office-details-header{
     display: flex;
     justify-content: center;
+    text-align: center;
     margin-top: 2%;
+    
 }
 
 .office-details{

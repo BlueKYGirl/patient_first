@@ -2,8 +2,8 @@
   <body>
     <div class="header">
         <global-header />
-        <h1>Welcome to Patient First</h1>
-    <p>We're glad you're here.</p>
+        <h1>Welcome! We're Glad You're Here.</h1>
+    
     <p class="subheader" >
       Our Physicians:
     </p>
@@ -68,6 +68,7 @@ export default {
 .header {
   text-align: center;
 }
+
 .subheader {
   text-align: left;
   margin-top: 5%;

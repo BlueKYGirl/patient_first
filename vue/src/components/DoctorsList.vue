@@ -29,7 +29,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 @import '../css/styles.css';
 
 .doctor-links{
