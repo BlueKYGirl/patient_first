@@ -31,7 +31,7 @@ public class JdbcDoctorDao implements DoctorDao{
         String sql = "SELECT d.doctor_id, s.specialty_name, d.is_primary_care, p.user_id, p.first_name, p.last_name, p.email, p.date_of_birth " +
                 "FROM doctor d " +
                 "JOIN specialty s ON d.specialty_id = s.specialty_id " +
-                "JOIN person p ON d.doctor_id = p.person_id;";
+                "JOIN person p ON d.person_id = p.person_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             doctors.add(mapRowToDoctor(results));

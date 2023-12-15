@@ -95,6 +95,7 @@ export default{
                     if (!this.doctorDatesWithSchedule.includes(appt.date)) {
                         this.doctorDatesWithSchedule.push(appt.date)
                     }
+                    this.doctorDatesWithSchedule.sort();
                 });
                 })
                 .catch(error => {

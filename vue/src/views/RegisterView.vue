@@ -4,7 +4,7 @@
   </div> 
 
   <div id="register" class="text-center">
-    <form class="form-template" v-on:submit.prevent="register" >
+    <form class="form-template" autocomplete="off" v-on:submit.prevent="register" >
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
