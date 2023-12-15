@@ -13,7 +13,7 @@
          <router-link v-bind:to ="{ name: 'schedule-appointment', params: { doctorId: doctor.doctorId }}"> <button type="submit" class="doctor-links">Book Appointment</button></router-link>
             </div>
         </div>    
-
+   
   </template>
 
 <script>
@@ -51,6 +51,7 @@ button:hover {
 }
 .doctor-list {
     display: flex;
+    
     font-weight: bold;
     padding-left: 5%;
     width: 400px;
