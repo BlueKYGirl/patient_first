@@ -7,12 +7,12 @@
   <main>
  <div class="patient-features">
     <ul class="patient-list">
-      <li class="feature-label">Patient Features:</li>
+      <li class="feature-label">Patients can...</li>
       <figure><li class="icons"><img src="../assets/medicalStaff.png"/>
-          <figcaption>Find a Doctor</figcaption></li></figure>
-      <figure><li class="icons"><img src="../assets/Calendar.png"><figcaption>Schedule an Appointment</figcaption></li>
+          <figcaption>Find a doctor</figcaption></li></figure>
+      <figure><li class="icons"><img src="../assets/Calendar.png"><figcaption>Schedule an appointment</figcaption></li>
       </figure>
-      <figure><li class="icons"><img src="../assets/checkForReviews.png"><figcaption>Read and Leave Reviews</figcaption></li>
+      <figure><li class="icons"><img src="../assets/checkForReviews.png"><figcaption>Read and leave reviews</figcaption></li>
 
       </figure>
       
@@ -62,15 +62,15 @@
  <div class="doctor-features">
     <ul class="doctor-list">
       
-      <li class="feature-label">Doctor Features:</li>
+      <li class="feature-label">Doctors can...</li>
       <figure><li class="icons"><img src="../assets/office.png"/>
-          <figcaption>Manage Your Offices</figcaption></li></figure>
-      <figure><li class="icons"><img src="../assets/schedule.png"><figcaption>Set Your Schedule</figcaption></li>
+          <figcaption>Manage your offices</figcaption></li></figure>
+      <figure><li class="icons"><img src="../assets/schedule.png"><figcaption>Set your schedule</figcaption></li>
       </figure>
-      <figure><li class="icons"><img src="../assets/stethoscope.png"><figcaption>See Your Daily Schedule <br>and Patients</figcaption></li>
+      <figure><li class="icons"><img src="../assets/stethoscope.png"><figcaption>See your daily schedule <br>and patients</figcaption></li>
 
       </figure>
-      <figure><li class="icons"><img src="../assets/edit2.png"><figcaption>Check Reviews</figcaption></li>
+      <figure><li class="icons"><img src="../assets/edit2.png"><figcaption>Check reviews</figcaption></li>
 
 </figure>
       
