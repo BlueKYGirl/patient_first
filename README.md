@@ -1,5 +1,5 @@
-# Final Capstone
-​
-This directory contains all of the starter projects for the final capstone.
-​
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+# Patient First
+## TE Final Capstone  
+Technology has had a huge impact on today’s healthcare, and not just in diagnosis and treatment; the way doctors and patients communicate with each other has changed thanks to healthcare management applications. Patients want to be able to find new doctors, see their current doctors, and schedule appointments from the convenience of their devices. Doctors want to be able to manage their offices, set their schedules, and see their daily slate of appointments and incoming patients from both their office desktops and their devices. Our application, Patient First, helps patients and doctors to work better together, putting patients first.  
+
+Contributors: Toni Moore, David Meulenberg, Shianne Hollins, Tyler Dix
