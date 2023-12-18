@@ -4,4 +4,4 @@ Technology has had a huge impact on today’s healthcare, and not just in diagno
 
 Contributors: David Meulenberg, Shianne Hollins, Tyler Dix, Toni Moore
 
-# patient_first
+
